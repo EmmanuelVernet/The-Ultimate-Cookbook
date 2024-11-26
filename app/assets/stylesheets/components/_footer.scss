@@ -1,0 +1,54 @@
+.footer {
+  background: white;
+  border-top: 2px solid $rouge-sombre;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0px 50px;
+  color: rgba(0, 0, 0, 0.3);
+  position: fixed; /* Changed from sticky to fixed */
+  bottom: 0; /* Stick it to the bottom */
+  width: 100%; /* Ensure it spans the full width of the viewport */
+  z-index: 1000;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Make the container span the full width */
+}
+
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  flex: 1; /* Ensures each link takes up equal space */
+  text-align: center; /* Aligns each link within its flex area */
+  padding: 0px 10px;
+}
+
+.footer-links a:first-child {
+  text-align: left; /* Align the first link to the left */
+}
+
+.footer-links a:last-child {
+  text-align: right; /* Align the last link to the right */
+}
