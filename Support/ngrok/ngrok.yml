@@ -1,0 +1,5 @@
+authtoken: 2pLhm3uFxnMtFeaAlkyH8mD35Hq_7rtweKMsdS8KRpc9GD5FD
+tunnels:
+  example:
+    proto: http
+    addr: 3000
