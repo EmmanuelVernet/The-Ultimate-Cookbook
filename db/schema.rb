@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_26_114229) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_134330) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "followers_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_followers_users_on_follower_id"
+    t.index ["user_id"], name: "index_followers_users_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "ingredient_name"
+    t.string "ingredient_category"
+    t.integer "calorie"
+    t.integer "protein"
+    t.integer "glucide"
+    t.integer "lipide"
+    t.integer "fibre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_114229) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "followers_users", "users"
+  add_foreign_key "followers_users", "users", column: "follower_id"
 end
