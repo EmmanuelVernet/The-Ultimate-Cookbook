@@ -1,0 +1,129 @@
+// ------------------- BACKGROUND -------------------
+
+.container-defaut {
+  background-color: $beige-bg;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+// ------------------- TEXTE -------------------
+
+h1 {
+  color: $marron-clair;
+  font-family: $headers-font;
+  letter-spacing: 2px;
+}
+
+h3, h4, h5, h6 {
+  color: $bleu-canard;
+  font-family: $headers-font;
+  letter-spacing: 2px;
+}
+
+body {
+    font-family: $body-font;
+    color: $maronasse;
+  }
+
+p {
+  font-family: $body-font;
+  color: $maronasse;
+}
+
+// ------------------- BOUTONS -------------------
+
+.btn-bleu {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $bleu-canard;
+  transition: background 0.3s ease;
+}
+
+.btn-bleu:hover {
+  background: $bleu-canard-hover;
+  color: white;
+}
+
+.btn-vert {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $vert-sapin;
+  transition: background 0.3s ease;
+}
+
+.btn-vert:hover {
+  background: $vert-sapin-hover;
+  color: white;
+}
+
+.btn-orange {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $orange;
+  transition: background 0.3s ease;
+}
+
+.btn-orange:hover {
+  background: $orange-hover;
+  color: white;
+}
+
+.btn-rouge {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $rouge-sombre;
+  transition: background 0.3s ease;
+}
+
+.btn-rouge:hover {
+  background: $rouge-sombre-hover;
+  color: white;
+}
+
+// ------------------- CARDS -------------------
+
+.card-defaut {
+  overflow: hidden;
+  border: $marron-clair solid 1px;
+  background-color: $jaune-epais;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+
+// ------------------- ICONES -------------------
+
+
+.icon-couleur-bleu {
+  color:  $bleu-canard;
+}
+
+.icon-couleur-vert {
+  color:  $vert-sapin;
+}
+
+.icon-couleur-orange {
+  color:  $orange;
+}
+
+.icon-couleur-rouge {
+  color:  $rouge-sombre;
+}
+
+// ------------------- IMAGES -------------------
+
+.img-defaut {
+  border: $marron-clair solid 1px;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+// ------------------- LIENS -------------------
+
+a {
+
+}
