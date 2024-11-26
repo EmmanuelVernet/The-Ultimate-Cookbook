@@ -47,5 +47,4 @@ class IngredientsController < ApplicationController
   def ingredient_params
     params.require(:ingredient).permit(:ingredient_name, :ingredient_category, :calorie, :protein, :glucide, :lipide, :fibre)
   end
-
 end
