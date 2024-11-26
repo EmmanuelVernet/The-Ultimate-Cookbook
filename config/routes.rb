@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "pages#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  # TO VIEW ROUTES => http://localhost:3000/rails/info/routes
+  
   # USER ROUTING
   resources :users, only: [:show, :index] do
     resources :recipes, only: [:index, :show]
