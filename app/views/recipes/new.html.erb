@@ -1,3 +1,16 @@
 <div class="container">
   <h1>NEW RECIPES</h1>
+    <%= simple_form_for [@recipe] do |f| %>
+      <%= f.input :recipe_name, label: 'Nom de la recette' %>
+      <%= f.input :recipe_category, label: 'Categorie' %>
+      <%= f.input :recipe_overview, label: 'En deux mots...' %>
+      <%= f.input :preparation_time, label: "Temps de préparation" %>
+      <%= f.input :servings, label: 'Convives' %>
+      <%= f.input :recipe_steps, label: 'Etapes à suivre' %>
+      <%= f.input :import_source, label: 'Source: ' %>
+      <%= f.input :recipe_likes, label: 'Likes:' %>
+      <%= f.input :favorite, label: 'En favoris' %>
+      <%= f.button :submit, class: "btn btn-primary w-100" %>
+      <%= f.submit class: "btn btn-primary text-white"%>
+    <% end %>
 </div>
