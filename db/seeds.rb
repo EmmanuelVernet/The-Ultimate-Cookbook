@@ -182,7 +182,7 @@ gigot = Recipe.create!(
   user: user3
   )
 
-file7 = URI.open("https://assets.afcdn.com/recipe/20160914/63596_w314h314c1cx2000cy3000.webp")
+file7 = URI.open("https://assets.afcdn.com/recipe/20160404/24205_w314h314c1cx1500cy1009.webp")
 gigot.photo.attach(io: file7, filename: "gigot.jpg", content_type: "image/jpeg")
 gigot.save!
 
