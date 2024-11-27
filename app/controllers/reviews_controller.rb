@@ -19,29 +19,29 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    # @recipe = Recipe.find(params[:id])
+    @review = Review.find(params[:id])
     
-    # if @recipe.update(recipe_params)
-    #   redirect_to recipe_path(@recipe), notice: "Recipe updated!"
-    # else
-    #   render :edit, status: :unprocessable_entity
-    # end
+    if @review.update(review_params)
+      redirect_to review_path(@review), notice: "Review updated!"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    # # find the Recipe item
-    # @recipe = Recipe.find(params[:id])
-    # # then destroy recipe
-    # if @recipe.destroy
-    #   redirect_to recipes_path, notice: "Recipe deleted"
-    # else
-    #   redirect_to recipe_path(@recipe), alert: "Can't delete recipe"
-    # end
+    # find the Review item
+    @review = Review.find(params[:id])
+    # then destroy review
+    if @review.destroy
+      redirect_to review_path, notice: "Review deleted"
+    else
+      redirect_to review_path(@review), alert: "Can't delete review"
+    end
   end
 
   private
 
   def reviews_params
-    
+    params.require(:review).permit(:user_id, :recipe_id, :comment, :star, :date)
   end
 end
