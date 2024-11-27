@@ -13,25 +13,39 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
 }
 
 .container-defaut {
   padding-left: 24px;
   padding-right: 24px;
+
+}
+
+.container-division {
+padding-top: 16px;
+}
+
+.item-centrage {
+  display: flex;
+  justify-content: center;
 }
 
 // ------------------- TEXTE -------------------
 
 h1 {
   color: $marron-clair;
-  font-family: $headers-font;
+  font-family: $headers-font-1;
   letter-spacing: 2px;
   text-align: center;
+  font-weight: bolder;
+  font-size: xx-large;
+  margin: 0px;
 }
 
 h3, h4, h5, h6 {
   color: $bleu-canard;
-  font-family: $headers-font;
+  font-family: $headers-font-2;
   letter-spacing: 2px;
 }
 
@@ -43,6 +57,12 @@ body {
 p {
   font-family: $body-font;
   color: $maronasse;
+}
+
+.text-carousel-icone {
+  font-family: $body-font;
+  color: $beige-bg;
+  font-weight: bold;
 }
 
 // ------------------- BOUTONS -------------------
@@ -132,6 +152,25 @@ p {
   color:  $rouge-sombre;
 }
 
+// ------------------- ICONES DE CAROUSEL -------------------
+
+
+.icon-carousel-couleur-bleu {
+  color:  $bleu-canard;
+}
+
+.icon-carousel-couleur-vert {
+  color:  $vert-sapin;
+}
+
+.icon-carousel-couleur-orange {
+  color:  $orange;
+}
+
+.icon-carousel-couleur-rouge {
+  color:  $rouge-sombre;
+}
+
 // ------------------- IMAGES -------------------
 
 .img-defaut {
@@ -143,5 +182,5 @@ p {
 // ------------------- LIENS -------------------
 
 a {
-
+text-decoration: none;
 }
