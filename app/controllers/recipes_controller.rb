@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+
+    # TO DO => implement separate logic for OCR analysis with OpenAI
   end
 
   def edit
