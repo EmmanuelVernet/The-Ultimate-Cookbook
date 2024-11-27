@@ -92,6 +92,9 @@ p {
   background-color: $jaune-epais;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 20px auto; /* Centers the card with margin */
+  width:  90%; /* Reduces the width to fit on smaller screens */
+  padding:5px;
 }
 
 
