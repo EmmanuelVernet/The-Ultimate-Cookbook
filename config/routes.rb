@@ -19,14 +19,14 @@ Rails.application.routes.draw do
     resources :ingredients, only: [:index, :show]
     resources :tags, only: [:index]
     resources :reviews, only: [:index, :show, :create]
-    # resources :shares # If users can share recipes
+    resources :shares, only: [:create, :index] # If users can share recipes
   end
 
   # REVIEWS
   resources :reviews, only: [:show, :create, :update, :destroy]
 
   # SHARES => when a user wants to share a recipe
-  resources :shares, only: [:index, :show, :create, :destroy]
+  resources :shares, only: [:index, :show, :create]
 
   # INGREDIENTS => manage ingredients data
   resources :ingredients, only: [:index, :show, :create, :update, :destroy]
