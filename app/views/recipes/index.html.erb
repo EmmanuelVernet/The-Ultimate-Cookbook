@@ -1,3 +1,14 @@
 <div class="container">
   <h1>INDEX RECIPES</h1>
+  <% @recipes.each do |recipe| %>
+    <p>Recipe name: <%= recipe.recipe_name %></p>
+    <p>Recipe overview: <%= recipe.recipe_overview %></p>
+    <p>Recipe category: <%= recipe.recipe_category %></p>
+    <p>Prepartion time: <%= recipe.preparation_time.strftime("%M") %> minutes</p>
+    <p>Difficulty: <%= recipe.difficulty %></p>
+    <p>Imported from: <%= recipe.import_source %></p>
+    <p>Servings: <%= recipe.servings %></p>
+    <p>Recipe steps: <%= recipe.recipe_steps %></p>
+    <p>Add to favourites: <%= recipe.favorite %></p>
+  <% end %>
 </div>
