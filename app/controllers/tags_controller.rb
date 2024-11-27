@@ -19,7 +19,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @tag.update(tag_params)
     redirect_to tag_path(@tag)
-    # TO DO +> add safe guard for update withif statement
+    # TO DO +> add safe guard for update with if statement
   end
 
   def destroy #allows to remove a tag from a recipe

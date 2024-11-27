@@ -54,26 +54,3 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite)
   end
 end
-
-
-
-
-
-
-
-# create_table "recipes", force: :cascade do |t|
-#   t.string "recipe_name"
-#   t.text "recipe_overview"
-#   t.string "recipe_category"
-#   t.time "preparation_time"
-#   t.string "difficulty"
-#   t.string "import_source"
-#   t.integer "servings"
-#   t.text "recipe_steps"
-#   t.integer "recipe_likes"
-#   t.boolean "favorite"
-#   t.bigint "user_id", null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["user_id"], name: "index_recipes_on_user_id"
-# end
