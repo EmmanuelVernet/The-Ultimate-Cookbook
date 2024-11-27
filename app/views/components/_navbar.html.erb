@@ -1,7 +1,7 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon" >
   <div class="container-fluid">
     <!-- Navbar Brand -->
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "android-icon-96x96.png", class: "logo-navbar", style: "height: 35px; border-radius: 4px;" %>
     <% end %>
 
@@ -9,11 +9,11 @@
     <div class="d-flex ms-auto align-items-center">
       <!-- Search Icon -->
       <%= link_to root_path, class: "nav-link d-flex align-items-center" do %>
-        <i class="fa-solid fa-magnifying-glass icon-couleur"></i>
+        <i class="fa-solid fa-magnifying-glass fa-xl icon-couleur-vert"></i>
       <% end %>
 
       <!-- Profile Avatar -->
-      <%= link_to root_path, class: "nav-link d-flex align-items-center ms-3" do %>
+      <%= link_to dashboard_path, class: "nav-link d-flex align-items-center ms-3" do %>
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", style: "height: 35px; width: 35px;" %>
       <% end %>
     </div>

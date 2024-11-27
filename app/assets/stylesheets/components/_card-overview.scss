@@ -1,0 +1,48 @@
+.card-defauttt {
+  margin: 20px auto; /* Centers the card with margin */
+  width:  90%; /* Reduces the width to fit on smaller screens */
+  overflow: hidden;
+  border: $marron-clair solid 1px;
+  background-color: $jaune-epais;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+
+  .img-defaut {
+    width: 100%; /* Makes the image span the full width of the card */
+    height: auto; /* Keeps the image proportional */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .card-body {
+    padding: 15px;
+    text-align: center; /* Centers the text for better mobile appearance */
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+
+  .card-text {
+    font-size: 0.9rem; /* Smaller font for text */
+  }
+
+  .btn {
+    font-size: 0.85rem; /* Smaller font for button text */
+    padding: 10px 15px; /* Adjust button padding */
+  }
+}
+
+/* Media query for extra small screens (Pixel-7 is ~393px wide) */
+@media (max-width: 400px) {
+  .card {
+    width: 100%; /* Utilize full width on very small screens */
+    margin: 10px; /* Slight margin for spacing */
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 8px 10px; /* Make buttons smaller */
+  }
+}
