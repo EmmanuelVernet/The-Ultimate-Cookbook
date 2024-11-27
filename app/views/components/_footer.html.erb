@@ -2,6 +2,22 @@
   <div class="footer-links">
     <a href="#"><i class="fa-solid fa-microphone icon-couleur-vert"></i></a>
     <a href="#"><i class="fa-solid fa-pen-to-square icon-couleur-vert"></i></a>
-    <a href="#"><i class="fa-regular fa-image icon-couleur-vert"></i></a>
+     <!-- Gallery Access -->
+    <%= form_with model: @recipe, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', class: 'd-inline' } do |form| %>
+      <%= form.file_field :photo, accept: "image/*", capture: "environment", style: "display:none;", id: "upload-gallery-photo" %>
+      <label for="upload-gallery-photo">
+        <i class="fa-regular fa-image icon-couleur-vert"></i>
+      </label>
+    <% end %>
   </div>
 </div>
+
+
+ <!-- Gallery Access -->
+    <%= form_with model: @recipe, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', class: 'd-inline' } do |form| %>
+      <%= form.file_field :photo, accept: "image/*", capture: "environment", style: "display:none;", id: "upload-gallery-photo" %>
+      <label for="upload-gallery-photo">
+        <i class="fa-regular fa-image icon-couleur-vert"></i>
+      </label>
+    <% end %>
+  </div>
