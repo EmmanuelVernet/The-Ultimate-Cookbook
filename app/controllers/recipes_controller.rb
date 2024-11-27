@@ -7,15 +7,15 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
-  
-  def new 
+
+  def new
     @recipe = Recipe.new
   end
-  
+
   def create
     # TO DO => handle recipes for a current_user
     @recipe = Recipe.create(recipe_params)
-    
+
     if @recipe.save
       redirect_to recipe_path(@recipe), notice: "Recipe created!"
     else
@@ -24,14 +24,14 @@ class RecipesController < ApplicationController
 
     # TO DO => implement separate logic for OCR analysis with OpenAI
   end
-  
+
   def edit
     @recipe = Recipe.find(params[:id])
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-    
+
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe), notice: "Recipe updated!"
     else
@@ -53,6 +53,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite)
+    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo)
   end
 end
