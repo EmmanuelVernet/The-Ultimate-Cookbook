@@ -4,6 +4,7 @@
 # create 4 user
 # create FollowersUser
 
+require "nokogiri"
 require "open-uri"
 
 # Destroy existing records
@@ -13,18 +14,18 @@ Ingredient.destroy_all
 FollowersUser.destroy_all
 User.destroy_all
 
-# Create users
+# # Create users
 user1 = User.create!(email: "test1@test.com", password: "123456")
 user2 = User.create!(email: "test2@test.com", password: "123456")
 user3 = User.create!(email: "test3@test.com", password: "123456")
 user4 = User.create!(email: "test4@test.com", password: "123456")
 
-# Create ingredients
+# # Create ingredients
 tomate = Ingredient.create(ingredient_name: "tomate")
 courgette = Ingredient.create(ingredient_name: "courgette")
 aubergine = Ingredient.create(ingredient_name: "aubergine")
 
-# Create recipes
+# # Create recipes
 spaghetti = Recipe.create!(
   recipe_name: "Spaghetti Carbonara",
   recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
@@ -97,12 +98,98 @@ file4 = URI.open("https://www.fivehearthome.com/wp-content/uploads/2023/02/Crock
 beef.photo.attach(io: file4, filename: "beef.jpg", content_type: "image/jpeg")
 beef.save!
 
-
-# on rattache nos ingredients à toutes les recettes
+# # on rattache nos ingredients à toutes les recettes
 Recipe.all.each do |recipe|
   RecipesIngredient.create(recipe: recipe, ingredient: tomate)
   RecipesIngredient.create(recipe: recipe, ingredient: courgette)
   RecipesIngredient.create(recipe: recipe, ingredient: aubergine)
 end
+
+
+
+
+url = "http://www.marmiton.org/recettes/recette_burger-d-avocat_345742.aspx"
+user_serialized = URI.parse(url).read
+
+recipe = Nokogiri::HTML.parse(user_serialized)
+
+
+array_ingredients = []
+recipe.search(".mrtn-recette_ingredients .mrtn-recette_ingredients-items .card-ingredient .card-ingredient-content .card-ingredient-title .ingredient-name").text.strip.split("\n").each do |doc|
+  array_ingredients << doc.strip
+end
+
+
+array_steps = []
+recipe.search(".recipe-step-list .recipe-step-list__container p").each do |doc|
+  array_steps << doc.text.strip
+end
+
+timing = recipe.search(".recipe-primary .recipe-primary__item").first.text.strip
+minutes = timing.split(" ").first
+
+burger = Recipe.create!(
+  recipe_name: recipe.search(".main-title h1").text.strip,
+  recipe_overview: "Le burger d'avocat est une variante innovante et saine du burger traditionnel, où les pains sont remplacés par des moitiés d'avocat",
+  recipe_category: "burger",
+  preparation_time: "00:#{minutes}:00",
+  difficulty: recipe.search(".recipe-primary .recipe-primary__item")[1].text.strip,
+  import_source: "marmiton",
+  servings: recipe.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
+  recipe_steps: array_steps.join(" "),
+  favorite: true,
+  user: user4
+  )
+
+file6 = URI.open("https://assets.afcdn.com/recipe/20160914/63596_w314h314c1cx2000cy3000.webp")
+burger.photo.attach(io: file6, filename: "burger.jpg", content_type: "image/jpeg")
+burger.save!
+
+array_ingredients.each do |ingredient_name|
+  ingredient = Ingredient.find_or_create_by!(ingredient_name: ingredient_name)
+  RecipesIngredient.create!(recipe: burger, ingredient: ingredient)
+end
+
+
+url2 = "https://www.marmiton.org/recettes/recette_gigot-de-sept-heures_12368.aspx"
+user_serialized = URI.parse(url2).read
+
+recipe1 = Nokogiri::HTML.parse(user_serialized)
+
+array_ingredients1 = []
+recipe1.search(".mrtn-recette_ingredients .mrtn-recette_ingredients-items .card-ingredient .card-ingredient-content .card-ingredient-title .ingredient-name").text.strip.split("\n").each do |doc|
+  array_ingredients1 << doc.strip
+end
+
+array_steps1 = []
+recipe1.search(".recipe-step-list .recipe-step-list__container p").each do |doc|
+  array_steps1 << doc.text.strip
+end
+
+timing1 = recipe1.search(".recipe-primary .recipe-primary__item").first.text.strip
+minutes1 = timing1.split(" ").first
+
+gigot = Recipe.create!(
+  recipe_name: recipe1.search(".main-title h1").text.strip,
+  recipe_overview: "Le gigot de 7 heures est une recette traditionnelle française, souvent considérée comme incontournable pour des occasions spéciales comme Pâques. Ce plat tire son nom de sa cuisson lente, permettant à l'agneau de devenir si tendre qu'il peut être servi à la cuillère.",
+  recipe_category: "viande",
+  preparation_time: "00:#{minutes1}:00",
+  difficulty: recipe1.search(".recipe-primary .recipe-primary__item")[1].text.strip,
+  import_source: "marmiton",
+  servings: recipe1.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
+  recipe_steps: array_steps1.join(" "),
+  favorite: false,
+  user: user3
+  )
+
+file7 = URI.open("https://assets.afcdn.com/recipe/20160914/63596_w314h314c1cx2000cy3000.webp")
+gigot.photo.attach(io: file7, filename: "gigot.jpg", content_type: "image/jpeg")
+gigot.save!
+
+array_ingredients1.each do |ingredient_name|
+  ingredient = Ingredient.find_or_create_by!(ingredient_name: ingredient_name)
+  RecipesIngredient.create!(recipe: gigot, ingredient: ingredient)
+end
+
 
 puts "Finished! Created #{Recipe.count} recipes."
