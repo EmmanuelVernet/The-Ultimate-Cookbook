@@ -1,9 +1,23 @@
-// ------------------- BACKGROUND -------------------
+// ------------------- BACKGROUND & CONTAINERS -------------------
+
+.background {
+  // background-color: $beige-bg;
+  // padding-left: 50px;
+  // padding-right: 50px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+  url('background-image-3.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 
 .container-defaut {
-  background-color: $beige-bg;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 // ------------------- TEXTE -------------------
@@ -12,6 +26,7 @@ h1 {
   color: $marron-clair;
   font-family: $headers-font;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 h3, h4, h5, h6 {
