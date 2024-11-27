@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # FOLLOWERS
-  has_many :followers_users, class_name: "FollowersUser", foreign_key: :user
+  has_many :followers_users, class_name: "FollowersUser", foreign_key: :user, dependent: :destroy
   has_many :followers, through: :followers_users, source: :user
   # FOLLOWEES
   has_many :followees_users, class_name: "FollowersUser", foreign_key: :follower
