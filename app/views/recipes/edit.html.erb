@@ -11,6 +11,7 @@
     <%= f.input :recipe_likes, label: 'Likes:' %>
     <%= f.input :favorite, label: 'En favoris' %>
     <%= f.button :submit, class: "btn btn-primary w-100" %>
-    <%= f.submit class: "btn btn-primary text-white"%>
   <% end %>
+  <br>
+  <%= link_to "Retour aux recettes", recipes_path, class: "btn btn-primary w-100"%>
 </div>

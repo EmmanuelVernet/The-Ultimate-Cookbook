@@ -1,16 +1,19 @@
 <div class="container">
   <h1>INDEX RECIPES</h1>
   <% @recipes.each do |recipe| %>
-    <p>Recipe name: <%= recipe.recipe_name %></p>
-    <p>Recipe overview: <%= recipe.recipe_overview %></p>
-    <p>Recipe category: <%= recipe.recipe_category %></p>
-    <p>Prepartion time: <%= recipe.preparation_time.strftime("%M") %> minutes</p>
-    <p>Difficulty: <%= recipe.difficulty %></p>
-    <p>Imported from: <%= recipe.import_source %></p>
-    <p>Servings: <%= recipe.servings %></p>
-    <p>Recipe steps: <%= recipe.recipe_steps %></p>
-    <p>Add to favourites: <%= recipe.favorite %></p>
+    <br>
+    <p><strong>Recipe name:</strong> <%= recipe.recipe_name %></p>
+    <p><strong>Recipe overview:</strong> <%= recipe.recipe_overview %></p>
+    <p><strong>Recipe category:</strong> <%= recipe.recipe_category %></p>
+    <p><strong>Prepartion time:</strong> <%= recipe.preparation_time.strftime("%M") %> minutes</p>
+    <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
+    <p><strong>Imported from:</strong> <%= recipe.import_source %></p>
+    <p><strong>Servings:</strong> <%= recipe.servings %></p>
+    <p><strong>Recipe steps:</strong> <%= recipe.recipe_steps %></p>
+    <p><strong>Add to favourites:</strong> <%= recipe.favorite %></p>
     <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary w-20" %>
+    <%= link_to "Ajouter la recette", recipe_path(recipe), class: "btn btn-primary w-20" %>
+    <br>
   <% end %>
-  
+    <%= link_to "My Cookbook", cookbook_recipes_path %>
 </div>
