@@ -1,3 +1,9 @@
 <div class="container">
   <h1>INDEX OF RECIPES SHARES</h1>
+  <% @shares.each do |share| %>
+    <p>Partagé par: <%= share.user_id %></p>
+    <p>Recipe overview: <%= share.recipe_id %></p>
+    <p>Recipe category: <%= share.message %></p>
+    <p>Destinataire: <%= share.receiver_id %></p>
+  <% end %>
 </div>

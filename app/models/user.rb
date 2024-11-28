@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # FOR USER COOKBOOK
+  has_many :recipes
+
   # FOLLOWERS
   has_many :followers_users, class_name: "FollowersUser", foreign_key: :user, dependent: :destroy
   has_many :followers, through: :followers_users, source: :user
