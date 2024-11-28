@@ -20,7 +20,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe.user = current_user # associate a user recipe to the current user
     puts"hello from controller recipe"
     @recipe = Recipe.new
     @recipe.photo.attach(params[:photo])
