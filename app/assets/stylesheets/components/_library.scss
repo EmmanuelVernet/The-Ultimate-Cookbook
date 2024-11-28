@@ -17,8 +17,8 @@
 }
 
 .container-defaut {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 0px;
+  padding-right: 0px;
 
 }
 
@@ -39,9 +39,10 @@ h1 {
   letter-spacing: 2px;
   text-align: center;
   font-weight: bolder;
-  font-size: xx-large;
+  size: 24px;
   margin: 0px;
-  font-size: 36px;
+  font-size: 42px;
+  text-shadow: 0 0 15px rgba(211, 129, 4, 0.2);
 }
 
 h3, h4, h5, h6 {
@@ -71,7 +72,7 @@ p {
   transition: background 0.3s ease;
 }
 
-.btn-bleu:hover {
+.btn-bleu:active {
   background: $bleu-canard-hover;
   color: white;
 }
@@ -84,7 +85,7 @@ p {
   transition: background 0.3s ease;
 }
 
-.btn-vert:hover {
+.btn-vert:active {
   background: $vert-sapin-hover;
   color: white;
 }
@@ -97,7 +98,7 @@ p {
   transition: background 0.3s ease;
 }
 
-.btn-orange:hover {
+.btn-orange:active {
   background: $orange-hover;
   color: white;
 }
@@ -110,7 +111,7 @@ p {
   transition: background 0.3s ease;
 }
 
-.btn-rouge:hover {
+.btn-rouge:active {
   background: $rouge-sombre-hover;
   color: white;
 }
@@ -122,10 +123,11 @@ p {
   border: $marron-clair solid 1px;
   background-color: $jaune-epais;
   border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px rgb(255, 181, 94);
   margin: 20px auto; /* Centers the card with margin */
   width:  90%; /* Reduces the width to fit on smaller screens */
-  padding:5px;
+  padding: 15px;
   // transition: all 0.3s ease;
 }
 

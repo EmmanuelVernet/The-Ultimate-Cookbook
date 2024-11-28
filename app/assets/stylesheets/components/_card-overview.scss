@@ -1,43 +1,57 @@
-.card-defauttt {
-  margin: 20px auto; /* Centers the card with margin */
-  width:  90%; /* Reduces the width to fit on smaller screens */
+// ------------------- TITRE ET IMAGE -------------------
 
-
-  .img-card-overview {
-    width: 100%; /* Makes the image span the full width of the card */
-    height: auto; /* Keeps the image proportional */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-
-  .card-body {
-    padding: 15px;
-    text-align: center; /* Centers the text for better mobile appearance */
-  }
-
-  .card-title {
-    font-size: 1.2rem; /* Adjust font size for smaller screens */
-  }
-
-  .card-text {
-    font-size: 0.9rem; /* Smaller font for text */
-  }
-
-  .btn {
-    font-size: 0.85rem; /* Smaller font for button text */
-    padding: 10px 15px; /* Adjust button padding */
-  }
+.card-overview-wrap {
+  position: relative;
 }
 
-/* Media query for extra small screens (Pixel-7 is ~393px wide) */
-@media (max-width: 400px) {
-  .card {
-    width: 100%; /* Utilize full width on very small screens */
-    margin: 10px; /* Slight margin for spacing */
+.card-overview-title {
+    color: $bleu-canard;
+    font-family: $headers-font-2;
+    letter-spacing: 2px;
+    text-align: center;
+    padding-bottom: 5px;
   }
 
-  .btn {
-    font-size: 0.75rem;
-    padding: 8px 10px; /* Make buttons smaller */
-  }
+.coeur {
+  position: absolute;
+  top: 13px;
+  right: 11px;
+  font-size: 24px;
+}
+
+.card-overview-image {
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+// ------------------- ICONES ET TEXTE -------------------
+
+.card-overview-container-horizontal {
+padding-top: 20px;
+display: flex;
+justify-content: space-between;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.card-overview-container-column-left {
+
+}
+
+.card-overview-container-column-right {
+  // margin-left: 100px;
+}
+
+.card-overview-container-line {
+  display: flex;
+}
+
+.card-overview-icone {
+  font-size: 24px;
+}
+
+.card-overview-text {
+  padding-left: 14px;
+  font-size: 16px;
 }

@@ -1,3 +1,30 @@
+// ------------------- TEST CAROUSEL -------------------
+
+.swiper-container-carousel-1 {
+  width: 100%;
+  height: 500px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-container-carousel-1 .swiper-slide-carousel-1 {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  // height: 300px;
+}
+
+.swiper-container-carousel-1 .swiper-slide-carousel-1 img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  text-align: center;
+}
+
+
+// ------------------- CAROUSEL SWIPER ICONES -------------------
+
+
 swiper-container {
   width: 100%;
   height: 100px;
@@ -12,7 +39,6 @@ swiper-slide {
   align-items: center;
   position:relative;
 }
-
 
 swiper-slide img {
   display: block;
@@ -49,8 +75,13 @@ swiper-slide img {
 
 .icon-carousel {
   position: absolute;
-  text-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-shadow: 0 0 15px rgba(211, 129, 4, 0.2);
 }
+
+.icon-carousel:active {
+}
+
+
 
 swiper-slide:nth-child(4n+1) i.icon-carousel {
   color: $bleu-canard !important;
