@@ -1,3 +1,7 @@
 <div class="container">
   <h1>INDEX INGREDIENTS</h1>
+  <% @ingredients.each do |ingredient| %>
+    <p><%= ingredient.ingredient_name%></p>
+    <%= link_to "Editer l'ingrédient", ingredient_path(ingredient), class: "btn btn-primary w-30" %>
+  <% end %>
 </div>

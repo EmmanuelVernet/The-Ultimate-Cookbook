@@ -13,25 +13,40 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
 }
 
 .container-defaut {
   padding-left: 24px;
   padding-right: 24px;
+
+}
+
+.container-division {
+padding-top: 16px;
+}
+
+.item-centrage {
+  display: flex;
+  justify-content: center;
 }
 
 // ------------------- TEXTE -------------------
 
 h1 {
   color: $marron-clair;
-  font-family: $headers-font;
+  font-family: $headers-font-1;
   letter-spacing: 2px;
   text-align: center;
+  font-weight: bolder;
+  font-size: xx-large;
+  margin: 0px;
+  font-size: 36px;
 }
 
 h3, h4, h5, h6 {
   color: $bleu-canard;
-  font-family: $headers-font;
+  font-family: $headers-font-2;
   letter-spacing: 2px;
 }
 
@@ -44,6 +59,7 @@ p {
   font-family: $body-font;
   color: $maronasse;
 }
+
 
 // ------------------- BOUTONS -------------------
 
@@ -110,6 +126,12 @@ p {
   margin: 20px auto; /* Centers the card with margin */
   width:  90%; /* Reduces the width to fit on smaller screens */
   padding:5px;
+  // transition: all 0.3s ease;
+}
+
+.card-defaut:active {
+  background-color: $jaune-epais-hover;
+  border: $rouge-sombre solid 2px;
 }
 
 
@@ -143,5 +165,5 @@ p {
 // ------------------- LIENS -------------------
 
 a {
-
+text-decoration: none;
 }

@@ -1,14 +1,9 @@
 .card-defauttt {
   margin: 20px auto; /* Centers the card with margin */
   width:  90%; /* Reduces the width to fit on smaller screens */
-  overflow: hidden;
-  border: $marron-clair solid 1px;
-  background-color: $jaune-epais;
-  border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
 
-  .img-defaut {
+  .img-card-overview {
     width: 100%; /* Makes the image span the full width of the card */
     height: auto; /* Keeps the image proportional */
     border-top-left-radius: 8px;

@@ -1,11 +1,17 @@
 class RecipesController < ApplicationController
 # Available routes => [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!
   def index
     @recipes = Recipe.all
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @recipe = user.recipes.find(params[:id])
+    else
+      @recipe = Recipe.find(params[:id])
+    end
   end
 
   def new
@@ -13,6 +19,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     puts"hello from controller recipe"
     @recipe = Recipe.new
     @recipe.photo.attach(params[:photo])
@@ -130,14 +137,26 @@ class RecipesController < ApplicationController
 
     if @recipe.save!
       redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
+=======
+    # TO DO => handle recipes for a current_user
+    @recipe = Recipe.create(recipe_params)
+
+    if @recipe.save
+      redirect_to recipe_path(@recipe), notice: "Recipe created!"
+>>>>>>> master
     else
       render :new, status: :unprocessable_entity
     end
+
+    # TO DO => implement separate logic for OCR analysis with OpenAI
   end
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
   def edit
     @recipe = Recipe.find(params[:id])
   end
@@ -163,10 +182,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  def cookbook
+    @recipes = current_user.recipes # cookbook action for a loged in user
+  end
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo)
+<<<<<<< HEAD
   end
 
   def parse_recipe_text(text)
@@ -200,3 +224,7 @@ end
 #   t.datetime "updated_at", null: false
 #   t.index ["user_id"], name: "index_recipes_on_user_id"
 # end
+=======
+  end
+end
+>>>>>>> master
