@@ -16,6 +16,12 @@
   overflow-y: auto;
 }
 
+.container {
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensures nothing extends outside the container */
+}
+
 .container-defaut {
   padding-left: 24px;
   padding-right: 24px;
