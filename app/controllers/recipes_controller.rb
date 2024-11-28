@@ -22,9 +22,10 @@ class RecipesController < ApplicationController
   def create
     # TO DO => handle recipes for a current_user
     @recipe = Recipe.create(recipe_params)
+    @recipe.user = current_user # associate a user recipe to the current user
 
     if @recipe.save
-      redirect_to recipe_path(@recipe), notice: "Recipe created!"
+      redirect_to recipe_path(@recipe), notice: "Recette crée!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,7 +41,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe), notice: "Recipe updated!"
+      redirect_to recipe_path(@recipe), notice: "Recette mise à jour!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -61,7 +62,7 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes # cookbook action for a loged in user
   end
 
-  def add_to_coobook
+  def add_to_cookbook
     # get the recipe by ID
     original_recipe = Recipe.find(params[:id])
     
