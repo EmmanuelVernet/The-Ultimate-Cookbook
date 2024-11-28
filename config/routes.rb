@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :shares, only: [:create, :index] # If users can share recipes
     collection do
       get :cookbook
+      post :add_to_cookbook
     end
   end
 

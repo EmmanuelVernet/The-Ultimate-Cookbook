@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
 # Available routes => [:index, :show, :new, :edit, :create, :update, :destroy]
   before_action :authenticate_user!
   def index
+    @user_recipes = Recipe.where(user_id: current_user.id)
     @recipes = Recipe.all
   end
 
@@ -58,6 +59,21 @@ class RecipesController < ApplicationController
 
   def cookbook
     @recipes = current_user.recipes # cookbook action for a loged in user
+  end
+
+  def add_to_coobook
+    # get the recipe by ID
+    original_recipe = Recipe.find(params[:id])
+    
+    # store it in a variable and duplicate the recipe for the current user
+    new_user_recipe = original_recipe.dup
+    new_user_recipe.user_id = current_user.id
+
+    if new_user_recipe.save
+      redirect_to cookbook_recipes_path, notice: "Recette ajoutée!"
+    else
+      redirect_to recipe_path(original_recipe), alert: "Impossible d'ajouter la recette"
+    end
   end
 
   private
