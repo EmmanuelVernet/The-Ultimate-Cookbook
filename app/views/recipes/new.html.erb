@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>NEW RECIPES</h1>
+  <h1>Nouvelle recette</h1>
     <%= simple_form_for [@recipe] do |f| %>
       <%= f.input :recipe_name, label: 'Nom de la recette' %>
       <%= f.input :recipe_category, label: 'Categorie' %>
@@ -11,6 +11,7 @@
       <%= f.input :recipe_likes, label: 'Likes:' %>
       <%= f.input :favorite, label: 'En favoris' %>
       <%= f.button :submit, class: "btn btn-primary w-100" %>
-      <%= f.submit class: "btn btn-primary text-white"%>
     <% end %>
+      <br>
+      <%= link_to "Toutes les recettes", recipes_path,  class: "btn btn-primary w-100" %>
 </div>

@@ -10,5 +10,7 @@
     <p>Servings: <%= recipe.servings %></p>
     <p>Recipe steps: <%= recipe.recipe_steps %></p>
     <p>Add to favourites: <%= recipe.favorite %></p>
+    <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary w-20" %>
   <% end %>
+  
 </div>

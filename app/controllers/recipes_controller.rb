@@ -5,7 +5,12 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      @recipe = user.recipes.find(params[:id])
+    else
+      @recipe = Recipe.find(params[:id])
+    end
   end
 
   def new
