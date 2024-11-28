@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
 # Available routes => [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!
   def index
     @recipes = Recipe.all
   end
@@ -53,6 +54,10 @@ class RecipesController < ApplicationController
     else
       redirect_to recipe_path(@recipe), alert: "Can't delete recipe"
     end
+  end
+
+  def cookbook
+    @recipes = current_user.recipes # cookbook action for a loged in user
   end
 
   private

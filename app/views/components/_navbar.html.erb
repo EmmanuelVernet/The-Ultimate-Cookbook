@@ -4,6 +4,10 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "android-icon-96x96.png", class: "logo-navbar", style: "height: 35px; border-radius: 4px;" %>
     <% end %>
+    
+    <!-- centered cookbook access -->
+      <%= link_to "The ultimate Cookbook", cookbook_recipes_path, class: "nav-link d-flex text-align-center" %>
+    
 
     <!-- Right-aligned Icons -->
     <div class="d-flex ms-auto align-items-center">
