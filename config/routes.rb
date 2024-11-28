@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # RECIPES ROUTING
   resources :recipes do # ALL CRUD ACTIONS
     # Nested => ingredients, tags, reviews and personal cookbook under recipes
-    resources :ingredients, only: [:index, :show]
+    resources :ingredients, only: [:index, :show, :create, :new, :update, :destroy]
     resources :tags, only: [:index]
     resources :reviews, only: [:index, :show, :create]
     resources :shares, only: [:create, :index] # If users can share recipes
