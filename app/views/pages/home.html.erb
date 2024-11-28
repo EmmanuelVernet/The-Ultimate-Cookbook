@@ -13,31 +13,38 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
+        <div class="item-centrage">
+          <%= link_to "" do %>
+            <%= render "components/card-overview", class: "d-block w-100" %>
+            <%# <div class="carousel-caption ">
+              <h5>Nom de recette</h5>
+              <p>Ingrédients : xxx, Nombre de personnes : xxx, Temps de préparation : xxx</p>
+            </div> %>
+          <% end %>
+        </div>
 
+      </div>
+      <div class="carousel-item">
+      <div class="item-centrage">
         <%= link_to "" do %>
-
+            <%= render "components/card-overview", class: "d-block w-100" %>
+            <%# <div class="carousel-caption">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div> %>
+          <% end %>
+        </div>
+      </div>
+      <div class="carousel-item">
+       <div class="item-centrage">
+        <%= link_to "" do %>
           <%= render "components/card-overview", class: "d-block w-100" %>
-          <%# <div class="carousel-caption ">
-            <h5>Nom de recette</h5>
-            <p>Ingrédients : xxx, Nombre de personnes : xxx, Temps de préparation : xxx</p>
-          </div> %>
-
-        <% end %>
-
-      </div>
-      <div class="carousel-item">
-        <%= render "components/card-overview", class: "d-block w-100" %>
-        <%# <div class="carousel-caption">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div> %>
-      </div>
-      <div class="carousel-item">
-        <%= render "components/card-overview", class: "d-block w-100" %>
-        <%# <div class="carousel-caption">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div> %>
+            <%# <div class="carousel-caption">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div> %>
+          <% end %>
+        </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="prev">
@@ -65,25 +72,37 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <%= render "components/card-overview", class: "d-block w-100" %>
-        <%# <div class="carousel-caption ">
-          <h5>Nom de recette</h5>
-          <p>Ingrédients : xxx, Nombre de personnes : xxx, Temps de préparation : xxx</p>
-        </div> %>
+        <div class="item-centrage">
+          <%= link_to "" do %>
+            <%= render "components/card-overview", class: "d-block w-100" %>
+            <%# <div class="carousel-caption ">
+              <h5>Nom de recette</h5>
+              <p>Ingrédients : xxx, Nombre de personnes : xxx, Temps de préparation : xxx</p>
+            </div> %>
+          <% end %>
+        </div>
       </div>
       <div class="carousel-item">
-        <%= render "components/card-overview", class: "d-block w-100" %>
-        <%# <div class="carousel-caption">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div> %>
+        <div class="item-centrage">
+          <%= link_to "" do %>
+            <%= render "components/card-overview", class: "d-block w-100" %>
+            <%# <div class="carousel-caption">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div> %>
+          <% end %>
+        </div>
       </div>
       <div class="carousel-item">
-        <%= render "components/card-overview", class: "d-block w-100" %>
-        <%# <div class="carousel-caption">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div> %>
+        <div class="item-centrage">
+          <%= link_to "" do %>
+            <%= render "components/card-overview", class: "d-block w-100" %>
+            <%# <div class="carousel-caption">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div> %>
+          <% end %>
+        </div>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
@@ -98,13 +117,58 @@
 
 </div>
 
+<%# ------------------- PARTIE 3 ------------------- %>
 
-
-
-<%# ------------------- PARTIE 3 TEST ------------------- %>
 <div class="container-division">
   <h1>Envie de...</h1>
   </br>
+
+ <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
+    slides-per-view="3">
+    <swiper-slide>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <div class="text-carousel-icone">Healthy</div>
+    </swiper-slide>
+    <swiper-slide>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <div class="text-carousel-icone"> Vegan</div>
+    </swiper-slide>
+    <swiper-slide>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <div class="text-carousel-icone">Light</div>
+    </swiper-slide>
+    <swiper-slide>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <div class="text-carousel-icone">Gourmand</div>
+    </swiper-slide>
+    <swiper-slide>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <div class="text-carousel-icone"> Rapide</div>
+    </swiper-slide>
+    <swiper-slide>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <div class="text-carousel-icone">Vitaminé</div>
+    </swiper-slide>
+    <div class="swiper-pagination"></div> <!-- Pagination ajoutée ici -->
+  </swiper-container>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var swiper = new Swiper('.mySwiper', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
+
+<%# ------------------- DRAFT -------------------
+
 
   <div id="carouselExampleCaptions3" class="carousel slide" data-bs-ride="false">
       <div class="carousel-indicators">
@@ -178,7 +242,15 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
-</div>
+
+
+
+</br>
+</br>
+</br> %>
+
+<%# ------------------- FIN TEST ------------------- %>
+
 
 
 </br>
