@@ -1,9 +1,11 @@
 <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon" >
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <!-- Navbar Brand -->
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "android-icon-96x96.png", class: "logo-navbar", style: "height: 35px; border-radius: 4px;" %>
-    <% end %>
+    <div>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "android-icon-96x96.png", class: "logo-navbar", style: "height: 35px; border-radius: 4px;" %>
+      <% end %>
+    </div>
 
     <!-- Right-aligned Icons -->
     <div class="d-flex ms-auto align-items-center">
@@ -11,11 +13,25 @@
       <%= link_to root_path, class: "nav-link d-flex align-items-center" do %>
         <i class="fa-solid fa-magnifying-glass fa-xl icon-couleur-vert"></i>
       <% end %>
+    </div>
 
       <!-- Profile Avatar -->
-      <%= link_to dashboard_path, class: "nav-link d-flex align-items-center ms-3" do %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", style: "height: 35px; width: 35px;" %>
-      <% end %>
+
+    <div class="nav-item dropdown">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "Profile picture" %>
+
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <% if user_signed_in? %>
+              <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+        <% else %>
+              <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log in", new_user_session_path, class: "dropdown-item" %>
+        <% end %>
+      </div>
     </div>
+
+
+
   </div>
 </div>
