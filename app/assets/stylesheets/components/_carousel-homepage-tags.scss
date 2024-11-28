@@ -2,9 +2,9 @@
 
 .swiper-container-carousel-1 {
   width: 100%;
-  height: 500px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  height: 350px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .swiper-container-carousel-1 .swiper-slide-carousel-1 {
@@ -19,15 +19,23 @@
   width: 100%;
   height: auto !important;
   text-align: center;
+  margin-right: 300px;
 }
 
+// .swiper-wrapper {
+//   height: 360px !important;
+// }
+// .swiper-pagination-bullet {
+//   color: red;
+//   background: red !important;
+// }
 
 // ------------------- CAROUSEL SWIPER ICONES -------------------
 
 
 swiper-container {
   width: 100%;
-  height: 100px;
+  height: 160px;
 }
 
 swiper-slide {
@@ -60,63 +68,67 @@ swiper-slide img {
   color: $beige-bg;
   font-weight: bold;
   font-size: 14px;
+  font-style:oblique;
 }
 
-.swiper-pagination-bullet {
-  background-color: $beige-bg !important;
-}
+// .swiper-pagination-bullet {
+//   background-color: $beige-bg !important;
+// }
 
-.swiper-pagination-bullet-active {
-  background-color: $orange !important;
-}
+// .swiper-pagination-bullet-active {
+//   background-color: $orange !important;
+// }
 
 // ------------------- ICONES DE CAROUSEL -------------------
 
 
 .icon-carousel {
   position: absolute;
-  text-shadow: 0 0 15px rgba(211, 129, 4, 0.2);
+  text-shadow: 0 0 8px rgba(255, 181, 94, 1);
 }
 
 .icon-carousel:active {
 }
 
 
-
 swiper-slide:nth-child(4n+1) i.icon-carousel {
   color: $bleu-canard !important;
-  // transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 swiper-slide:nth-child(4n+2) i.icon-carousel {
   color: $orange !important;
-  // transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 swiper-slide:nth-child(4n+3) i.icon-carousel {
   color: $rouge-sombre !important;
-  // transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 swiper-slide:nth-child(4n+4) i.icon-carousel {
   color: $vert-sapin !important;
-  // transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 // ------------------- ICONES HOVER -------------------
 
 swiper-slide:nth-child(4n+1):active i.icon-carousel {
   color: $bleu-canard-hover !important;
+  transform: scale(1.1);
 }
 
 swiper-slide:nth-child(4n+2):active i.icon-carousel {
   color: $orange-hover !important;
+  transform: scale(1.1);
 }
 
 swiper-slide:nth-child(4n+3):active i.icon-carousel {
   color: $rouge-sombre-hover !important;
+  transform: scale(1.1);
 }
 
 swiper-slide:nth-child(4n+4):active i.icon-carousel {
   color: $vert-sapin-hover !important;
+  transform: scale(1.1);
 }
