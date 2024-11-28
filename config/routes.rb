@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # USER ROUTING
   resources :users, only: [:show, :index] do
-    resources :recipes, only: [:index, :show]
+    # resources :recipes, only: [:index, :show] => recipes linked to a user
     resources :shares, only: [:index] # A user can view all of their recipe shares
     resources :followers, only: [:index] # List followers for a user
   end

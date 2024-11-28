@@ -1,3 +1,14 @@
 <div class="container">
   <h1>SHOW RECIPES</h1>
+  Recette: <strong><em><%= @recipe.recipe_name %> </em></strong></p>
+  <p class="paragraph">Categorie: <%= @recipe.recipe_category %></p>
+  <p class="paragraph">Synthèse: <%= @recipe.recipe_overview %></p>
+  <p class="paragraph">Temps de préparation: <%= @recipe.preparation_time.strftime("%M") %> minutes</p>
+  <p class="paragraph">Difficulté: <%= @recipe.difficulty %></p>
+  <p class="paragraph">Convives: <%= @recipe.servings %></p>
+  <p class="paragraph">Étapes à suivre: <%= @recipe.recipe_steps %></p>
+  <p class="paragraph">Likes: <%= @recipe.recipe_likes %></p>
+  <p class="paragraph">En favoris: <%= @recipe.favorite %></p>
+  <%= link_to "Editer ma recette", edit_recipe_path, class: "btn btn-primary w-30" %>
+  <%= link_to "Toutes les recettes", recipes_path, class: "btn btn-primary w-30" %>
 </div>
