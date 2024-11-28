@@ -19,7 +19,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
     puts"hello from controller recipe"
     @recipe = Recipe.new
     @recipe.photo.attach(params[:photo])
@@ -134,16 +133,14 @@ class RecipesController < ApplicationController
     end
 
     @recipe.user = current_user
-
-    if @recipe.save!
-      redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
-=======
     # TO DO => handle recipes for a current_user
     @recipe = Recipe.create(recipe_params)
 
-    if @recipe.save
-      redirect_to recipe_path(@recipe), notice: "Recipe created!"
->>>>>>> master
+    if @recipe.save!
+      redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
+
+
+
     else
       render :new, status: :unprocessable_entity
     end
@@ -151,12 +148,7 @@ class RecipesController < ApplicationController
     # TO DO => implement separate logic for OCR analysis with OpenAI
   end
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> master
   def edit
     @recipe = Recipe.find(params[:id])
   end
@@ -190,7 +182,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo)
-<<<<<<< HEAD
+
   end
 
   def parse_recipe_text(text)
@@ -201,30 +193,3 @@ class RecipesController < ApplicationController
     [ingredients || "", steps || ""]
   end
 end
-
-
-
-
-
-
-
-# create_table "recipes", force: :cascade do |t|
-#   t.string "recipe_name"
-#   t.text "recipe_overview"
-#   t.string "recipe_category"
-#   t.time "preparation_time"
-#   t.string "difficulty"
-#   t.string "import_source"
-#   t.integer "servings"
-#   t.text "recipe_steps"
-#   t.integer "recipe_likes"
-#   t.boolean "favorite"
-#   t.bigint "user_id", null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["user_id"], name: "index_recipes_on_user_id"
-# end
-=======
-  end
-end
->>>>>>> master
