@@ -58,7 +58,6 @@ class RecipesController < ApplicationController
         # end
 
         puts "test2"
-
         # Send extracted text to OpenAI for recipe parsing
         chatgpt_response = client.chat(
           parameters: {
@@ -69,7 +68,7 @@ class RecipesController < ApplicationController
                 "content": [
                   {
                     "type": "text",
-                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: :name (recipe's title), :recipe_overview (If there is a short description of the recipe), :category(if there is a category starter, main course, otherwise extrapolate one), :ingredients(as an array of ingredients) :preparation_time(if there is the cooking time otherwise extrapolate ), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps (the step by step of the recipe as a array for each step), Please render it in french without intro message. Here is the image"
+                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: :name (recipe's title), :recipe_overview (If there is a short description of the recipe), :category(if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients), :preparation_time (time to cook the recipe), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps (the step by step of the recipe as a array for each step), Please render it in french without intro message. Here is the image"
                   },
                   {
                     "type": "image_url",
@@ -101,7 +100,7 @@ class RecipesController < ApplicationController
 
         # Populate recipe attributes
         parsed_data = eval(sanitized_content) # Use with caution! Only with trusted sources.
-
+        
       # Populate recipe attributes
       @recipe.assign_attributes(
         recipe_name: parsed_data[:name],
