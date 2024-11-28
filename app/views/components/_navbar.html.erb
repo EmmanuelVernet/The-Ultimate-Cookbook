@@ -8,16 +8,22 @@
       <% end %>
     </div>
 
-
-    <!-- centered cookbook access -->
+    <%# <!-- centered cookbook access -->
       <%= link_to "The ultimate Cookbook", cookbook_recipes_path, class: "btn-bleu text-white nav-link d-flex text-align-center" %>
-
 
     <!-- Right-aligned Icons -->
     <div class="d-flex mx-2 align-items-center">
       <!-- Search Icon -->
-      <%= link_to root_path, class: "nav-link d-flex align-items-center" do %>
-        <i class="fa-solid fa-magnifying-glass fa-xl icon-couleur-vert"></i>
+      <%= link_to cookbook_recipes_path, class: "nav-link d-flex align-items-center" do %>
+        <i class="fa-solid fa-book-open fa-xl icon-couleur-vert"></i>
+      <% end %>
+    </div>
+
+  <!-- Right-aligned Icons -->
+    <div class="d-flex mx-2 align-items-center">
+      <!-- Search Icon -->
+      <%= link_to cookbook_recipes_path, class: "nav-link d-flex align-items-center" do %>
+        <i class="fa-solid fa-user-group fa-xl icon-couleur-vert"></i>
       <% end %>
     </div>
 

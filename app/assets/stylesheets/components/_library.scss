@@ -29,7 +29,8 @@
 }
 
 .container-division {
-padding-top: 16px;
+padding-top: 9px;
+padding-bottom: 9px;
 }
 
 .item-centrage {
@@ -126,20 +127,21 @@ p {
 
 .card-defaut {
   overflow: hidden;
-  border: $marron-clair solid 1px;
+  border: $marron-clair solid 3px;
   background-color: $jaune-epais;
   border-radius: 4px;
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  box-shadow: 0 0 8px rgb(255, 181, 94);
+  box-shadow: 0 0 8px rgba(255, 181, 94, 1);
   margin: 20px auto; /* Centers the card with margin */
   width:  90%; /* Reduces the width to fit on smaller screens */
   padding: 15px;
-  // transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .card-defaut:active {
   background-color: $jaune-epais-hover;
   border: $rouge-sombre solid 2px;
+  transform: scale(1.05);
 }
 
 
