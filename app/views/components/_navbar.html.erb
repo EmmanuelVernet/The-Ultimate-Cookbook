@@ -8,13 +8,13 @@
       <% end %>
     </div>
 
-    
+
     <!-- centered cookbook access -->
       <%= link_to "The ultimate Cookbook", cookbook_recipes_path, class: "nav-link d-flex text-align-center" %>
 
 
     <!-- Right-aligned Icons -->
-    <div class="d-flex ms-auto align-items-center">
+    <div class="d-flex mx-2 align-items-center">
       <!-- Search Icon -->
       <%= link_to root_path, class: "nav-link d-flex align-items-center" do %>
         <i class="fa-solid fa-magnifying-glass fa-xl icon-couleur-vert"></i>
@@ -23,7 +23,7 @@
 
       <!-- Profile Avatar -->
 
-    <div class="nav-item dropdown">
+    <div class="nav-item dropdown mx-2">
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "Profile picture" %>
 
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
