@@ -41,6 +41,7 @@ h1 {
   font-weight: bolder;
   font-size: xx-large;
   margin: 0px;
+  font-size: 36px;
 }
 
 h3, h4, h5, h6 {
@@ -59,11 +60,6 @@ p {
   color: $maronasse;
 }
 
-.text-carousel-icone {
-  font-family: $body-font;
-  color: $beige-bg;
-  font-weight: bold;
-}
 
 // ------------------- BOUTONS -------------------
 
@@ -130,6 +126,12 @@ p {
   margin: 20px auto; /* Centers the card with margin */
   width:  90%; /* Reduces the width to fit on smaller screens */
   padding:5px;
+  // transition: all 0.3s ease;
+}
+
+.card-defaut:active {
+  background-color: $jaune-epais-hover;
+  border: $rouge-sombre solid 2px;
 }
 
 
@@ -149,25 +151,6 @@ p {
 }
 
 .icon-couleur-rouge {
-  color:  $rouge-sombre;
-}
-
-// ------------------- ICONES DE CAROUSEL -------------------
-
-
-.icon-carousel-couleur-bleu {
-  color:  $bleu-canard;
-}
-
-.icon-carousel-couleur-vert {
-  color:  $vert-sapin;
-}
-
-.icon-carousel-couleur-orange {
-  color:  $orange;
-}
-
-.icon-carousel-couleur-rouge {
   color:  $rouge-sombre;
 }
 
