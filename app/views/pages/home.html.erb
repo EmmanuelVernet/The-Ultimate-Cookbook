@@ -1,3 +1,12 @@
+
+
+
+
+<%# ------------------- PARTIE 1 ------------------- %>
+
+<div class="container-division">
+  <h1>Suggestions du jour</h1>
+
 <%# ------------------- TEST ------------------- %>
 
 <swiper-container class="mySwiper swiper-container-carousel-1" pagination="true" effect="coverflow" grab-cursor="true" centered-slides="true"
@@ -5,7 +14,7 @@
     coverflow-effect-modifier="1" coverflow-effect-slide-shadows="false">
     <swiper-slide class="swiper-slide-carousel-1">
       <div class="item-centrage">
-        <%= link_to recipes_path(@recipe) do %>
+        <%= link_to recipe_path(@recipe) do %>
           <%= render "components/card-overview", class: "d-block w-100" %>
         <% end %>
       </div>
@@ -26,12 +35,6 @@
     </swiper-slide>
   </swiper-container>
 
-
-
-<%# ------------------- PARTIE 1 ------------------- %>
-
-<div class="container-division">
-  <h1>Suggestions du jour</h1>
 
 
   <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="false">
