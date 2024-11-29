@@ -5,6 +5,9 @@ ruby "3.3.5"
 # Devise gem
 gem "devise"
 
+# Devise gem
+gem "pg_search"
+
 # Ostruct
 gem "ostruct"
 
