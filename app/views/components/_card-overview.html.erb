@@ -1,37 +1,33 @@
 
-<% @recipes.first(3).each do |recipe| %>
-  <div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
-    <%# <div class="wrap d-flex justify-content-between"> %>
-    <h4 class="card-overview-title">Brioche aux oeufs</h4>
-      <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
-    <%# </div> %>
-    <div class="card-overview-image">
-      <%= image_tag("https://www.apero-bordeaux.fr/wp-content/uploads/2024/09/recette-brioche-maison-la-meilleure-facon-demerveiller-vos-papilles-1-1.png.webp", alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
-    </div>
+<div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
+  <h4 class="card-overview-title"><%= recipe.recipe_name %></h4>
+  <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
 
-      <div class="card-overview-container-horizontal">
-        <div class="card-overview-container-column-left">
-          <div class="card-overview-container-line">
-            <i class="fa-solid fa-clock card-overview-icone icon-couleur-bleu"></i>
-            <p class="card-overview-text"></p>
-          </div>
-          <div class="card-overview-container-line">
-            <i class="fa-solid fa-fire-burner card-overview-icone icon-couleur-bleu"></i>
-            <p class="card-overview-text">35 min </p>
-          </div>
-        </div>
-        <div class="card-overview-container-column-right">
-          <div class="card-overview-container-line">
-            <i class="fa-solid fa-star card-overview-icone icon-couleur-bleu"></i>
-            <p class="card-overview-text">Facile </p>
-          </div>
-          <div class="card-overview-container-line">
-            <i class="fa-solid fa-utensils card-overview-icone icon-couleur-bleu"></i>
-            <p class="card-overview-text">4 pers. </p>
-          </div>
-        </div>
-      </div>
-      <div class="btn-vert" style="margin-top: 10px">Miam !</div>
-
+  <div class="card-overview-image">
+    <%= image_tag(recipe.photo.attached? ? recipe.photo : "placeholder-image.jpg", alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
   </div>
-<% end %>
+
+  <div class="card-overview-container-horizontal">
+    <div class="card-overview-container-column-left">
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-clock card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text"></p>
+      </div>
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-fire-burner card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text">Calories</p> <!-- Replace with actual calorie data if available -->
+      </div>
+    </div>
+    <div class="card-overview-container-column-right">
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-star card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text"><%= recipe.difficulty %></p>
+      </div>
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-utensils card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text"><%= recipe.servings %> pers.</p>
+      </div>
+    </div>
+  </div>
+  <div class="btn-vert" style="margin-top: 10px">Miam !</div>
+</div>
