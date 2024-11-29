@@ -156,6 +156,10 @@ p {
   color:  $vert-sapin;
 }
 
+.icon-couleur-vert:active {
+  text-shadow: 0 0 15px rgba(211, 129, 4, 0.2);
+}
+
 .icon-couleur-orange {
   color:  $orange;
 }
