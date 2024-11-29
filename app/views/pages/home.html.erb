@@ -15,7 +15,7 @@
     <% @recipes.first(3).each do |recipe| %>
       <swiper-slide class="swiper-slide-carousel-1">
         <div class="item-centrage">
-          <%= link_to recipes_path(recipe) do %>
+          <%= link_to recipe_path(recipe) do %>
             <%= render partial: "components/card-overview", locals: { recipe: recipe } %>
           <% end %>
         </div>
@@ -72,7 +72,7 @@
     <% @recipes.first(3).each do |recipe| %>
     <swiper-slide class="swiper-slide-carousel-1">
       <div class="item-centrage">
-        <%= link_to recipes_path(recipe) do %>
+        <%= link_to recipe_path(recipe) do %>
             <%= render partial: "components/card-overview", class: "d-block w-100", locals: { recipe: recipe } %>
         <% end %>
       </div>
@@ -88,7 +88,7 @@
 </br>
 </br>
 
-</div>
+
 
 <%# <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
