@@ -9,5 +9,6 @@
       <%= link_to "Éditer la recette", edit_recipe_path(recipe), class: "btn btn-primary w-30" %>
       <%= link_to "Supprimer la recette", recipe_path(recipe), data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn btn-danger w-30" %>
     </div>
+    <br>
   <% end %>
 </div>
