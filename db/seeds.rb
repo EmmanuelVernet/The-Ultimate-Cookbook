@@ -15,10 +15,10 @@ FollowersUser.destroy_all
 User.destroy_all
 
 # # Create users
-user1 = User.create!(email: "test1@test.com", password: "123456")
-user2 = User.create!(email: "test2@test.com", password: "123456")
-user3 = User.create!(email: "test3@test.com", password: "123456")
-user4 = User.create!(email: "test4@test.com", password: "123456")
+user1 = User.create!(email: "test1@test.com", password: "123456", user_name: "Nicolas")
+user2 = User.create!(email: "test2@test.com", password: "123456", user_name: "Délia")
+user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pierre")
+user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel")
 
 # # Create ingredients
 tomate = Ingredient.create(ingredient_name: "tomate")
@@ -137,6 +137,7 @@ burger = Recipe.create!(
   import_source: "marmiton",
   servings: recipe.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
   recipe_steps: array_steps.join(" "),
+  recipe_likes: 85,
   favorite: true,
   user: user4
   )
@@ -178,6 +179,7 @@ gigot = Recipe.create!(
   import_source: "marmiton",
   servings: recipe1.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
   recipe_steps: array_steps1.join(" "),
+  recipe_likes: 120,
   favorite: false,
   user: user3
   )
