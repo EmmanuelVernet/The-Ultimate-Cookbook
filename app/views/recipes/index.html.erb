@@ -1,19 +1,40 @@
-<div class="container">
-  <h1>My Cookbook</h1>
-  <% @recipes.each do |recipe| %>
-    <br>
-    <p><strong>Recipe name:</strong> <%= recipe.recipe_name %></p>
-    <p><strong>Recipe overview:</strong> <%= recipe.recipe_overview %></p>
-    <p><strong>Recipe category:</strong> <%= recipe.recipe_category %></p>
-    <p><strong>Prepartion time:</strong> <%= recipe.preparation_time %></p>
-    <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
-    <p><strong>Imported from:</strong> <%= recipe.import_source %></p>
-    <p><strong>Servings:</strong> <%= recipe.servings %></p>
-    <p><strong>Recipe steps:</strong> <%= recipe.recipe_steps %></p>
-    <p><strong>Add to favourites:</strong> <%= recipe.favorite %></p>
-    <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary w-20" %>
-    <%= link_to "Ajouter la recette", add_to_cookbook_recipe_path(recipe), data: { turbo_method: :post , confirm: "Ajouter la recette à votre cookbook?" }, class: "btn btn-primary w-20" %>
-    <br>
-  <% end %>
-    <%= link_to "My Cookbook", cookbook_recipes_path %>
+
+<div class="container-division">
+
+    <h1>My Cookbook</h1>
+
 </div>
+
+<div class="container-division">
+
+  <div style="margin-left: 15px; margin-right: 15px">
+
+        <form class="d-flex w-100 custom-search" action="/recipes" accept-charset="UTF-8" method="get" data-dashlane-rid="bc0b773e9ec93a31">
+                <input type="text" name="query" id="query" class="form-control w-100" placeholder="De quoi avez-vous envie aujourd'hui ?" data-dashlane-rid="6556b9238eb00112">
+                <input type="submit" name="" value="Search" class="btn btn-success ms-0" data-disable-with="Search" data-dashlane-rid="b93e4c51b3942aeb">
+        </form>
+  </div>
+</div>
+
+<div class="container-division">
+
+  <% if @recipes.any? %>
+    <% @recipes.each do |recipe| %>
+          <div class="item-centrage">
+            <%= render "components/card-overview-index", class: "d-block w-100", recipe: recipe %>
+            <%# <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary w-20" %>
+            <%# <%= link_to "Ajouter la recette", add_to_cookbook_recipe_path(recipe), data: { turbo_method: :post , confirm: "Ajouter la recette à votre cookbook?" }, class: "btn btn-primary w-20" %>
+            <%# <br> %>
+          </div>
+    <% end %>
+
+  <% else %>
+    <p>Aucune recette ne correspond à votre recherche</p>
+  <% end %>
+
+</div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

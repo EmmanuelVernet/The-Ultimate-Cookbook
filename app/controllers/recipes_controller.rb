@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
   def index
     @user_recipes = Recipe.where(user_id: current_user.id)
-    @recipes = Recipe.all
+    if params[:query].present?
+      @recipes = Recipe.search_by_all_attributes(params[:query])
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def show
@@ -175,7 +179,7 @@ class RecipesController < ApplicationController
   def add_to_cookbook
     # get the recipe by ID
     original_recipe = Recipe.find(params[:id])
-    
+
     # store it in a variable and duplicate the recipe for the current user
     new_user_recipe = original_recipe.dup
     new_user_recipe.user_id = current_user.id
