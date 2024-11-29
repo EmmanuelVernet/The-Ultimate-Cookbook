@@ -12,7 +12,7 @@
       slides-per-view="1.5" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100" space-between="30" free-mode="true" initial-slide="1"
       coverflow-effect-modifier="1" coverflow-effect-slide-shadows="false">
 
-    <% @recipes.first(3).each do |recipe| %>
+    <% @recipes.last(3).each do |recipe| %>
       <swiper-slide class="swiper-slide-carousel-1">
         <div class="item-centrage">
           <%= link_to recipe_path(recipe) do %>
