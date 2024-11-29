@@ -26,15 +26,13 @@ class RecipesController < ApplicationController
     if @recipe.photo.attached?
       # Force public access for the image during upload
       Cloudinary::Uploader.upload(params[:photo].tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
-
+      
       # Retrieve the public URL of the uploaded image
       image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
       puts image_url
       begin
-        # # Get the uploaded photo path
-
-
-
+        # # Get the uploaded photo path        
+  
         # Initialize OpenAI client
         client = OpenAI::Client.new
 
