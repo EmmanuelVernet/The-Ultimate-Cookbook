@@ -2,6 +2,7 @@
   <h1>My Cookbook</h1>
   <% @recipes.each do |recipe| %>
     <br>
+    <%= cl_image_tag recipe.photo.key, height: 300, width: 400, crop: :fill %>
     <p><strong>Recipe name:</strong> <%= recipe.recipe_name %></p>
     <p><strong>Recipe overview:</strong> <%= recipe.recipe_overview %></p>
     <p><strong>Recipe category:</strong> <%= recipe.recipe_category %></p>
