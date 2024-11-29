@@ -1,12 +1,13 @@
 .footer {
   background: $jaune-epais;
   border-top: 2px solid $marron-clair;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: 0 0 15px rgba(211, 129, 4, 0.6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: 60px;
   padding: 0px 50px;
   position: fixed; /* Changed from sticky to fixed */
   bottom: 0; /* Stick it to the bottom */
@@ -15,7 +16,16 @@
 }
 .icon-couleur-vert {
   color:  $vert-sapin;
-  opacity: 0.75;
+  opacity: 0.95;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-shadow: 0;
+}
+
+.icon-couleur-vert:active {
+  opacity: 1;
+  text-shadow: 0 0 15px rgba(211, 129, 4, 0.2);
 }
 
 .footer-links {
@@ -31,16 +41,14 @@
   padding: 0px 10px;
 }
 
-.icon-couleur-vert:hover {
-  opacity: 1;
-}
+
 
 
 .footer-links a {
   text-decoration: none;
   font-size: 24px;
   flex: 1; /* Ensures each link takes up equal space */
-  
+
   padding: 0px 10px;
 }
 
