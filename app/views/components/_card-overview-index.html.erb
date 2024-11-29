@@ -6,7 +6,9 @@
       <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
     <%# </div> %>
     <div class="card-overview-image">
+      <% if recipe.photo.key %>
       <%= cl_image_tag(recipe.photo.key, alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
+      <% end %>
     </div>
 
       <div class="card-overview-container-horizontal">
