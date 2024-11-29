@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>My Cookbook</h1>
+  <h1>Recettes de la communauté</h1>
   <% @recipes.each do |recipe| %>
     <div class="recipe">
       <h2><%= link_to recipe.recipe_name, recipe_path(recipe) %></h2>
