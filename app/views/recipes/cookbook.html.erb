@@ -7,7 +7,7 @@
       <p><strong>Preparation Time:</strong> <%= recipe.preparation_time %></p>
       <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
       <%= link_to "Éditer la recette", edit_recipe_path(recipe), class: "btn btn-primary w-30" %>
-      <%= link_to "Supprimer la recette", recipe_path(recipe), data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn btn-danger w-30" %> data: { turbo_method: :post 
+      <%= link_to "Supprimer la recette", recipe_path(recipe), data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn btn-danger w-30" %>
     </div>
   <% end %>
 </div>
