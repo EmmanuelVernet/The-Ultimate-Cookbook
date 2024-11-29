@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_26_165648) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_28_163453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_165648) do
     t.string "recipe_name"
     t.text "recipe_overview"
     t.string "recipe_category"
-    t.time "preparation_time"
+    t.string "preparation_time"
     t.string "difficulty"
     t.string "import_source"
     t.integer "servings"

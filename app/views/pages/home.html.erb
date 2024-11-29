@@ -1,158 +1,119 @@
 
+
+
+
 <%# ------------------- PARTIE 1 ------------------- %>
 
 <div class="container-division">
   <h1>Suggestions du jour</h1>
 
-
-  <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="false">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="item-centrage">
-          <%= link_to "" do %>
-            <%= render "components/card-overview", class: "d-block w-100" %>
-            <%# <div class="carousel-caption ">
-              <h5>Nom de recette</h5>
-              <p>Ingrédients : xxx, Nombre de personnes : xxx, Temps de préparation : xxx</p>
-            </div> %>
-          <% end %>
-        </div>
-
-      </div>
-      <div class="carousel-item">
+<swiper-container class="mySwiper swiper-container-carousel-1" pagination="false" effect="coverflow" grab-cursor="true" centered-slides="true"
+    slides-per-view="1.5" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100" space-between="30" free-mode="true" initial-slide="1"
+    coverflow-effect-modifier="1" coverflow-effect-slide-shadows="false">
+    <swiper-slide class="swiper-slide-carousel-1">
       <div class="item-centrage">
-        <%= link_to "" do %>
-            <%= render "components/card-overview", class: "d-block w-100" %>
-            <%# <div class="carousel-caption">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div> %>
-          <% end %>
-        </div>
-      </div>
-      <div class="carousel-item">
-       <div class="item-centrage">
-        <%= link_to "" do %>
+        <%= link_to recipes_path(@recipe) do %>
           <%= render "components/card-overview", class: "d-block w-100" %>
-            <%# <div class="carousel-caption">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div> %>
-          <% end %>
-        </div>
+        <% end %>
       </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+    </swiper-slide>
+    <swiper-slide class="swiper-slide-carousel-1">
+       <div class="item-centrage">
+        <%= link_to recipes_path(@recipe) do %>
+          <%= render "components/card-overview", class: "d-block w-100" %>
+        <% end %>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="swiper-slide-carousel-1">
+       <div class="item-centrage">
+        <%= link_to recipes_path(@recipe) do %>
+          <%= render "components/card-overview", class: "d-block w-100" %>
+        <% end %>
+      </div>
+    </swiper-slide>
+  </swiper-container>
 
 </div>
 
-<%# ------------------- PARTIE 2 ------------------- %>
-<div class="container-division">
-  <h1>Tout bon, tout neuf</h1>
 
-
-  <div id="carouselExampleCaptions2" class="carousel slide" data-bs-ride="false">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="item-centrage">
-          <%= link_to "" do %>
-            <%= render "components/card-overview", class: "d-block w-100" %>
-            <%# <div class="carousel-caption ">
-              <h5>Nom de recette</h5>
-              <p>Ingrédients : xxx, Nombre de personnes : xxx, Temps de préparation : xxx</p>
-            </div> %>
-          <% end %>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="item-centrage">
-          <%= link_to "" do %>
-            <%= render "components/card-overview", class: "d-block w-100" %>
-            <%# <div class="carousel-caption">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div> %>
-          <% end %>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="item-centrage">
-          <%= link_to "" do %>
-            <%= render "components/card-overview", class: "d-block w-100" %>
-            <%# <div class="carousel-caption">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div> %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-</div>
 
 <%# ------------------- PARTIE 3 ------------------- %>
 
 <div class="container-division">
   <h1>Envie de...</h1>
-  </br>
 
- <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
-    slides-per-view="3">
+ <swiper-container class="mySwiper" pagination="" pagination-clickable="true" space-between="70" loop="true"
+    slides-per-view="4">
     <swiper-slide>
-      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Healthy</div>
     </swiper-slide>
     <swiper-slide>
-      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone"> Vegan</div>
     </swiper-slide>
     <swiper-slide>
-      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Light</div>
     </swiper-slide>
     <swiper-slide>
-      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Gourmand</div>
     </swiper-slide>
     <swiper-slide>
-      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone"> Rapide</div>
     </swiper-slide>
     <swiper-slide>
-      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
+      <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Vitaminé</div>
     </swiper-slide>
-    <div class="swiper-pagination"></div> <!-- Pagination ajoutée ici -->
+    <%# <div class="swiper-pagination"></div> <!-- Pagination ajoutée ici --> %>
   </swiper-container>
 
 </div>
+
+<%# ------------------- PARTIE 2 ------------------- %>
+<div class="container-division">
+  <h1>Tout bon, tout neuf !</h1>
+
+<swiper-container class="mySwiper swiper-container-carousel-1" pagination="false" effect="coverflow" grab-cursor="true" centered-slides="true"
+    slides-per-view="1.5" coverflow-effect-rotate="50" coverflow-effect-stretch="0" coverflow-effect-depth="100" space-between="30" free-mode="true" initial-slide="1"
+    coverflow-effect-modifier="1" coverflow-effect-slide-shadows="false">
+    <swiper-slide class="swiper-slide-carousel-1">
+      <div class="item-centrage">
+        <%= link_to recipes_path(@recipe) do %>
+          <%= render "components/card-overview", class: "d-block w-100" %>
+        <% end %>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="swiper-slide-carousel-1">
+       <div class="item-centrage">
+        <%= link_to recipes_path(@recipe) do %>
+          <%= render "components/card-overview", class: "d-block w-100" %>
+        <% end %>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="swiper-slide-carousel-1">
+       <div class="item-centrage">
+        <%= link_to recipes_path(@recipe) do %>
+          <%= render "components/card-overview", class: "d-block w-100" %>
+        <% end %>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+
+</div>
+
+
+</br>
+</br>
+</br>
+
+</div>
+
+<%# <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -167,94 +128,60 @@
   });
 </script>
 
-<%# ------------------- DRAFT -------------------
+<script>
+    const swiper = new Swiper('.mySwiper', {
+      // Configuration du swiper
+      spaceBetween: 200px, // Définit l'espacement entre les slides en pixels
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true
+      }
+    });
+  </script> %>
 
+ <%# <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
-  <div id="carouselExampleCaptions3" class="carousel slide" data-bs-ride="false">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <i class="icon-carousel-couleur-rouge item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
-          <div class="carousel-caption ">
-            <div class="texte-carousel-icone">Healthy</div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <i class="icon-carousel-couleur-bleu item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
-          <div class="carousel-caption">
-            <div class="texte-carousel-icone">Vegan</div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <i class="icon-carousel-couleur-orange item-centrage fa-solid fa-tag" style="font-size: 100px;"></i>
-          <div class="carousel-caption">
-            <div class="texte-carousel-icone">Gourmand</div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+  <script>
+    const swiperEl = document.querySelector('swiper-container')
 
+    const params = {
+      injectStyles: [`
+      .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        color: red;
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.2);
+      }
 
-  <div id="carouselExampleCaptions4" class="carousel slide" data-bs-ride="false">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <i class="icon-carousel-couleur-orange item-centrage fa-solid fa-book-open" style="font-size: 100px;"></i>
-            <div class="carousel-caption ">
-              <p class="texte-carousel-icone">Gâteau</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <i class="icon-carousel-couleur-bleu item-centrage fa-solid fa-book-open" style="font-size: 100px;"></i>
-            <div class="carousel-caption">
-              <p class="texte-carousel-icone">Salade</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <i class="icon-carousel-couleur-rouge item-centrage fa-solid fa-book-open" style="font-size: 100px;"></i>
-            <div class="carousel-caption">
-              <p class="texte-carousel-icone">Pâtes</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+      .swiper-pagination-bullet-active {
+        color: #fff;
+        background: #007aff;
+      }
+      `],
+      pagination: {
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+      },
+    }
 
+    Object.assign(swiperEl, params)
 
-
-</br>
-</br>
-</br> %>
-
-<%# ------------------- FIN TEST ------------------- %>
-
-
-
-</br>
-</br>
-</br>
-
-</div>
+    swiperEl.initialize();
+  </script> %>

@@ -20,9 +20,13 @@ Rails.application.routes.draw do
     resources :tags, only: [:index]
     resources :reviews, only: [:index, :show, :create]
     resources :shares, only: [:create, :index] # If users can share recipes
-    collection do
-      get :cookbook
-    end
+      collection do
+        get :cookbook
+      end
+    
+      member do
+        post :add_to_cookbook # Add a specific recipe to the user's cookbook
+      end
   end
 
   # REVIEWS
