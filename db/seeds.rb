@@ -137,6 +137,7 @@ burger = Recipe.create!(
   import_source: "marmiton",
   servings: recipe.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
   recipe_steps: array_steps.join(" "),
+  recipe_likes: 85,
   favorite: true,
   user: user4
   )
@@ -178,6 +179,7 @@ gigot = Recipe.create!(
   import_source: "marmiton",
   servings: recipe1.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
   recipe_steps: array_steps1.join(" "),
+  recipe_likes: 120,
   favorite: false,
   user: user3
   )

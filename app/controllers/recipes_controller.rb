@@ -73,8 +73,6 @@ class RecipesController < ApplicationController
                     "type": "image_url",
                     "image_url": {
                       "url": image_url
-
-
                     }
                   }
                 ]
@@ -99,7 +97,7 @@ class RecipesController < ApplicationController
 
         # Populate recipe attributes
         parsed_data = eval(sanitized_content) # Use with caution! Only with trusted sources.
-        
+
       # Populate recipe attributes
       @recipe.assign_attributes(
         recipe_name: parsed_data[:name],
