@@ -1,5 +1,5 @@
 <div class="container mb-5">
-
+    <% if @recipe.photo.key %>
     <div style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
                 height: 300px;
                 width: 100%;
@@ -23,6 +23,7 @@
           <%= @recipe.recipe_likes %>
         </div>
     </div>
+    <% end %>
 
 
     <br>
