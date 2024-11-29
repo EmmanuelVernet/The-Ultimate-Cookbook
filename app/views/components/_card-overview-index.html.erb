@@ -1,0 +1,40 @@
+
+
+  <div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
+    <%# <div class="wrap d-flex justify-content-between"> %>
+    <h4 class="card-overview-title"><%= recipe.recipe_name %></h4>
+      <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
+    <%# </div> %>
+    <div class="card-overview-image">
+      <% if recipe.photo.key %>
+      <%= cl_image_tag(recipe.photo.key, alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
+      <% end %>
+    </div>
+
+      <div class="card-overview-container-horizontal">
+        <div class="card-overview-container-column-left">
+          <div class="card-overview-container-line">
+            <i class="fa-solid fa-clock card-overview-icone icon-couleur-bleu"></i>
+            <p class="card-overview-text"><%= recipe.preparation_time %> </p>
+          </div>
+          <div class="card-overview-container-line">
+            <i class="fa-solid fa-fire-burner card-overview-icone icon-couleur-bleu"></i>
+            <p class="card-overview-text">35 min </p>
+          </div>
+        </div>
+        <div class="card-overview-container-column-right">
+          <div class="card-overview-container-line">
+            <i class="fa-solid fa-star card-overview-icone icon-couleur-bleu"></i>
+            <p class="card-overview-text"><%= recipe.difficulty %></p>
+          </div>
+          <div class="card-overview-container-line">
+            <i class="fa-solid fa-utensils card-overview-icone icon-couleur-bleu"></i>
+            <p class="card-overview-text"><%= recipe.servings %> pers.</p>
+          </div>
+        </div>
+      </div>
+      <%= link_to recipe_path(recipe) do %>
+        <div class="btn-vert" style="margin-top: 10px; text-align: center">Voir la recette</div>
+      <% end %>
+
+  </div>

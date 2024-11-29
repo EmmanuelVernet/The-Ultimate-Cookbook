@@ -1,11 +1,21 @@
 class IngredientsController < ApplicationController
 
   def index
-    @ingredients = Ingredient.all
+    if params[:recipe_id] # If nested route for a recipe
+      @recipe = Recipe.find(params[:recipe_id])
+      @ingredients = @recipe.ingredients # Filter by recipe
+    else
+      @ingredients = Ingredient.all # Get all ingredients
+    end
   end
 
   def show
-    @ingredient = Ingredient.find(params[:id])
+    if params[:recipe_id] # If nested route for a recipe
+      @recipe = Recipe.find(params[:recipe_id])
+      @ingredient = @recipe.ingredients.find(params[:id]) # Get ingredients linked to recipes
+    else
+      @ingredient = Ingredient.find(params[:id]) # Get the ingredient only
+    end
   end
   
   def new 
@@ -14,13 +24,12 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.create(ingredient_params)
-    @ingredient.save
-    # TODO
-    # if @ingredient.save
-    #   redirect_to ingredient_path(@ingredient), notice: "Igredient was successfully created."
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+
+    if @ingredient.save
+      redirect_to ingredient_path(@ingredient), notice: "Ingredient created!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -29,9 +38,12 @@ class IngredientsController < ApplicationController
 
   def update
     @ingredient = Ingredient.find(params[:id])
-    @ingredient.update(ingredient_params)
-    redirect_to ingredient_path(@ingredient)
-    # TO DO => add safe guards with if statement
+    
+    if @ingredient.update(ingredient_params)
+      redirect_to ingredient_path(@ingredient), notice: "Ingredient updated!"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -1,3 +1,12 @@
 <div class="container">
   <h1>NEW INGREDIENT</h1>
+    <%= simple_form_for [@ingredient] do |f| %>
+      <%= f.input :ingredient_name, label: 'Ingredient name' %>
+      <%= f.input :ingredient_category, label: 'Ingredient category' %>
+      <%= f.input :calorie, hint: '1000' %>
+      <%= f.input :protein, label: "Proteins" %>
+      <%= f.input :lipide, label: 'Lipides' %>
+      <%= f.input :fibre, label: 'Fibres' %>
+      <%= f.button :submit, class: "btn btn-primary w-100" %>
+    <% end %>
 </div>

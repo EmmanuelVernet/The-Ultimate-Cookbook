@@ -1,11 +1,36 @@
-<div class="card-defaut m-3" style="width: 18rem;">
-<div class="wrap d-flex justify-content-between">
- <h3 class="card-title">Titre recette</h3>
-  <i class="fa-regular fa-heart "></i>
-</div>
- <%= image_tag("https://www.apero-bordeaux.fr/wp-content/uploads/2024/09/recette-brioche-maison-la-meilleure-facon-demerveiller-vos-papilles-1-1.png.webp", alt: "image recette", width: 200, height: 100, class: "img-defaut", id: "identifiant") %>
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+<div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
+  <h4 class="card-overview-title"><%= recipe.recipe_name %></h4>
+  <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
+
+  <div class="card-overview-image">
+    <% if recipe.photo.key %>
+    <%= image_tag(recipe.photo.attached? ? recipe.photo : "placeholder-image.jpg", alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
+    <% end %>
   </div>
+
+  <div class="card-overview-container-horizontal">
+    <div class="card-overview-container-column-left">
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-clock card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text"><%= recipe.preparation_time %></p>
+        <p class="card-overview-text"></p>
+      </div>
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-fire-burner card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text">20 min</p> <!-- Replace with actual calorie data if available -->
+      </div>
+    </div>
+    <div class="card-overview-container-column-right">
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-star card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text"><%= recipe.difficulty %></p>
+      </div>
+      <div class="card-overview-container-line">
+        <i class="fa-solid fa-utensils card-overview-icone icon-couleur-bleu"></i>
+        <p class="card-overview-text"><%= recipe.servings %> pers.</p>
+      </div>
+    </div>
+  </div>
+  <div class="btn-vert" style="margin-top: 10px">Miam !</div>
 </div>

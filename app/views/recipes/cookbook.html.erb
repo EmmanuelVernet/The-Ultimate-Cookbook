@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>My Cookbook</h1>
+  <% @recipes.each do |recipe| %>
+    <div class="recipe">
+      <h2><%= link_to recipe.recipe_name, recipe_path(recipe) %></h2>
+      <p><strong>Category:</strong> <%= recipe.recipe_category %></p>
+      <p><strong>Preparation Time:</strong> <%= recipe.preparation_time %></p>
+      <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
+      <%= link_to "Éditer la recette", edit_recipe_path(recipe), class: "btn btn-primary w-30" %>
+      <%= link_to "Supprimer la recette", recipe_path(recipe), data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn btn-danger w-30" %>
+    </div>
+    <br>
+  <% end %>
+</div>

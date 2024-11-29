@@ -1,3 +1,7 @@
 <div class="container">
   <h1>SHOW RECIPE SHARES</h1>
+  Partagé par <strong><em><%= @share.user_id.name %> </em></strong></p>
+  <p class="paragraph">Recette: <%= @share.recipe_id %></p>
+  <p class="paragraph">Message: <%= @share.message %></p>
+  <p class="paragraph">Destinataire: <%= @share.receiver_id %></p>
 </div>

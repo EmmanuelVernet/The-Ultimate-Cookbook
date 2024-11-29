@@ -5,8 +5,15 @@ ruby "3.3.5"
 # Devise gem
 gem "devise"
 
+# Devise gem
+gem "pg_search"
+
 # Ostruct
 gem "ostruct"
+
+gem "cloudinary"
+
+# gem 'recipe_scraper'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.5"
@@ -55,11 +62,14 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem "rtesseract"
+gem 'ruby-openai'
 
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem "pry-byebug"
 end
 
 group :development do
@@ -78,3 +88,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "ruby-openai"

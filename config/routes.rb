@@ -8,25 +8,32 @@ Rails.application.routes.draw do
 
   # USER ROUTING
   resources :users, only: [:show, :index] do
-    resources :recipes, only: [:index, :show]
+    resources :recipes, only: [:index, :show] # => recipes linked to a user
     resources :shares, only: [:index] # A user can view all of their recipe shares
     resources :followers, only: [:index] # List followers for a user
   end
 
   # RECIPES ROUTING
   resources :recipes do # ALL CRUD ACTIONS
-    # Nested => ingredients, tags, and reviews under recipes
-    resources :ingredients, only: [:index, :show]
+    # Nested => ingredients, tags, reviews and personal cookbook under recipes
+    resources :ingredients, only: [:index, :show, :create, :new, :update, :destroy]
     resources :tags, only: [:index]
     resources :reviews, only: [:index, :show, :create]
-    # resources :shares # If users can share recipes
+    resources :shares, only: [:create, :index] # If users can share recipes
+      collection do
+        get :cookbook
+      end
+    
+      member do
+        post :add_to_cookbook # Add a specific recipe to the user's cookbook
+      end
   end
 
   # REVIEWS
   resources :reviews, only: [:show, :create, :update, :destroy]
 
   # SHARES => when a user wants to share a recipe
-  resources :shares, only: [:index, :show, :create, :destroy]
+  resources :shares, only: [:index, :show, :create]
 
   # INGREDIENTS => manage ingredients data
   resources :ingredients, only: [:index, :show, :create, :update, :destroy]
