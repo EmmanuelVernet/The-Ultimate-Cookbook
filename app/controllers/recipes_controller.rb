@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
 # Available routes => [:index, :show, :new, :edit, :create, :update, :destroy]
   before_action :authenticate_user!
   def index
+    @user_recipes = Recipe.where(user_id: current_user.id)
     @recipes = Recipe.all
   end
 
@@ -127,16 +128,13 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
       return
     end
-
-    @recipe.user = current_user
+    # @recipe = Recipe.create(recipe_params) => WARNING: will it break adding a recipe via form?
+    @recipe.user = current_user # associate a user recipe to the current user
     # TO DO => handle recipes for a current_user
     # @recipe = Recipe.create(recipe_params)
 
     if @recipe.save!
       redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
-
-
-
     else
       render :new, status: :unprocessable_entity
     end
@@ -153,7 +151,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe), notice: "Recipe updated!"
+      redirect_to recipe_path(@recipe), notice: "Recette mise à jour!"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -172,6 +170,21 @@ class RecipesController < ApplicationController
 
   def cookbook
     @recipes = current_user.recipes # cookbook action for a loged in user
+  end
+
+  def add_to_cookbook
+    # get the recipe by ID
+    original_recipe = Recipe.find(params[:id])
+    
+    # store it in a variable and duplicate the recipe for the current user
+    new_user_recipe = original_recipe.dup
+    new_user_recipe.user_id = current_user.id
+
+    if new_user_recipe.save
+      redirect_to cookbook_recipes_path, notice: "Recette ajoutée!"
+    else
+      redirect_to recipe_path(original_recipe), alert: "Impossible d'ajouter la recette"
+    end
   end
 
   private

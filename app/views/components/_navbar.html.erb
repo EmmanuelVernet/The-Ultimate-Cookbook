@@ -4,26 +4,32 @@
 
     <div>
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "android-icon-96x96.png", class: "logo-navbar", style: "height: 35px; border-radius: 4px;" %>
+        <%= image_tag "logo-update.png", class: "logo-navbar", style: "height: 35px; border-radius: 4px;" %>
       <% end %>
     </div>
 
-    
-    <!-- centered cookbook access -->
-      <%= link_to "The ultimate Cookbook", cookbook_recipes_path, class: "nav-link d-flex text-align-center" %>
-
+    <%# <!-- centered cookbook access -->
+      <%= link_to "The ultimate Cookbook", cookbook_recipes_path, class: "btn-bleu text-white nav-link d-flex text-align-center" %>
 
     <!-- Right-aligned Icons -->
-    <div class="d-flex ms-auto align-items-center">
+    <div class="d-flex mx-2 align-items-center">
       <!-- Search Icon -->
-      <%= link_to root_path, class: "nav-link d-flex align-items-center" do %>
-        <i class="fa-solid fa-magnifying-glass fa-xl icon-couleur-vert"></i>
+      <%= link_to cookbook_recipes_path, class: "nav-link d-flex align-items-center" do %>
+        <i class="fa-solid fa-book-open fa-xl icon-couleur-vert"></i>
+      <% end %>
+    </div>
+
+  <!-- Right-aligned Icons -->
+    <div class="d-flex mx-2 align-items-center">
+      <!-- Search Icon -->
+      <%= link_to cookbook_recipes_path, class: "nav-link d-flex align-items-center" do %>
+        <i class="fa-solid fa-user-group fa-xl icon-couleur-vert"></i>
       <% end %>
     </div>
 
       <!-- Profile Avatar -->
 
-    <div class="nav-item dropdown">
+    <div class="nav-item dropdown mx-2">
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "Profile picture" %>
 
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
