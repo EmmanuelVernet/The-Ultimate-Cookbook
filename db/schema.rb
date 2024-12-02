@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_02_091632) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_02_145146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,23 +44,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_091632) do
 
   create_table "followers_users", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "follower_id"
+    t.bigint "follower_id",
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follower_id"], name: "index_followers_users_on_follower_id"
     t.index ["user_id"], name: "index_followers_users_on_user_id"
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "ingredient_name"
-    t.string "ingredient_category"
-    t.integer "calorie"
-    t.integer "protein"
-    t.integer "glucide"
-    t.integer "lipide"
-    t.integer "fibre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -77,16 +65,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_091632) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "ingredients"
     t.index ["user_id"], name: "index_recipes_on_user_id"
-  end
-
-  create_table "recipes_ingredients", force: :cascade do |t|
-    t.bigint "recipe_id", null: false
-    t.bigint "ingredient_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ingredient_id"], name: "index_recipes_ingredients_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_recipes_ingredients_on_recipe_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -273,8 +253,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_091632) do
   add_foreign_key "followers_users", "users"
   add_foreign_key "followers_users", "users", column: "follower_id"
   add_foreign_key "recipes", "users"
-  add_foreign_key "recipes_ingredients", "ingredients"
-  add_foreign_key "recipes_ingredients", "recipes"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
   add_foreign_key "shares", "recipes"
