@@ -17,6 +17,12 @@ class RecipesController < ApplicationController
     else
       @recipe = Recipe.find(params[:id])
     end
+    @formatted_steps = format_recipe_steps(@recipe.recipe_steps)
+  end
+
+  def format_recipe_steps(steps_text)
+    # Split the string by newline characters and wrap each step in an HTML <li> tag
+    steps_text.split("\n").map { |step| "<li>#{step.strip}</li>" }.join
   end
 
   def new
@@ -30,13 +36,13 @@ class RecipesController < ApplicationController
     if @recipe.photo.attached?
       # Force public access for the image during upload
       Cloudinary::Uploader.upload(params[:photo].tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
-      
+
       # Retrieve the public URL of the uploaded image
       image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
       puts image_url
       begin
-        # # Get the uploaded photo path        
-  
+        # # Get the uploaded photo path
+
         # Initialize OpenAI client
         client = OpenAI::Client.new
 
@@ -71,7 +77,7 @@ class RecipesController < ApplicationController
                 "content": [
                   {
                     "type": "text",
-                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: :name (recipe's title), :recipe_overview (If there is a short description of the recipe), :category(if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients), :preparation_time (time to cook the recipe), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps (the step by step of the recipe as a array for each step), Please render it in french without intro message. Here is the image"
+                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: :name (recipe's title), :recipe_overview (If there is a short description of the recipe), :category(if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients), :preparation_time (time to cook the recipe), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps, Please render it in french without intro message. Here is the image"
                   },
                   {
                     "type": "image_url",
@@ -130,18 +136,18 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
       return
     end
+
+    @recipe.set_photo
     # @recipe = Recipe.create(recipe_params) => WARNING: will it break adding a recipe via form?
     @recipe.user = current_user # associate a user recipe to the current user
     # TO DO => handle recipes for a current_user
     # @recipe = Recipe.create(recipe_params)
-
     if @recipe.save!
+
       redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
     else
       render :new, status: :unprocessable_entity
     end
-
-    # TO DO => implement separate logic for OCR analysis with OpenAI
   end
 
 
@@ -189,6 +195,25 @@ class RecipesController < ApplicationController
     end
   end
 
+
+  def parse_recipe_text(text)
+    sections = text.split("\n\n")
+    ingredients = sections.find { |section| section.downcase.include?("ingredient") }
+    steps_section = sections.find { |section| section.downcase.include?("step") || section.downcase.include?("method") }
+
+
+
+
+    # Return ingredients and steps as an array, with steps as an array now
+    [ingredients]
+  end
+
+
+
+
+
+
+
   private
 
   def recipe_params
@@ -196,11 +221,4 @@ class RecipesController < ApplicationController
 
   end
 
-  def parse_recipe_text(text)
-    # Simplified parsing logic: split text by sections
-    sections = text.split("\n\n")
-    ingredients = sections.find { |section| section.downcase.include?("ingredient") }
-    steps = sections.find { |section| section.downcase.include?("step") || section.downcase.include?("method") }
-    [ingredients || "", steps || ""]
-  end
 end
