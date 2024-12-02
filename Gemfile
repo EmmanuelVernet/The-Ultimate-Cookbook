@@ -64,6 +64,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "rtesseract"
 gem 'ruby-openai'
+gem "solid_queue"
+
 
 group :development, :test do
   gem "dotenv-rails"
