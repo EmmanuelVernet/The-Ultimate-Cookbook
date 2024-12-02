@@ -17,6 +17,8 @@ class RecipesController < ApplicationController
     else
       @recipe = Recipe.find(params[:id])
     end
+    # shared recipe
+    @share = Share.new
     @formatted_steps = format_recipe_steps(@recipe.recipe_steps)
   end
 

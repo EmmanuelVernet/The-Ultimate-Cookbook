@@ -4,9 +4,9 @@
   <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
 
   <div class="card-overview-image">
+
     <%# <%= image_tag(recipe.photo.attached? ? recipe.photo : "placeholder-image.jpg", alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %> 
     <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe" if recipe.photo.attached? %>
-  </div>
 
   <div class="card-overview-container-horizontal">
     <div class="card-overview-container-column-left">
