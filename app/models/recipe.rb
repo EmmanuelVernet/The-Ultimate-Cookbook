@@ -16,4 +16,9 @@ class Recipe < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+    private
+
+    def set_content
+      RecipeContentJob.perform_later(self)
+    end
 end
