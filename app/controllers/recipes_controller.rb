@@ -172,9 +172,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     # then destroy recipe
     if @recipe.destroy
-      redirect_to recipes_path, notice: "Recipe deleted"
+      redirect_to recipes_path, notice: "Recette supprimée"
     else
-      redirect_to recipe_path(@recipe), alert: "Can't delete recipe"
+      redirect_to recipe_path(@recipe), alert: "Impossible de supprimer la recette"
     end
   end
 
