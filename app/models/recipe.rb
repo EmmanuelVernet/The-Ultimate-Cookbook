@@ -1,3 +1,4 @@
+require "open-uri"
 class Recipe < ApplicationRecord
   include PgSearch::Model
 
@@ -17,9 +18,24 @@ class Recipe < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+    def set_photo
+      client = OpenAI::Client.new
+      response = client.images.generate(parameters: {
+        prompt: "A recipe image of #{self.recipe_name}", size: "256x256"
+      })
+
+      url = response["data"][0]["url"]
+      file =  URI.parse(url).open
+
+      self.photo.purge if self.photo.attached?
+      self.photo.attach(io: file, filename: "ai_generated_image.jpg", content_type: "image/png")
+      return photo
+    end
+
     private
 
     def set_content
       RecipeContentJob.perform_later(self)
     end
+
 end

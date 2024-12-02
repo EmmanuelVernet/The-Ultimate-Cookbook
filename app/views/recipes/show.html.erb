@@ -68,9 +68,12 @@
         <%= ingredient.ingredient_name %>
       <% end %>
     </div>
+<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+  <ol>
+    <%= raw(@formatted_steps) %>
+  </ol>
+</div>
 
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><%= @recipe.recipe_steps %></div>
-  </div>
 <br>
 
 <div class="mb-4 d-flex justify-content-center">
@@ -83,4 +86,3 @@
 
 
 </div>
-
