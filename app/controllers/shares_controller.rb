@@ -14,8 +14,9 @@ class SharesController < ApplicationController
 
 
   def index
-      @user_shares = Share.where(user_id: current_user.id)
-      @received_shares = Share.where(receiver_id: current_user.id)
+    @user_shares = Share.where(user_id: current_user.id)
+    @received_shares = Share.where(receiver_id: current_user.id)
+    @followers = current_user.followers
   end
 
   def new

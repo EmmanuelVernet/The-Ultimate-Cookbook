@@ -2,9 +2,11 @@
   <h1>Partager la recette</h1>
   <%= simple_form_for @share do |f| %>
     <%= f.association :receiver, 
-          collection: User.all.pluck(:user_name, :id), 
+          collection: User.all.pluck(:user_name, :id),
+          # collection: FollowersUser.where(user: current_user),
           label: 'Destinataire', 
           prompt: 'Sélectionner un destinataire' %>
+    
     <%= f.input :recipe_id, 
           as: :hidden, 
           input_html: { value: @recipe.id } %>
