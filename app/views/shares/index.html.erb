@@ -1,29 +1,41 @@
 <div class="container">
   <h1>Recettes partagées</h1>
+  <nav>
+    <div class="nav nav-tabs flex-nowrap overflow-auto" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Vos recette partagées</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Vos recettes reçues</button>
+    </div>
+  </nav>
+  <br>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <% if @user_shares.present? %>
+        <% @user_shares.each do |share| %>
+          <p><strong><%= share.recipe.recipe_name %></strong></p>
+          <p>Message: <%= share.message %></p>
+          <p>Recette partagée par: <strong><%= share.user.user_name %></strong></p>
+          <p>Destinataire: <strong><%= share.receiver.user_name %></strong></p>
+          <%= link_to "Voir la recette partagée", recipe_path(share.recipe), class: "btn btn-primary" %>
+          <br>
+          <br>
+        <% end %>
+      <% else %>
+        <p>Aucune recette partagée par vous.</p>
+      <% end %>
+    </div>
 
-  <h2>Vos recettes partagées</h2>
-  <% if @user_shares.present? %>
-    <% @user_shares.each do |share| %>
-      <p><strong><%= share.recipe.recipe_name %></strong></p>
-      <p>Message: <%= share.message %></p>
-      <p>Recette partagée par: <strong><%= share.user.user_name %></strong></p>
-      <p>Destinataire: <%= share.receiver.user_name %></p>
-      <%= link_to "Voir la recette partagée", recipe_path(share.recipe), class: "btn btn-primary" %>
-    <% end %>
-  <% else %>
-    <p>Aucune recette partagée par vous.</p>
-  <% end %>
-  <br>
-  <br>
-  <h2>Recettes reçues</h2>
-  <% if @received_shares.present? %>
-    <% @received_shares.each do |share| %>
-      <p><strong><%= share.recipe.recipe_name %></strong></p>
-      <p>Message: <%= share.message %></p>
-      <p>Recette reçue de: <strong><%= share.user.user_name %></strong></p>
-      <%= link_to "Voir la recette partagée", recipe_path(share.recipe), class: "btn btn-primary" %>
-    <% end %>
-  <% else %>
-    <p>Aucune recette reçue.</p>
-  <% end %>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <% if @received_shares.present? %>
+        <% @received_shares.each do |share| %>
+          <p><strong><%= share.recipe.recipe_name %></strong></p>
+          <p>Message: <%= share.message %></p>
+          <p>Recette reçue de: <strong><%= share.user.user_name %></strong></p>
+          <%= link_to "Voir la recette partagée", recipe_path(share.recipe), class: "btn btn-primary" %>
+          <br>
+          <br>
+        <% end %>
+      <% else %>
+        <p>Aucune recette reçue.</p>
+      <% end %>
+    </div>
 </div>
