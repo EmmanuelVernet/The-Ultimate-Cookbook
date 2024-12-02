@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_02_145146) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_02_163814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_145146) do
 
   create_table "followers_users", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "follower_id",
+    t.bigint "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follower_id"], name: "index_followers_users_on_follower_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_145146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "ingredients"
+    t.integer "calories"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
