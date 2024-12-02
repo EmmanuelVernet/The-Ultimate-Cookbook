@@ -2,13 +2,7 @@ class SharesController < ApplicationController
 # methode create => qui prend une recipes + un receiver_id a selectionner
 # # => creer un record "Share"
 # # associations => has_many received_recipes through shares, source: :recipe
-# 
-# INDEX 
-# Show all shares for a specific recipe or for the current user if required.
-# CREATE
-# Allow a user to share a recipe with another user by creating a Share.
-# DESTROY
-# Allow the sender to delete a share (if needed).
+
   # before_action :set_recipe, only: [:index, :create]
   before_action :authenticate_user!
 
@@ -22,11 +16,23 @@ class SharesController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @share = Share.new
+
+    # # Fetch unique followers and followees => from GPT
+    # follower_ids = current_user.followers.pluck(:id) || []
+    # followee_ids = current_user.followees.pluck(:id) || []
+
+    # @possible_receivers = User.where(id: (follower_ids + followee_ids).uniq)
   end
 
   def create
     @share = Share.create(share_params)
     @share.user = current_user
+
+    # # Validate receiver => from GPT
+    # follower_ids = current_user.followers.pluck(:id) || []
+    # followee_ids = current_user.followees.pluck(:id) || []
+    # valid_receiver_ids = (follower_ids + followee_ids).uniq
+
     if @share.save
       redirect_to recipes_path, notice: "Recette partagée!"
     else

@@ -11,8 +11,11 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.create(tag_params)
-    @tag.save
-    # TO DO => add safe guard for save
+    if @tag.save
+      redirect_to tags_path, notice: "Tag created successfully!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
