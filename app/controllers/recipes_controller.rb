@@ -17,6 +17,9 @@ class RecipesController < ApplicationController
     else
       @recipe = Recipe.find(params[:id])
     end
+
+    # shared recipe
+    @share = Share.new
   end
 
   def new

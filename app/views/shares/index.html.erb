@@ -1,9 +1,29 @@
 <div class="container">
-  <h1>INDEX OF RECIPES SHARES</h1>
-  <% @shares.each do |share| %>
-    <p>Partagé par: <%= share.user_id %></p>
-    <p>Recipe overview: <%= share.recipe_id %></p>
-    <p>Recipe category: <%= share.message %></p>
-    <p>Destinataire: <%= share.receiver_id %></p>
+  <h1>Recettes partagées</h1>
+
+  <h2>Vos recettes partagées</h2>
+  <% if @user_shares.present? %>
+    <% @user_shares.each do |share| %>
+      <p><strong><%= share.recipe.recipe_name %></strong></p>
+      <p>Message: <%= share.message %></p>
+      <p>Recette partagée par: <strong><%= share.user.user_name %></strong></p>
+      <p>Destinataire: <%= share.receiver.user_name %></p>
+      <%= link_to "Voir la recette partagée", recipe_path(share.recipe), class: "btn btn-primary" %>
+    <% end %>
+  <% else %>
+    <p>Aucune recette partagée par vous.</p>
+  <% end %>
+  <br>
+  <br>
+  <h2>Recettes reçues</h2>
+  <% if @received_shares.present? %>
+    <% @received_shares.each do |share| %>
+      <p><strong><%= share.recipe.recipe_name %></strong></p>
+      <p>Message: <%= share.message %></p>
+      <p>Recette reçue de: <strong><%= share.user.user_name %></strong></p>
+      <%= link_to "Voir la recette partagée", recipe_path(share.recipe), class: "btn btn-primary" %>
+    <% end %>
+  <% else %>
+    <p>Aucune recette reçue.</p>
   <% end %>
 </div>
