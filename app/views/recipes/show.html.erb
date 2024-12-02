@@ -55,25 +55,27 @@
   <nav>
     <div class="nav nav-tabs flex-nowrap overflow-auto" id="nav-tab" role="tablist">
       <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
-      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ingrédients</button>
-      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Étapes à suivre</button>
+      <button class="nav-link" id="nav-ingredients-tab" data-bs-toggle="tab" data-bs-target="#nav-ingredients" type="button" role="tab" aria-controls="nav-ingredients" aria-selected="false">Ingrédients</button>
+      <button class="nav-link" id="nav-steps-tab" data-bs-toggle="tab" data-bs-target="#nav-steps" type="button" role="tab" aria-controls="nav-steps" aria-selected="false">Étapes à suivre</button>
     </div>
   </nav>
   <br>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><%= @recipe.recipe_overview %></div>
 
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <% @recipe.ingredients.each do |ingredient| %>
-        <%= ingredient.ingredient_name %>
-      <% end %>
-    </div>
-<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+<div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab">
+  <ol>
+
+   <%= raw(@formatted_ingredients) %>
+  </ol>
+</div>
+
+<div class="tab-pane fade" id="nav-steps" role="tabpanel" aria-labelledby="nav-steps-tab">
   <ol>
     <%= raw(@formatted_steps) %>
   </ol>
 </div>
-
+</div>
 <br>
 
 <div class="mb-4 d-flex justify-content-center">

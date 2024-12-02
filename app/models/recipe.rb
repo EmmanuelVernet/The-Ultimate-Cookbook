@@ -1,10 +1,9 @@
 require "open-uri"
 class Recipe < ApplicationRecord
   include PgSearch::Model
-
+  # Example: Use JSON for structured ingredients
+  # serialize :ingredients, JSON
   belongs_to :user
-  has_many :recipes_ingredients, dependent: :destroy
-  has_many :ingredients, through: :recipes_ingredients
   has_many :received_recipes, through: :shares, source: :recipe
 
   has_one_attached :photo

@@ -20,12 +20,19 @@ class RecipesController < ApplicationController
     # shared recipe
     @share = Share.new
     @formatted_steps = format_recipe_steps(@recipe.recipe_steps)
+    @formatted_ingredients = format_ingredients(@recipe.ingredients)
   end
 
   def format_recipe_steps(steps_text)
-    # Split the string by newline characters and wrap each step in an HTML <li> tag
+    return "" if steps_text.nil? # Handle nil by returning an empty string
     steps_text.split("\n").map { |step| "<li>#{step.strip}</li>" }.join
   end
+
+  def format_ingredients(ingredients_text)
+    return "" if ingredients_text.nil?
+    ingredients_text.split("\n").map { |ingredient| "<li>#{ingredient.strip}</li>" }.join
+  end
+
 
   def new
     @recipe = Recipe.new
@@ -68,7 +75,7 @@ class RecipesController < ApplicationController
         #   return
         # end
 
-        puts "test2"
+
         # Send extracted text to OpenAI for recipe parsing
         chatgpt_response = client.chat(
           parameters: {
@@ -109,13 +116,12 @@ class RecipesController < ApplicationController
 
         # Populate recipe attributes
         parsed_data = eval(sanitized_content) # Use with caution! Only with trusted sources.
-
       # Populate recipe attributes
       @recipe.assign_attributes(
         recipe_name: parsed_data[:name],
         recipe_overview: parsed_data[:recipe_overview],
         recipe_category: parsed_data[:category],
-        # ingredients: parsed_data[:ingredients].join("\n"),
+        ingredients: parsed_data[:ingredients].join("\n"),
         preparation_time: parsed_data[:preparation_time],
         difficulty: parsed_data[:difficulty],
         servings: parsed_data[:servings],
@@ -138,12 +144,14 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
       return
     end
+    puts @recipe.ingredients
 
     @recipe.set_photo
     # @recipe = Recipe.create(recipe_params) => WARNING: will it break adding a recipe via form?
     @recipe.user = current_user # associate a user recipe to the current user
     # TO DO => handle recipes for a current_user
     # @recipe = Recipe.create(recipe_params)
+
     if @recipe.save!
 
       redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
@@ -200,14 +208,14 @@ class RecipesController < ApplicationController
 
   def parse_recipe_text(text)
     sections = text.split("\n\n")
-    ingredients = sections.find { |section| section.downcase.include?("ingredient") }
+    # ingredients_section = sections.find { |section| section.downcase.include?("ingredient") || section.downcase.include?("method")  }
     steps_section = sections.find { |section| section.downcase.include?("step") || section.downcase.include?("method") }
 
 
 
 
     # Return ingredients and steps as an array, with steps as an array now
-    [ingredients]
+    # [ingredients]
   end
 
 
@@ -219,7 +227,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo)
+    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo, :ingredients)
 
   end
 
