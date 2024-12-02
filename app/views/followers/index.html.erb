@@ -1,3 +1,6 @@
 <div class="container">
-  <h1>INDEX FOLLOWERS</h1>
+  <h1>Vos followers</h1>
+  <% @followers.each do |follower|%>
+  <p><%= follower.user.user_name %></p>
+  <% end %>
 </div>
