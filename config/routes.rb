@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :ingredients, only: [:index, :show, :create, :new, :update, :destroy]
     resources :tags, only: [:index]
     resources :reviews, only: [:index, :show, :create]
-    resources :shares, only: [:create, :index] # If users can share recipes
+    resources :shares, only: [:create, :index, :new] # If users can share recipes
       collection do
         get :cookbook
       end

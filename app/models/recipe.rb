@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipes_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipes_ingredients
+  has_many :received_recipes, through: :shares, source: :recipe
 
   has_one_attached :photo
 
@@ -29,6 +30,12 @@ class Recipe < ApplicationRecord
       self.photo.purge if self.photo.attached?
       self.photo.attach(io: file, filename: "ai_generated_image.jpg", content_type: "image/png")
       return photo
+    end
+
+    private
+
+    def set_content
+      RecipeContentJob.perform_later(self)
     end
 
 end
