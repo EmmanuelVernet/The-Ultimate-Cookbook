@@ -1,18 +1,13 @@
 .footer {
-  background: $jaune-epais;
-  border-top: 2px solid $marron-clair;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  box-shadow: 0 0 15px rgba(211, 129, 4, 0.6);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 60px;
-  padding: 0px 50px;
-  position: fixed; /* Changed from sticky to fixed */
-  bottom: 0; /* Stick it to the bottom */
-  width: 100%; /* Ensure it spans the full width of the viewport */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   z-index: 1000;
+  align-items: end;
+  padding-bottom: 10px;
 }
 
 .footer-links {
@@ -30,14 +25,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.toggle-button-m {
+  width: 28px;
+  height: 28px;
+  background: #AC0A1D;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 
 .circle-menu {
   position: absolute;
-    bottom: 70px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 350px;
@@ -66,4 +75,3 @@
 .margin-right {
   margin-right: 30px;
 }
-
