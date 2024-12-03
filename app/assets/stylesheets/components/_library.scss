@@ -73,54 +73,85 @@ p {
 
 .btn-bleu {
   color: white;
-  padding: 8px 24px;
+  padding: 8px 8px;
   border-radius: 4px;
   background: $bleu-canard;
   transition: background 0.3s ease;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-bleu:active {
   background: $bleu-canard-hover;
   color: white;
+  font-weight: bold;
 }
 
 .btn-vert {
   color: white;
-  padding: 8px 24px;
+  padding: 8px 8px;
   border-radius: 4px;
   background: $vert-sapin;
   transition: background 0.3s ease;
+  text-align: center;
+  transition: all 0.3s ease;
+  outline: none;
+  border: none;
 }
 
 .btn-vert:active {
   background: $vert-sapin-hover;
   color: white;
+  font-weight: bold;
 }
 
 .btn-orange {
   color: white;
-  padding: 8px 24px;
+  padding: 8px 8px;
   border-radius: 4px;
   background: $orange;
   transition: background 0.3s ease;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .btn-orange:active {
   background: $orange-hover;
   color: white;
+  font-weight: bold;
 }
 
 .btn-rouge {
   color: white;
-  padding: 8px 24px;
+  padding: 8px 8px;
   border-radius: 4px;
   background: $rouge-sombre;
   transition: background 0.3s ease;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .btn-rouge:active {
   background: $rouge-sombre-hover;
   color: white;
+  font-weight: bold;
+}
+
+.btn-marron {
+  color: white;
+  padding: 8px 8px;
+  border-radius: 4px;
+  background: $marron-clair;
+  transition: background 0.3s ease;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-marron:active {
+  background: $marron-clair-hover;
+  color: white;
+  font-weight: bold;
 }
 
 // ------------------- CARDS -------------------

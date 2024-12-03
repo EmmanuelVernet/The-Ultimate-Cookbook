@@ -1,17 +1,23 @@
-<div class="container">
-  <h1>EDIT RECIPES</h1>
+
+<div class="container-division">
+  <h1>Modifier ma recette</h1>
+</div>
+
+<div class="container-division", style="margin-left: 15px; margin-right: 15px; margin-bottom: 80px; overflow: hidden;">
   <%= simple_form_for(@recipe) do |f| %>
-    <%= f.input :recipe_name, label: 'Nom de la recette' %>
-    <%= f.input :recipe_category, label: 'Categorie' %>
-    <%= f.input :recipe_overview, label: 'En deux mots...' %>
-    <%= f.input :preparation_time, label: "Temps de préparation" %>
-    <%= f.input :servings, label: 'Convives' %>
-    <%= f.input :recipe_steps, label: 'Etapes à suivre' %>
-    <%= f.input :import_source, label: 'Source: ' %>
-    <%= f.input :recipe_likes, label: 'Likes:' %>
-    <%= f.input :favorite, label: 'En favoris' %>
-    <%= f.button :submit, 'Mettre à jour',class: "btn btn-primary w-100" %>
+    <strong><%= f.input :recipe_name, label: 'Nom de la recette' %></strong>
+    <strong><%= f.input :recipe_category, label: 'Categorie' %></strong>
+    <strong><%= f.input :recipe_overview, label: 'En deux mots...' %></strong>
+    <strong><%= f.input :preparation_time, label: "Temps de préparation" %></strong>
+    <strong><%= f.input :servings, label: 'Convives' %></strong>
+    <strong><%= f.input :recipe_steps, label: 'Etapes à suivre' %></strong>
+    <strong><%= f.input :import_source, label: 'Source' %></strong>
+    <strong><%= f.input :recipe_likes, label: 'Likes' %></strong>
+    <strong><%= f.input :favorite, as: :boolean, input_html: { class: "toggle" }, label: 'En favoris' %></strong>
+    <strong><%= f.button :submit, 'Mettre à jour',class: "btn-vert w-100" %></strong>
   <% end %>
   <br>
-  <%= link_to "Retour aux recettes", recipes_path, class: "btn btn-primary w-100"%>
+    <%= link_to recipes_path do %>
+      <div class="btn-bleu" style="width: 100%; color: white;">Annuler</div>
+    <% end %>
 </div>

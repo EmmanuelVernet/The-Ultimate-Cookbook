@@ -5,6 +5,8 @@ class RecipesController < ApplicationController
     @user_recipes = Recipe.where(user_id: current_user.id)
     if params[:query].present?
       @recipes = Recipe.search_by_all_attributes(params[:query])
+    elsif params.dig(:search, :keyword)
+      @recipes = Recipe.search_by_all_attributes(params.dig(:search, :keyword))
     else
       @recipes = Recipe.all
     end
