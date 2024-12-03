@@ -27,7 +27,7 @@ aubergine = Ingredient.create(ingredient_name: "aubergine")
 
 # # Create recipes
 spaghetti = Recipe.create!(
-  recipe_name: "Spaghetti Carbonara",
+  recipe_name: "Spaghetti Carbo",
   recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
   recipe_category: "Italian",
   preparation_time: "00:25:00",
@@ -97,6 +97,84 @@ beef = Recipe.create!(
 file4 = URI.open("https://www.fivehearthome.com/wp-content/uploads/2023/02/Crock-Pot-Beef-Stroganoff-Recipe-Slow-Cooker-Beef-Stroganoff-by-Five-Heart-Home_1200pxFeatured70.jpg")
 beef.photo.attach(io: file4, filename: "beef.jpg", content_type: "image/jpeg")
 beef.save!
+
+
+# # Recettes Pierre pour test grid
+
+
+test1 = Recipe.create!(
+  recipe_name: "Test 1",
+  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+  recipe_category: "Italian",
+  preparation_time: "00:25:00",
+  difficulty: "Medium",
+  import_source: "Family Recipe",
+  servings: 4,
+  recipe_steps: "Cook pasta. Fry pancetta. Mix eggs and cheese. Combine all.",
+  recipe_likes: 120,
+  favorite: true,
+  user: user1
+)
+
+file1 = URI.open("https://img.passeportsante.net/1200x675/2021-04-19/i101329-pates-a-la-carbonara.jpeg")
+test1.photo.attach(io: file1, filename: "spaghetti.jpg", content_type: "image/jpeg")
+test1.save!
+
+test2 = Recipe.create!(
+  recipe_name: "Test 2",
+  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+  recipe_category: "Italian",
+  preparation_time: "00:25:00",
+  difficulty: "Medium",
+  import_source: "Family Recipe",
+  servings: 4,
+  recipe_steps: "Cook pasta. Fry pancetta. Mix eggs and cheese. Combine all.",
+  recipe_likes: 120,
+  favorite: true,
+  user: user1
+)
+
+file1 = URI.open("https://img.passeportsante.net/1200x675/2021-04-19/i101329-pates-a-la-carbonara.jpeg")
+test2.photo.attach(io: file1, filename: "spaghetti.jpg", content_type: "image/jpeg")
+test2.save!
+
+test3 = Recipe.create!(
+  recipe_name: "Test 3",
+  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+  recipe_category: "Italian",
+  preparation_time: "00:25:00",
+  difficulty: "Medium",
+  import_source: "Family Recipe",
+  servings: 4,
+  recipe_steps: "Cook pasta. Fry pancetta. Mix eggs and cheese. Combine all.",
+  recipe_likes: 120,
+  favorite: true,
+  user: user1
+)
+
+file1 = URI.open("https://img.passeportsante.net/1200x675/2021-04-19/i101329-pates-a-la-carbonara.jpeg")
+test3.photo.attach(io: file1, filename: "spaghetti.jpg", content_type: "image/jpeg")
+test3.save!
+
+test4 = Recipe.create!(
+  recipe_name: "Test 4",
+  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+  recipe_category: "Italian",
+  preparation_time: "00:25:00",
+  difficulty: "Medium",
+  import_source: "Family Recipe",
+  servings: 4,
+  recipe_steps: "Cook pasta. Fry pancetta. Mix eggs and cheese. Combine all.",
+  recipe_likes: 120,
+  favorite: true,
+  user: user1
+)
+
+file1 = URI.open("https://img.passeportsante.net/1200x675/2021-04-19/i101329-pates-a-la-carbonara.jpeg")
+test4.photo.attach(io: file1, filename: "spaghetti.jpg", content_type: "image/jpeg")
+test4.save!
+
+
 
 # # on rattache nos ingredients à toutes les recettes
 Recipe.all.each do |recipe|

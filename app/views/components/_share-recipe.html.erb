@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container mb-3">
   <h1>Partager la recette</h1>
   <%= simple_form_for @share do |f| %>
-    <%= f.association :receiver, 
-          collection: User.all.pluck(:user_name, :id), 
-          label: 'Destinataire', 
+    <%= f.association :receiver,
+          collection: User.all.pluck(:user_name, :id),
+          label: 'Destinataire',
           prompt: 'Sélectionner un destinataire' %>
-    <%= f.input :recipe_id, 
-          as: :hidden, 
+    <%= f.input :recipe_id,
+          as: :hidden,
           input_html: { value: @recipe.id } %>
     <p><strong>Recette: </strong><%= @recipe.recipe_name %></p>
     <%= f.input :message, label: 'Message' %>

@@ -5,6 +5,8 @@ class RecipesController < ApplicationController
     @user_recipes = Recipe.where(user_id: current_user.id)
     if params[:query].present?
       @recipes = Recipe.search_by_all_attributes(params[:query])
+    elsif params.dig(:search, :keyword)
+      @recipes = Recipe.search_by_all_attributes(params.dig(:search, :keyword))
     else
       @recipes = Recipe.all
     end
@@ -180,9 +182,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     # then destroy recipe
     if @recipe.destroy
-      redirect_to recipes_path, notice: "Recipe deleted"
+      redirect_to recipes_path, notice: "Recette supprimée"
     else
-      redirect_to recipe_path(@recipe), alert: "Can't delete recipe"
+      redirect_to recipe_path(@recipe), alert: "Impossible de supprimer la recette"
     end
   end
 

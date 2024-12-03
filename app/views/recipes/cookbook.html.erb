@@ -1,14 +1,36 @@
-<div class="container">
+<div class="container-division">
   <h1>My Cookbook</h1>
-  <% @recipes.each do |recipe| %>
-    <div class="recipe">
-      <h2><%= link_to recipe.recipe_name, recipe_path(recipe) %></h2>
-      <p><strong>Category:</strong> <%= recipe.recipe_category %></p>
-      <p><strong>Preparation Time:</strong> <%= recipe.preparation_time %></p>
-      <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
-      <%= link_to "Éditer la recette", edit_recipe_path(recipe), class: "btn btn-primary w-30" %>
-      <%= link_to "Supprimer la recette", recipe_path(recipe), data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn btn-danger w-30" %>
-    </div>
-    <br>
-  <% end %>
+</div>
+
+<%# ------------- Search ---------------- %>
+
+<div class="container-division">
+  <div style="margin-left: 15px; margin-right: 15px">
+        <form class="d-flex w-100 custom-search" action="/recipes" accept-charset="UTF-8" method="get" data-dashlane-rid="bc0b773e9ec93a31">
+                <input type="text" name="query" id="query" class="form-control w-100" placeholder="De quoi avez-vous envie aujourd'hui ?" data-dashlane-rid="6556b9238eb00112">
+                <input type="submit" name="" value="Search" class="btn-vert" data-disable-with="Search" data-dashlane-rid="b93e4c51b3942aeb">
+        </form>
+  </div>
+</div>
+
+<%# ------------- Liste ---------------- %>
+
+<div class="container-division">
+  <% if @recipes.any? %>
+    <% @recipes.each do |recipe| %>
+          <div class="item-centrage">
+            <%= render "components/card-overview-index", class: "d-block w-100", recipe: recipe %>
+            <%# <%= link_to "Voir la recette", recipe_path(recipe), class: "btn btn-primary w-20" %>
+            <%# <%= link_to "Ajouter la recette", add_to_cookbook_recipe_path(recipe), data: { turbo_method: :post , confirm: "Ajouter la recette à votre cookbook?" }, class: "btn btn-primary w-20" %>
+            <%# <br> %>
+          </div>
+    <% end %>
+</div>
+    <% else %>
+
+<div class="container-division">
+  <div class="item-centrage">
+      <p style="font-size: 16px">Aucune recette ne correspond à votre recherche</p>
+    <% end %>
+  </div>
 </div>
