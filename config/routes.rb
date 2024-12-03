@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+     sessions: 'users/sessions',
+  registrations: 'users/registrations'
+  }
   root to: "pages#home"
   get "front", to: "pages#front"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -24,7 +27,7 @@ Rails.application.routes.draw do
       collection do
         get :cookbook
       end
-    
+
       member do
         post :add_to_cookbook # Add a specific recipe to the user's cookbook
       end
