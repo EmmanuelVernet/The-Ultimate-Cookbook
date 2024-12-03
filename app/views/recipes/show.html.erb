@@ -1,11 +1,10 @@
-<div class="container mb-5">
+<div class="container mb-4">
     <% if @recipe.photo.key %>
     <div style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
                 height: 300px;
                 width: 100%;
                 background-size: cover;
                 background-position: center;
-                margin-top: 20px;
                 border-radius: 15px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 position: relative;">
@@ -78,9 +77,10 @@
 </div>
 <br>
 
-<div class="mb-4 d-flex justify-content-center">
-    <%= link_to "Editer ma recette", edit_recipe_path, class: "btn-vert mx-1 text-nowrap px-3" %>
-    <%= link_to "Toutes les recettes", recipes_path, class: "btn-bleu mx-1 text-nowrap px-3" %>
+<div class="mb-4 d-flex justify-content-evenly flex-wrap">
+    <%= link_to "Editer", edit_recipe_path, class: "btn-vert", style: "width: 100px" %>
+    <%= link_to "Supprimer", recipe_path, data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn-marron", style: "width: 100px" %>
+    <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
 </div>
     <%# partial for sharing a recipe %>
       <%= render "components/share-recipe" %>

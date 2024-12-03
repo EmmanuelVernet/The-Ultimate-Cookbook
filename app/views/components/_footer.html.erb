@@ -27,23 +27,26 @@
                                 data: { action: "change->image-upload#processImage", target: "image-upload.input" },
                                 style: "display:none;" %>
             <label for="upload-photo">
-             
-                <i data-image-upload-target="icon" class="fa-solid fa-camera fa-xl icon-couleur-vert"></i>
+             <div data-image-upload-target="icon">
+                <i class="fa-solid fa-camera fa-xl icon-couleur-vert"></i>
+                </div>
 
             </label>
           <% end %>
-
+          </div>
+          </div>
           <!-- Minus Button for Toggle -->
+          <div>
           <div data-action="click->toggle#fire">
+
             <strong>
               <i class="fa-solid fa-circle-minus fa-xl" style="color: #AC0A1D;"></i>
             </strong>
+            </div>
           </div>
         </div>
+
 
       </div>
 
     </div>
-  </div>
-
-</div>
