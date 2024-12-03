@@ -7,7 +7,9 @@
     <%# </div> %>
     <div class="card-overview-image">
       <% if recipe.photo.key %>
-      <%= cl_image_tag(recipe.photo.key, alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
+      <%# <%= cl_image_tag(recipe.photo.key, alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
+      <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "img-defaut card-overview-image" if recipe.photo.attached? %>
+
       <% end %>
     </div>
 
@@ -18,7 +20,7 @@
             <p class="card-overview-text"><%= recipe.preparation_time %> </p>
           </div>
           <div class="card-overview-container-line">
-            <i class="fa-solid fa-fire-burner card-overview-icone icon-couleur-bleu"></i>
+            <i class="fa-solid fa-fire card-overview-icone icon-couleur-bleu"></i>
             <p class="card-overview-text">35 min </p>
           </div>
         </div>
@@ -28,7 +30,7 @@
             <p class="card-overview-text"><%= recipe.difficulty %></p>
           </div>
           <div class="card-overview-container-line">
-            <i class="fa-solid fa-utensils card-overview-icone icon-couleur-bleu"></i>
+            <i class="fa-solid fa-users card-overview-icone icon-couleur-bleu"></i>
             <p class="card-overview-text"><%= recipe.servings %> pers.</p>
           </div>
         </div>
