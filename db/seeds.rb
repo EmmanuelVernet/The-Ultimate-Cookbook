@@ -22,6 +22,9 @@ user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pi
 user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel Vernet")
 user4 = User.create!(email: "test5@test.com", password: "123456", user_name: "Cyril Lignac")
 
+# Seed tags
+# Tag.create(name: "")
+
 # # Create ingredients
 # tomate = Ingredient.create(ingredient_name: "tomate")
 # courgette = Ingredient.create(ingredient_name: "courgette")
