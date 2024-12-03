@@ -1,5 +1,5 @@
-<div class="container">
-  <h1>EDIT RECIPES</h1>
+<div class="container mb-5">
+  <h1>Edit recipes</h1>
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :recipe_name, label: 'Nom de la recette' %>
     <%= f.input :recipe_category, label: 'Categorie' %>
@@ -13,5 +13,5 @@
     <%= f.button :submit, 'Mettre à jour',class: "btn btn-primary w-100" %>
   <% end %>
   <br>
-  <%= link_to "Retour aux recettes", recipes_path, class: "btn btn-primary w-100"%>
+  <%= link_to "Retour aux recettes", recipes_path, class: "btn btn-primary w-100 mb-2"%>
 </div>
