@@ -1,11 +1,10 @@
-<div class="container mb-5">
+<div class="container mb-4">
     <% if @recipe.photo.key %>
     <div style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
                 height: 300px;
                 width: 100%;
                 background-size: cover;
                 background-position: center;
-                margin-top: 20px;
                 border-radius: 15px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 position: relative;">
