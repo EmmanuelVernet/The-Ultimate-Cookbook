@@ -10,10 +10,7 @@ class Recipe < ApplicationRecord
   has_one_attached :photo
 
   pg_search_scope :search_by_all_attributes,
-    against: [ :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings ],
-    associated_against: {
-      ingredients: [ :ingredient_name, :ingredient_category ]
-    },
+    against: [ :recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :ingredients],
     using: {
       tsearch: { prefix: true }
     }
