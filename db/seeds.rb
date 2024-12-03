@@ -15,10 +15,11 @@ FollowersUser.destroy_all
 User.destroy_all
 
 # # Create users
-user1 = User.create!(email: "test1@test.com", password: "123456", user_name: "Nicolas")
-user2 = User.create!(email: "test2@test.com", password: "123456", user_name: "Délia")
-user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pierre")
-user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel")
+user1 = User.create!(email: "test1@test.com", password: "123456", user_name: "Ahmed Mecherouk")
+user2 = User.create!(email: "test2@test.com", password: "123456", user_name: "Délia Knoepfli")
+user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pierre Songy")
+user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel Vernet")
+user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Cyril Lignac")
 
 # # Create ingredients
 tomate = Ingredient.create(ingredient_name: "tomate")

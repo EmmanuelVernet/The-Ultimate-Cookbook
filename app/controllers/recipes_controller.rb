@@ -45,7 +45,7 @@ class RecipesController < ApplicationController
   def create
   #  rappel du job
     # puts"hello from controller recipe"
-    # @recipe = Recipe.new
+    @recipe = Recipe.new
     # @recipe.photo.attach(params[:photo])
     # if @recipe.photo.attached?
     #   # Force public access for the image during upload
@@ -128,21 +128,21 @@ class RecipesController < ApplicationController
     # puts @recipe.ingredients
 
     # @recipe.set_photo
-    # # @recipe = Recipe.create(recipe_params) => WARNING: will it break adding a recipe via form?
-    # @recipe.user = current_user # associate a user recipe to the current user
-    # # TO DO => handle recipes for a current_user
-    # @recipe = Recipe.create(recipe_params)
+  
+    @recipe = Recipe.create(recipe_params)
+    @recipe.user = current_user # associate a user recipe to the current user
+    # TO DO => handle recipes for a current_user
 
     # CreateRecipeFromImageJob.perform_later(params[:photo], current_user)
     @recipe = CreateRecipeFromImage.new(params.dig(:recipe, :photo), current_user).call
-    redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
+    # redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
 
-    # if @recipe.save!
-    #   RecipeContentJob.perform_later(@recipe.id)
-    #   redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    if @recipe.save!
+      # RecipeContentJob.perform_later(@recipe.id)
+      redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
 
@@ -165,7 +165,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     # then destroy recipe
     if @recipe.destroy
-      redirect_to recipes_path, notice: "Recette supprimée"
+      redirect_to cookbook_recipes_path, notice: "Recette supprimée"
     else
       redirect_to recipe_path(@recipe), alert: "Impossible de supprimer la recette"
     end
