@@ -1,12 +1,10 @@
 <div class="container mb-4">
     <% if @recipe.photo.key %>
-    <div style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
+    <div class="img-defaut" style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
                 height: 300px;
                 width: 100%;
                 background-size: cover;
                 background-position: center;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 position: relative;">
         <div style="position: absolute;
                     top: 10px;
@@ -49,6 +47,11 @@
     <p class="paragraph"><strong><i class="fa-regular fa-bell"></i></strong> <%= @recipe.preparation_time %> </p>
     <p class="paragraph"><strong><i class="fa fa-signal"></i></strong> <%= @recipe.difficulty %></p>
     <p class="paragraph"><strong><i class="fa fa-users"></i></strong> <%= @recipe.servings %></p>
+    <% if @recipe.tags.any? %>
+    <p class="paragraph"><strong><i class="fa fa-tag"></i> Tag: </strong><%= @recipe.tags.map(&:name).join(", ") %></p>
+    <% end %>
+  </div>
+
   </div>
 <br>
   <nav>
@@ -84,4 +87,7 @@
 </div>
     <%# partial for sharing a recipe %>
       <%= render "components/share-recipe" %>
+      <%= render "components/tag-recipe", recipe: @recipe, tag: @tag %>
+      <br>
+      <br>
 </div>

@@ -1,43 +1,52 @@
-
 <div class="footer">
-
 
   <div data-controller="toggle" class="footer-links">
     <button data-toggle-target="addtoggle" data-action="click->toggle#fire" class="toggle-button">+</button>
     <div data-toggle-target="togglableElement" class="circle-menu d-none">
 
       <div class="d-flex margin-left" style="gap: 5rem;">
+
+        <!-- Audio Button -->
         <div>
-            <a href="#" data-controller="audio" data-action="click->audio#play" data-audio-file="<%= asset_path('atable.mp3') %>">
-              <i class="fa-solid fa-microphone fa-xl icon-couleur-vert"></i>
-            </a>
+          <a href="#" data-controller="audio" data-action="click->audio#play" data-audio-file="<%= asset_path('atable.mp3') %>">
+            <i class="fa-solid fa-microphone fa-xl icon-couleur-vert"></i>
+          </a>
         </div>
 
+        <!-- New Recipe Link -->
         <div>
           <%= link_to new_recipe_path do %>
             <i class="fa-solid fa-pen-to-square fa-xl icon-couleur-vert"></i>
           <% end %>
         </div>
 
+        <!-- File Upload Form -->
         <div>
-          <%= form_with model: @recipe, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', data: { controller: "image-upload" } } do |form| %>
-            <%= form.file_field :photo, accept: "image/*",id: "upload-photo",
-                            data: { action: "change->image-upload#processImage", target: "image-upload.input" },
-                            style: "display:none;"%>
-          <label for="upload-photo">
-          <a> <i class="fa-solid fa-camera fa-xl icon-couleur-vert"></i></a>
-          </label>
-          <% end %>
-        </div>
-      </div>
+          <%= form_with model: Recipe.new, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', data: { controller: "image-upload" } } do |form| %>
+            <%= form.file_field :photo, accept: "image/*", id: "upload-photo",
+                                data: { action: "change->image-upload#processImage", target: "image-upload.input" },
+                                style: "display:none;" %>
+            <label for="upload-photo">
+             <div data-image-upload-target="icon">
+                <i class="fa-solid fa-camera fa-xl icon-couleur-vert"></i>
+                </div>
 
-      <div>
-        <div data-action="click->toggle#fire"> <strong><i class="fa-solid fa-circle-minus fa-xl" style="color: #AC0A1D;"></i></strong></div>
+            </label>
+          <% end %>
+          </div>
+          </div>
+          <!-- Minus Button for Toggle -->
+          <div>
+          <div data-action="click->toggle#fire">
+
+            <strong>
+              <i class="fa-solid fa-circle-minus fa-xl" style="color: #AC0A1D;"></i>
+            </strong>
+            </div>
+          </div>
+        </div>
+
+
       </div>
 
     </div>
-  </div>
-
-
-
-</div>

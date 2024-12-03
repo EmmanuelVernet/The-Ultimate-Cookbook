@@ -1,3 +1,7 @@
 <div class="container">
-  <h1>NEW RECIPE TAGS</h1>
+  <h1>Ajouter un tag à votre recette</h1>
+  <%= simple_form_for @tag do |f| %>
+  <%= f.input :name, collection: ["Healthy", "Vegan", "Light", "Gourmand", "Rapide", "Vitaminé" ] %>
+  <%= f.button :submit %>
+<% end %>
 </div>

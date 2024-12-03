@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_02_163814) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_03_115321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -221,13 +221,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_163814) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags_recipe", force: :cascade do |t|
+  create_table "tags_recipes", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_tags_recipe_on_recipe_id"
-    t.index ["tag_id"], name: "index_tags_recipe_on_tag_id"
+    t.index ["recipe_id"], name: "index_tags_recipes_on_recipe_id"
+    t.index ["tag_id"], name: "index_tags_recipes_on_tag_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -265,6 +265,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_02_163814) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
-  add_foreign_key "tags_recipe", "recipes"
-  add_foreign_key "tags_recipe", "tags"
+  add_foreign_key "tags_recipes", "recipes"
+  add_foreign_key "tags_recipes", "tags"
 end
