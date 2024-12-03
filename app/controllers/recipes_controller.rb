@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
     @share = Share.new
     @formatted_steps = format_recipe_steps(@recipe.recipe_steps)
     @formatted_ingredients = format_ingredients(@recipe.ingredients)
+    # Initialize a new Tag instance
+    @tags_recipe = TagsRecipe.new
   end
 
   def format_recipe_steps(steps_text)
@@ -217,11 +219,6 @@ class RecipesController < ApplicationController
     # Return ingredients and steps as an array, with steps as an array now
     # [ingredients]
   end
-
-
-
-
-
 
 
   private

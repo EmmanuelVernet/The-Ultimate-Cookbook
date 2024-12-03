@@ -5,12 +5,19 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+  def new
+    @tag = Tag.new
+  end
+
   def show
     @tag = Tag.find(params[:id])
   end
 
   def create
+    # find the Recipe item
+    @recipe = Recipe.find(params[:recipe_id])
     @tag = Tag.create(tag_params)
+
     if @tag.save
       redirect_to tags_path, notice: "Tag created successfully!"
     else
@@ -35,7 +42,12 @@ class TagsController < ApplicationController
 
   private
 
+  def set_recipe
+    # find the recipe ID
+    @recipe = Recipe.find(params[:recipe_id]) 
+  end
+
   def tag_params
-    params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name, :recipe_id)
   end
 end

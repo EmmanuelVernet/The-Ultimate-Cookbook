@@ -5,6 +5,7 @@ class Recipe < ApplicationRecord
   # serialize :ingredients, JSON
   belongs_to :user
   has_many :received_recipes, through: :shares, source: :recipe
+  has_and_belongs_to_many :tags, join_table: 'tags_recipes'
 
   has_one_attached :photo
 
