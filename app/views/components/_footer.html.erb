@@ -22,7 +22,7 @@
 
         <!-- File Upload Form -->
         <div>
-          <%= form_with model: @recipe, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', data: { controller: "image-upload" } } do |form| %>
+          <%= form_with model: Recipe.new, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', data: { controller: "image-upload" } } do |form| %>
             <%= form.file_field :photo, accept: "image/*", id: "upload-photo",
                                 data: { action: "change->image-upload#processImage", target: "image-upload.input" },
                                 style: "display:none;" %>
