@@ -5,6 +5,8 @@ class RecipesController < ApplicationController
     @user_recipes = Recipe.where(user_id: current_user.id)
     if params[:query].present?
       @recipes = Recipe.search_by_all_attributes(params[:query])
+    elsif params.dig(:search, :keyword)
+      @recipes = Recipe.search_by_all_attributes(params.dig(:search, :keyword))
     else
       @recipes = Recipe.all
     end
@@ -30,13 +32,13 @@ class RecipesController < ApplicationController
     if @recipe.photo.attached?
       # Force public access for the image during upload
       Cloudinary::Uploader.upload(params[:photo].tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
-      
+
       # Retrieve the public URL of the uploaded image
       image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
       puts image_url
       begin
-        # # Get the uploaded photo path        
-  
+        # # Get the uploaded photo path
+
         # Initialize OpenAI client
         client = OpenAI::Client.new
 
