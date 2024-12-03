@@ -128,7 +128,7 @@ class RecipesController < ApplicationController
     # puts @recipe.ingredients
 
     # @recipe.set_photo
-    
+
     @recipe = CreateRecipeFromImage.new(params.dig(:recipe, :photo), current_user).call
     # @recipe = CreateRecipeFromImage.new(:recipe, recipe_params[:photo], current_user).call
     redirect_to recipe_path(@recipe), notice: "Recette mise à jour!"
@@ -171,7 +171,6 @@ class RecipesController < ApplicationController
     # store it in a variable and duplicate the recipe for the current user
     new_user_recipe = original_recipe.dup
     new_user_recipe.user_id = current_user.id
-
     if new_user_recipe.save
       redirect_to cookbook_recipes_path, notice: "Recette ajoutée!"
     else
@@ -185,11 +184,6 @@ class RecipesController < ApplicationController
     # ingredients_section = sections.find { |section| section.downcase.include?("ingredient") || section.downcase.include?("method")  }
     steps_section = sections.find { |section| section.downcase.include?("step") || section.downcase.include?("method") }
 
-
-
-
-    # Return ingredients and steps as an array, with steps as an array now
-    # [ingredients]
   end
 
   # bg-logic
@@ -205,7 +199,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo, :ingredients)
+    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo, :ingredients, :calories)
 
   end
 
