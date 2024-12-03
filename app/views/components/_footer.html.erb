@@ -27,12 +27,14 @@
       </div>
 
       <div class="margin-right">
-        <%= form_with model: @recipe, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', data: { controller: "image-upload" } } do |form| %>
+        <%= form_with model: Recipe.new, url: recipes_path, local: true, html: { enctype: 'multipart/form-data', data: { controller: "image-upload" } } do |form| %>
           <%= form.file_field :photo, accept: "image/*",id: "upload-photo",
                           data: { action: "change->image-upload#processImage", target: "image-upload.input" },
                           style: "display:none;"%>
          <label for="upload-photo">
-         <a> <i class="fa-solid fa-camera fa-xl icon-couleur-vert"></i></a>
+          <div data-image-upload-target="icon">
+            <i class="fa-solid fa-camera fa-xl icon-couleur-vert"></i>
+          </div>
          </label>
         <% end %>
       </div>
