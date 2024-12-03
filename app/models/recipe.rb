@@ -5,14 +5,12 @@ class Recipe < ApplicationRecord
   # serialize :ingredients, JSON
   belongs_to :user
   has_many :received_recipes, through: :shares, source: :recipe
+  has_and_belongs_to_many :tags, join_table: 'tags_recipes'
 
   has_one_attached :photo
 
   pg_search_scope :search_by_all_attributes,
-    against: [ :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings ],
-    associated_against: {
-      ingredients: [ :ingredient_name, :ingredient_category ]
-    },
+    against: [ :recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :ingredients],
     using: {
       tsearch: { prefix: true }
     }

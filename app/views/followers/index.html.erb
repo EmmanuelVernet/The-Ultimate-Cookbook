@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Vos followers</h1>
   <% @followers.each do |follower|%>
-  <p><%= follower.user.user_name %></p>
+  <p><%= follower.user.user_name %> suit votre Cookbook!</p>
+  <%= link_to "Recettes partagées par #{follower.user.user_name}", user_shares_path(follower.user.id), class: "btn btn-primary" %>
   <% end %>
 </div>
