@@ -8,9 +8,10 @@ require "nokogiri"
 require "open-uri"
 
 # Destroy existing records
-RecipesIngredient.destroy_all
+# RecipesIngredient.destroy_all
+Share.destroy_all
 Recipe.destroy_all
-Ingredient.destroy_all
+# Ingredient.destroy_all
 FollowersUser.destroy_all
 User.destroy_all
 
@@ -19,12 +20,12 @@ user1 = User.create!(email: "test1@test.com", password: "123456", user_name: "Ah
 user2 = User.create!(email: "test2@test.com", password: "123456", user_name: "Délia Knoepfli")
 user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pierre Songy")
 user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel Vernet")
-user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Cyril Lignac")
+user4 = User.create!(email: "test5@test.com", password: "123456", user_name: "Cyril Lignac")
 
 # # Create ingredients
-tomate = Ingredient.create(ingredient_name: "tomate")
-courgette = Ingredient.create(ingredient_name: "courgette")
-aubergine = Ingredient.create(ingredient_name: "aubergine")
+# tomate = Ingredient.create(ingredient_name: "tomate")
+# courgette = Ingredient.create(ingredient_name: "courgette")
+# aubergine = Ingredient.create(ingredient_name: "aubergine")
 
 # # Create recipes
 spaghetti = Recipe.create!(
@@ -178,11 +179,11 @@ test4.save!
 
 
 # # on rattache nos ingredients à toutes les recettes
-Recipe.all.each do |recipe|
-  RecipesIngredient.create(recipe: recipe, ingredient: tomate)
-  RecipesIngredient.create(recipe: recipe, ingredient: courgette)
-  RecipesIngredient.create(recipe: recipe, ingredient: aubergine)
-end
+# Recipe.all.each do |recipe|
+#   RecipesIngredient.create(recipe: recipe, ingredient: tomate)
+#   RecipesIngredient.create(recipe: recipe, ingredient: courgette)
+#   RecipesIngredient.create(recipe: recipe, ingredient: aubergine)
+# end
 
 
 
