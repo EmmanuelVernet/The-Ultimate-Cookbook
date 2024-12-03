@@ -15,9 +15,9 @@
     <% @recipes.last(3).each do |recipe| %>
       <swiper-slide class="swiper-slide-carousel-1">
         <div class="item-centrage">
-          <%= link_to recipe_path(recipe) do %>
+          <%# <%= link_to recipe_path(recipe) do %>
             <%= render partial: "components/card-overview", locals: { recipe: recipe } %>
-          <% end %>
+          <%# <% end %>
         </div>
       </swiper-slide>
     <% end %>
