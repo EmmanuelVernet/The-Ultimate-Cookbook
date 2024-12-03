@@ -5,7 +5,7 @@
 
   <div class="card-overview-image">
     <%# <%= image_tag(recipe.photo.attached? ? recipe.photo : "placeholder-image.jpg", alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
-    <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe" if recipe.photo.attached? %>
+    <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "img-defaut card-overview-image" if recipe.photo.attached? %>
  </div>
 
   <div class="card-overview-container-horizontal">
@@ -16,7 +16,7 @@
         <p class="card-overview-text"></p>
       </div>
       <div class="card-overview-container-line">
-        <i class="fa-solid fa-fire-burner card-overview-icone icon-couleur-bleu"></i>
+        <i class="fa-solid fa-fire card-overview-icone icon-couleur-bleu"></i>
         <p class="card-overview-text">20 min</p> <!-- Replace with actual calorie data if available -->
       </div>
     </div>
@@ -26,7 +26,7 @@
         <p class="card-overview-text"><%= recipe.difficulty %></p>
       </div>
       <div class="card-overview-container-line">
-        <i class="fa-solid fa-utensils card-overview-icone icon-couleur-bleu"></i>
+        <i class="fa-solid fa-users card-overview-icone icon-couleur-bleu"></i>
         <p class="card-overview-text"><%= recipe.servings %> pers.</p>
       </div>
     </div>
