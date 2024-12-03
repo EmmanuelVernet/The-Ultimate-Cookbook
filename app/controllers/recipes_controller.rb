@@ -95,32 +95,6 @@ class RecipesController < ApplicationController
     #       puts sanitized_content
 
 
-<<<<<<< HEAD
-        # Send extracted text to OpenAI for recipe parsing
-        chatgpt_response = client.chat(
-          parameters: {
-            model: "gpt-4o-mini",
-            messages: [
-              {
-                "role": "user",
-                "content": [
-                  {
-                    "type": "text",
-                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: :name (recipe's title), :recipe_overview (If there is a short description of the recipe), :category(if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients), :preparation_time (time to cook the recipe), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :calories (If there isn't a calorie count please extrapolate it from the ingredients's quantity) :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps, Please render it in french without intro message. Here is the image"
-                  },
-                  {
-                    "type": "image_url",
-                    "image_url": {
-                      "url": image_url
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        )
-        puts chatgpt_response
-=======
     #     # Populate recipe attributes
     #     parsed_data = eval(sanitized_content) # Use with caution! Only with trusted sources.
     #   # Populate recipe attributes
@@ -134,7 +108,6 @@ class RecipesController < ApplicationController
     #     servings: parsed_data[:servings],
     #     recipe_steps: parsed_data[:recipe_steps].join("\n")
     #   )
->>>>>>> master
 
     #   rescue JSON::ParserError => e
     #     Rails.logger.error("JSON parsing error: #{e.message}")
