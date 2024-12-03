@@ -32,12 +32,27 @@
       <!-- Profile Avatar -->
 
     <div class="nav-item dropdown mx-2">
-    
-       <% if user_signed_in? && current_user.profile_picture.attached? %>
-      <%= image_tag current_user.profile_picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "Profile picture" %>
-    <% else %>
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, alt: "Profile picture" %>
-    <% end %>
+
+  <% if user_signed_in? && current_user.profile_picture.attached? %>
+  <%= cl_image_tag current_user.profile_picture.key,
+                   transformation: [
+                     { width: 100, height: 100, crop: "fill", gravity: "face", radius: "max" }
+                   ],
+                   class: "avatar dropdown-toggle",
+                   id: "navbarDropdown",
+                   data: { bs_toggle: "dropdown" },
+                   'aria-haspopup': true,
+                   'aria-expanded': false,
+                   alt: "Profile picture" %>
+<% else %>
+<%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier",
+              class: "avatar dropdown-toggle",
+              id: "navbarDropdown",
+              data: { bs_toggle: "dropdown" },
+              'aria-haspopup': true,
+              'aria-expanded': false,
+              alt: "Default Profile Picture" %>
+<% end %>
 
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <% if user_signed_in? %>
