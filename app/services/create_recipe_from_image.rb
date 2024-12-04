@@ -7,15 +7,17 @@ class CreateRecipeFromImage
   def call
     @recipe = Recipe.new
     @recipe.photo.attach(@image)
-
+    @recipe.user = @user
+    @recipe.save
     
     if @recipe.photo.attached?
-    binding.pry
+    # binding.pry
       # Force public access for the image during upload
-      Cloudinary::Uploader.upload(@image.tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
+      # Cloudinary::Uploader.upload(@image.tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
 
       # Retrieve the public URL of the uploaded image
-      image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
+      image_url = @recipe.photo.url
+      # image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
 
       begin
 
@@ -90,7 +92,7 @@ class CreateRecipeFromImage
 
     @recipe.generate_dalle_image
     # @recipe = Recipe.create(recipe_params) => WARNING: will it break adding a recipe via form?
-    @recipe.user = @user # associate a user recipe to the current user
+    # @recipe.user = @user # associate a user recipe to the current user
     # TO DO => handle recipes for a current_user
     # @recipe = Recipe.create(recipe_params)
     @recipe.save!
