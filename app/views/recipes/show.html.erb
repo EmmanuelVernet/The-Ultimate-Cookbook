@@ -1,4 +1,6 @@
 <div class="container mb-4">
+
+  <div class="tab-content-t">
     <% if @recipe.photo.key %>
     <div class="img-defaut" style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
                 height: 300px;
@@ -43,51 +45,83 @@
     </div>
 
   <div class="d-flex justify-content-between align-items-center mx-3">
-    <p class="paragraph"><strong><i class="fa fa-tags"></i></strong>><% if @recipe.recipe_category %><%= @recipe.recipe_category.capitalize %><% else %><%= @recipe.recipe_category %><% end %></p>
+
     <p class="paragraph"><strong><i class="fa-regular fa-bell"></i></strong> <%= @recipe.preparation_time %> </p>
     <p class="paragraph"><strong><i class="fa fa-signal"></i></strong><% if @recipe.difficulty %><%= @recipe.difficulty.capitalize %><% else %><%= @recipe.difficulty %><% end %></p>
     <p class="paragraph"><strong><i class="fa fa-users"></i></strong> <%= @recipe.servings %></p>
-    <% if @recipe.tags.any? %>
-    <p class="paragraph"><strong><i class="fa fa-tag"></i> Tag: </strong><%= @recipe.tags.map(&:name).join(", ") %></p>
-    <% end %>
+  </div>
+
+  <div class="d-flex flex-wrap align-items-start mx-3">
+    <p class="paragraph">
+      <strong><i class="fa fa-tags"></i></strong>><% if @recipe.recipe_category %><%= @recipe.recipe_category.capitalize %><% else %><%= @recipe.recipe_category %><% end %>
+      <% if @recipe.tags.any? %>
+        , <%= @recipe.tags.map(&:name).join(", ") %>
+      <% end %>
+    </p>
   </div>
 
 
+
 <br>
+
+
+<div class="tab-content-m">
   <nav>
-    <div class="nav nav-tabs flex-nowrap overflow-auto" id="nav-tab" role="tablist">
+    <div class="nav nav-tabs flex-nowrap" id="nav-tab" role="tablist">
       <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
       <button class="nav-link" id="nav-ingredients-tab" data-bs-toggle="tab" data-bs-target="#nav-ingredients" type="button" role="tab" aria-controls="nav-ingredients" aria-selected="false">Ingrédients</button>
-      <button class="nav-link" id="nav-steps-tab" data-bs-toggle="tab" data-bs-target="#nav-steps" type="button" role="tab" aria-controls="nav-steps" aria-selected="false">Étapes à suivre</button>
+      <button class="nav-link" id="nav-steps-tab" data-bs-toggle="tab" data-bs-target="#nav-steps" type="button" role="tab" aria-controls="nav-steps" aria-selected="false">Étapes</button>
     </div>
   </nav>
   <br>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><%= @recipe.recipe_overview %></div>
 
-<div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab">
-  <ol>
+    <div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab">
+      <ol>
 
-   <%= raw(@formatted_ingredients) %>
-  </ol>
-</div>
+      <%= raw(@formatted_ingredients) %>
+      </ol>
+    </div>
 
-<div class="tab-pane fade" id="nav-steps" role="tabpanel" aria-labelledby="nav-steps-tab">
-  <ol>
-    <%= raw(@formatted_steps) %>
-  </ol>
-</div>
+    <div class="tab-pane fade" id="nav-steps" role="tabpanel" aria-labelledby="nav-steps-tab">
+      <ol>
+        <%= raw(@formatted_steps) %>
+      </ol>
+    </div>
+  </div>
 </div>
 <br>
 
-<div class="mb-4 d-flex justify-content-evenly flex-wrap">
+<div class="mb-5 d-flex justify-content-evenly flex-wrap">
     <%= link_to "Editer", edit_recipe_path, class: "btn-vert", style: "width: 100px" %>
     <%= link_to "Supprimer", recipe_path, data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn-marron", style: "width: 100px" %>
-    <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
+    <%# <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
 </div>
+
+<div class="mb-4 d-flex justify-content-center">
+
+    <div data-controller="toggle-share">
+      <i data-action="click->toggle-share#fire" class="fa-solid fa-share-nodes fa-2xl px-4" style="color: #0e5f65;"></i>
+      <div data-toggle-share-target="togglableElement" class="d-none">
+        <%= render "components/share-recipe" %>
+      </div>
+    </div>
+
+    <div data-controller="toggle-tag">
+      <i data-action="click->toggle-tag#fire" class="fa-solid fa-tags fa-2xl px-4" style="color: #0e5f65;" ></i>
+      <div data-toggle-tag-target="togglableElement" class="d-none">
+        <%= render "components/tag-recipe", recipe: @recipe, tag: @tag %>
+      </div>
+    </div>
+
+</div>
+
+</div>
+
     <%# partial for sharing a recipe %>
-      <%= render "components/share-recipe" %>
-      <%= render "components/tag-recipe", recipe: @recipe, tag: @tag %>
+
+<br>
       <br>
 </div>
 
