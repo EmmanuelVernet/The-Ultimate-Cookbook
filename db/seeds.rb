@@ -65,12 +65,12 @@ spaghetti.save!
 chicken = Recipe.create!(
   recipe_name: "Chicken Tikka Masala",
   recipe_overview: "Un curry riche et crémeux à base de tomates avec du poulet mariné.",
-  recipe_category: "Indian",
-  preparation_time: "01:00:00",
-  difficulty: "Hard",
+  recipe_category: "Indien",
+  preparation_time: "60 min.",
+  difficulty: "Difficile",
   import_source: "Cookbook",
   servings: 6,
-  recipe_steps: "Marinate chicken. Grill. Cook curry base. Combine.",
+  recipe_steps: "1 - Mariner le poulet. 2 - Griller. 3 - Cuire la base de curry. 4 - Mélanger.",
   recipe_likes: 200,
   favorite: false,
   user: user3
@@ -81,14 +81,14 @@ chicken.photo.attach(io: file2, filename: "chicken.jpg", content_type: "image/jp
 chicken.save!
 
 toast = Recipe.create!(
-  recipe_name: "Avocado Toast",
-  recipe_overview: "Quick and healthy breakfast or snack.",
-  recipe_category: "Breakfast",
+  recipe_name: "Toast à l'avocat",
+  recipe_overview: "Petit déjeuner ou en-cas rapide et sain.",
+  recipe_category: "Petit déjeuner",
   preparation_time: "10 min.",
-  difficulty: "Easy",
+  difficulty: "Facile",
   import_source: "Internet",
   servings: 1,
-  recipe_steps: "1 - Toast bread. 2 - Mash avocado. 3 - Spread. 4 - Add toppings.",
+  recipe_steps: "1 - Faire griller le pain. 2 - Ecraser l'avocat. 3 - Tartiner. 4 - Ajouter des garnitures.",
   recipe_likes: 85,
   favorite: true,
   user: user2
@@ -99,9 +99,9 @@ toast.photo.attach(io: file3, filename: "toast.jpg", content_type: "image/jpeg")
 toast.save!
 
 beef = Recipe.create!(
-  recipe_name: "Beef Stroganoff",
-  recipe_overview: "A hearty dish with tender beef in a creamy sauce.",
-  recipe_category: "Russian",
+  recipe_name: "Boeuf Stroganoff",
+  recipe_overview: "Un plat copieux avec du bœuf tendre dans une sauce crémeuse.",
+  recipe_category: "Russe",
   preparation_time: "45 min.",
   difficulty: "Medium",
   import_source: "Grandmother's Recipe",
