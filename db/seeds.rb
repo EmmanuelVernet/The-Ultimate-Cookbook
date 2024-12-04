@@ -8,34 +8,45 @@ require "nokogiri"
 require "open-uri"
 
 # Destroy existing records
-RecipesIngredient.destroy_all
+# RecipesIngredient.destroy_all
+# Ingredient.destroy_all
+Share.destroy_all
 Recipe.destroy_all
-Ingredient.destroy_all
 FollowersUser.destroy_all
 User.destroy_all
+Tag.destroy_all
 
 # # Create users
 user1 = User.create!(email: "test1@test.com", password: "123456", user_name: "Ahmed Mecherouk")
 user2 = User.create!(email: "test2@test.com", password: "123456", user_name: "Délia Knoepfli")
 user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pierre Songy")
 user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel Vernet")
-user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Cyril Lignac")
+user5 = User.create!(email: "test5@test.com", password: "123456", user_name: "Cyril Lignac")
+
+# # Seed tags
+Tag.create(name: "Healthy")
+Tag.create(name: "Vegan")
+Tag.create(name: "Light")
+Tag.create(name: "Gourmand")
+Tag.create(name: "Rapide")
+Tag.create(name: "Vitaminé")
+Tag.create(name: "")
 
 # # Create ingredients
-tomate = Ingredient.create(ingredient_name: "tomate")
-courgette = Ingredient.create(ingredient_name: "courgette")
-aubergine = Ingredient.create(ingredient_name: "aubergine")
+# tomate = Ingredient.create(ingredient_name: "tomate")
+# courgette = Ingredient.create(ingredient_name: "courgette")
+# aubergine = Ingredient.create(ingredient_name: "aubergine")
 
 # # Create recipes
 spaghetti = Recipe.create!(
   recipe_name: "Spaghetti Carbo",
   recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
   recipe_category: "Italian",
-  preparation_time: "00:25:00",
+  preparation_time: "25 min.",
   difficulty: "Medium",
   import_source: "Family Recipe",
   servings: 4,
-  recipe_steps: "Cook pasta. Fry pancetta. Mix eggs and cheese. Combine all.",
+  recipe_steps: "1 - Cook pasta. 2 - Fry pancetta. 3 - Mix eggs and cheese. Combine all.",
   recipe_likes: 120,
   favorite: true,
   user: user1
@@ -67,11 +78,11 @@ toast = Recipe.create!(
   recipe_name: "Avocado Toast",
   recipe_overview: "Quick and healthy breakfast or snack.",
   recipe_category: "Breakfast",
-  preparation_time: "00:10:00",
+  preparation_time: "10 min.",
   difficulty: "Easy",
   import_source: "Internet",
   servings: 1,
-  recipe_steps: "Toast bread. Mash avocado. Spread. Add toppings.",
+  recipe_steps: "1 - Toast bread. 2 - Mash avocado. 3 - Spread. 4 - Add toppings.",
   recipe_likes: 85,
   favorite: true,
   user: user2
@@ -85,11 +96,11 @@ beef = Recipe.create!(
   recipe_name: "Beef Stroganoff",
   recipe_overview: "A hearty dish with tender beef in a creamy sauce.",
   recipe_category: "Russian",
-  preparation_time: "00:45:00",
+  preparation_time: "45 min.",
   difficulty: "Medium",
   import_source: "Grandmother's Recipe",
   servings: 4,
-  recipe_steps: "Sauté beef. Make creamy sauce. Combine and simmer.",
+  recipe_steps: "1 - Sauté beef. 2 - Make creamy sauce. 3 - Combine and simmer.",
   recipe_likes: 150,
   favorite: true,
   user: user4
@@ -178,11 +189,11 @@ test4.save!
 
 
 # # on rattache nos ingredients à toutes les recettes
-Recipe.all.each do |recipe|
-  RecipesIngredient.create(recipe: recipe, ingredient: tomate)
-  RecipesIngredient.create(recipe: recipe, ingredient: courgette)
-  RecipesIngredient.create(recipe: recipe, ingredient: aubergine)
-end
+# Recipe.all.each do |recipe|
+#   RecipesIngredient.create(recipe: recipe, ingredient: tomate)
+#   RecipesIngredient.create(recipe: recipe, ingredient: courgette)
+#   RecipesIngredient.create(recipe: recipe, ingredient: aubergine)
+# end
 
 
 
@@ -225,10 +236,10 @@ file6 = URI.open("https://assets.afcdn.com/recipe/20160914/63596_w314h314c1cx200
 burger.photo.attach(io: file6, filename: "burger.jpg", content_type: "image/jpeg")
 burger.save!
 
-array_ingredients.each do |ingredient_name|
-  ingredient = Ingredient.find_or_create_by!(ingredient_name: ingredient_name)
-  RecipesIngredient.create!(recipe: burger, ingredient: ingredient)
-end
+# array_ingredients.each do |ingredient_name|
+#   ingredient = Ingredient.find_or_create_by!(ingredient_name: ingredient_name)
+#   RecipesIngredient.create!(recipe: burger, ingredient: ingredient)
+# end
 
 
 url2 = "https://www.marmiton.org/recettes/recette_gigot-de-sept-heures_12368.aspx"
@@ -267,10 +278,10 @@ file7 = URI.open("https://assets.afcdn.com/recipe/20160404/24205_w314h314c1cx150
 gigot.photo.attach(io: file7, filename: "gigot.jpg", content_type: "image/jpeg")
 gigot.save!
 
-array_ingredients1.each do |ingredient_name|
-  ingredient = Ingredient.find_or_create_by!(ingredient_name: ingredient_name)
-  RecipesIngredient.create!(recipe: gigot, ingredient: ingredient)
-end
+# array_ingredients1.each do |ingredient_name|
+#   ingredient = Ingredient.find_or_create_by!(ingredient_name: ingredient_name)
+#   RecipesIngredient.create!(recipe: gigot, ingredient: ingredient)
+# end
 
 
 puts "Finished! Created #{Recipe.count} recipes."

@@ -45,7 +45,7 @@ class RecipesController < ApplicationController
   def create
   #  rappel du job
     # puts"hello from controller recipe"
-    @recipe = Recipe.new
+    # @recipe = Recipe.new
     # @recipe.photo.attach(params[:photo])
     # if @recipe.photo.attached?
     #   # Force public access for the image during upload
@@ -129,20 +129,10 @@ class RecipesController < ApplicationController
 
     # @recipe.set_photo
 
-    @recipe = Recipe.create(recipe_params)
-    @recipe.user = current_user # associate a user recipe to the current user
-    # TO DO => handle recipes for a current_user
 
-    # CreateRecipeFromImageJob.perform_later(params[:photo], current_user)
     @recipe = CreateRecipeFromImage.new(params.dig(:recipe, :photo), current_user).call
-    # redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
-
-    if @recipe.save!
-      # RecipeContentJob.perform_later(@recipe.id)
-      redirect_to recipe_path(@recipe), notice: "Recipe successfully created!"
-    else
-      render :new, status: :unprocessable_entity
-    end
+    # @recipe = CreateRecipeFromImage.new(:recipe, recipe_params[:photo], current_user).call
+    redirect_to recipe_path(@recipe), notice: "Recette mise à jour!"
   end
 
 
@@ -182,7 +172,6 @@ class RecipesController < ApplicationController
     # store it in a variable and duplicate the recipe for the current user
     new_user_recipe = original_recipe.dup
     new_user_recipe.user_id = current_user.id
-
     if new_user_recipe.save
       redirect_to cookbook_recipes_path, notice: "Recette ajoutée!"
     else
@@ -196,11 +185,6 @@ class RecipesController < ApplicationController
     # ingredients_section = sections.find { |section| section.downcase.include?("ingredient") || section.downcase.include?("method")  }
     steps_section = sections.find { |section| section.downcase.include?("step") || section.downcase.include?("method") }
 
-
-
-
-    # Return ingredients and steps as an array, with steps as an array now
-    # [ingredients]
   end
 
   # bg-logic
@@ -216,7 +200,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo, :ingredients)
+    params.require(:recipe).permit(:recipe_name, :recipe_overview, :recipe_category, :preparation_time, :difficulty, :import_source, :servings, :recipe_steps, :recipe_likes, :favorite, :photo, :ingredients, :calories)
 
   end
 

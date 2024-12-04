@@ -7,16 +7,16 @@ class CreateRecipeFromImage
   def call
     @recipe = Recipe.new
     @recipe.photo.attach(@image)
-
+    
     if @recipe.photo.attached?
-    # Force public access for the image during upload
+      # Force public access for the image during upload
       Cloudinary::Uploader.upload(@image.tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
-
+      
       # Retrieve the public URL of the uploaded image
       image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
-
+      
       begin
-
+        
         # Initialize OpenAI client
         client = OpenAI::Client.new
 
@@ -48,6 +48,7 @@ class CreateRecipeFromImage
 
         # Extract the recipe content from GPT's response
         raw_content = chatgpt_response.dig("choices", 0, "message", "content")
+        
         if raw_content.blank?
           return
         end

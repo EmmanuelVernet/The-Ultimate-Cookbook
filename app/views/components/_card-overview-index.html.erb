@@ -3,15 +3,28 @@
   <div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
     <%# <div class="wrap d-flex justify-content-between"> %>
     <h4 class="card-overview-title"><%= recipe.recipe_name %></h4>
-      <i class="fa-solid fa-heart coeur icon-couleur-rouge"></i>
-    <%# </div> %>
-    <div class="card-overview-image">
-      <% if recipe.photo.key %>
-      <%# <%= cl_image_tag(recipe.photo.key, alt: "image recette", class: "img-defaut card-overview-image", id: "identifiant") %>
-      <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "img-defaut card-overview-image" if recipe.photo.attached? %>
 
-      <% end %>
+       <% if recipe.favorite %>
+    <div class="card-overview-image" style="position: relative;">
+      <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "img-defaut card-overview-image" if recipe.photo.attached? %>
+      <div style="position: absolute;
+                top: 5px;
+                right: 5px;
+                background: rgba(255, 255, 255, 0.7); /* White with transparency */
+                border-radius: 50%; /* Circular background */
+                width: 40px; /* Fixed width for perfect circle */
+                height: 40px; /* Fixed height for perfect circle */
+                display: flex;
+                justify-content: center;
+                align-items: center;">
+        <i class="fa-solid fa-heart coeur icon-couleur-rouge" style="color: red; font-size: 1.2rem;"></i>
+      </div>
     </div>
+  <% else %>
+    <div class="card-overview-image">
+      <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "img-defaut card-overview-image" if recipe.photo.attached? %>
+    </div>
+  <% end %>
 
       <div class="card-overview-container-horizontal">
         <div class="card-overview-container-column-left">
@@ -26,7 +39,7 @@
         </div>
         <div class="card-overview-container-column-right">
           <div class="card-overview-container-line">
-            <i class="fa-solid fa-star card-overview-icone icon-couleur-bleu"></i>
+            <i class="fa fa-signal card-overview-icone icon-couleur-bleu"></i>
             <p class="card-overview-text"><%= recipe.difficulty %></p>
           </div>
           <div class="card-overview-container-line">
