@@ -1,6 +1,6 @@
 
 <div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
-  <h4 class="card-overview-title"><%= recipe.recipe_name %></h4>
+  <h4 class="card-overview-title"><% if recipe.recipe_name %><%= recipe.recipe_name.capitalize %><% else %><%= recipe.recipe_name %><% end %></h4>
 
 
 
@@ -42,7 +42,7 @@
     <div class="card-overview-container-column-right">
       <div class="card-overview-container-line">
         <i class="fa fa-signal card-overview-icone icon-couleur-bleu"></i>
-        <p class="card-overview-text"><%= recipe.difficulty %></p>
+        <p class="card-overview-text"><% if recipe.difficulty %><%= recipe.difficulty.capitalize %><% else %><%= recipe.difficulty %><% end %></p>
       </div>
       <div class="card-overview-container-line">
         <i class="fa-solid fa-users card-overview-icone icon-couleur-bleu"></i>

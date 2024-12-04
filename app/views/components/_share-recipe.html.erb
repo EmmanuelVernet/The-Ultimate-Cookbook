@@ -4,7 +4,9 @@
     <%= f.association :receiver,
           collection: User.all.pluck(:user_name, :id),
           label: false,
-          prompt: 'Sélectionner un destinataire' %>
+          input_html: {data:{controller: "slim-select"}},
+          multiple: true
+          include_hidden: false %>
     <%= f.input :recipe_id,
           as: :hidden,
           input_html: { value: @recipe.id } %>

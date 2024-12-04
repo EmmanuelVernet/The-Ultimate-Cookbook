@@ -1,4 +1,15 @@
 
+<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= asset_path('A_cozy_and_inviting_banner_image_for_a_cookbook_ho_final.png') %>
+  <%# <div class="container"> %>
+    <%# <div id="titre-1" style="margin: 0 0">My Ultimate Cookbook</div> %>
+    <%# <div id="titre-2" style="margin: 0 0">Cookbook</div> %>
+    <%# <h5 id="banner-tagline">Toutes mes recettes sous le coude</h5> %>
+    <%# <div class="text-overlay"> %>
+      <%# <div id="sous-titre">Savourer chaque instant</div> %>
+      <%# <div id="sous-titre">Simple, facile et bon</div> %>
+    <%# </div>
+  </div>
+</div> %>
 
 
 
@@ -33,28 +44,40 @@
  <swiper-container class="mySwiper" pagination="" pagination-clickable="true" space-between="70" loop="true"
     slides-per-view="4">
     <swiper-slide>
+         <%= link_to recipes_path(query: "Healthy"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone"> Healthy</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Vegan"), class: "carousel-link" do %>
         <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
         <div class="text-carousel-icone"> Vegan</div>
+        <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Light"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Light</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Gourmand"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Gourmand</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Rapide"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone"> Rapide</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Vitaminé"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Vitaminé</div>
+      <% end %>
     </swiper-slide>
     <%# <div class="swiper-pagination"></div> <!-- Pagination ajoutée ici --> %>
   </swiper-container>

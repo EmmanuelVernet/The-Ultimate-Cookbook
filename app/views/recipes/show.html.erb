@@ -30,7 +30,7 @@
 
     <div class="d-flex justify-content-between align-items-center mx-3">
       <div>
-      <strong><em><%= @recipe.recipe_name %> </em></strong>
+      <strong><em><% if @recipe.recipe_name %><%= @recipe.recipe_name.capitalize %><% else %><%= @recipe.recipe_name %><% end %></em></strong>
       <% text = @recipe.user.user_name ? @recipe.user.user_name : "Anonymous User" %>
       <p class="paragraph">By <%= text %></p>
       </div>
@@ -45,14 +45,15 @@
     </div>
 
   <div class="d-flex justify-content-between align-items-center mx-3">
+
     <p class="paragraph"><strong><i class="fa-regular fa-bell"></i></strong> <%= @recipe.preparation_time %> </p>
-    <p class="paragraph"><strong><i class="fa fa-signal"></i></strong> <%= @recipe.difficulty %></p>
+    <p class="paragraph"><strong><i class="fa fa-signal"></i></strong><% if @recipe.difficulty %><%= @recipe.difficulty.capitalize %><% else %><%= @recipe.difficulty %><% end %></p>
     <p class="paragraph"><strong><i class="fa fa-users"></i></strong> <%= @recipe.servings %></p>
   </div>
 
   <div class="d-flex flex-wrap align-items-start mx-3">
     <p class="paragraph">
-      <strong><i class="fa fa-tags"></i></strong> <%= @recipe.recipe_category %>
+      <strong><i class="fa fa-tags"></i></strong>><% if @recipe.recipe_category %><%= @recipe.recipe_category.capitalize %><% else %><%= @recipe.recipe_category %><% end %>
       <% if @recipe.tags.any? %>
         , <%= @recipe.tags.map(&:name).join(", ") %>
       <% end %>
