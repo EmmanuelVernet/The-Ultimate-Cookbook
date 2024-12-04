@@ -4,5 +4,5 @@
 //= link_tree ../../../vendor/javascript .js
 //= link popper.js
 //= link bootstrap.min.js
-//= link manifest.json
 //= link atable.mp3
+//= link manifest.json

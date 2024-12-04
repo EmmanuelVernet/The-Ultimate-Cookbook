@@ -129,6 +129,7 @@ class RecipesController < ApplicationController
 
     # @recipe.set_photo
 
+
     @recipe = CreateRecipeFromImage.new(params.dig(:recipe, :photo), current_user).call
     # @recipe = CreateRecipeFromImage.new(:recipe, recipe_params[:photo], current_user).call
     redirect_to recipe_path(@recipe), notice: "Recette mise à jour!"
