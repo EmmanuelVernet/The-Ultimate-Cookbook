@@ -1,0 +1,6 @@
+# config/meta.yml
+meta_product_name: "The ultimate cookbook"
+meta_title: "Ne perdez plus vos recettes favorites!"
+meta_description: "Une app toutes vos recettes!"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account" # required for Twitter Cards

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Ultimate Cookbook</title>
+    <title><%= meta_title || "The Ultimate Cookbook" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<%= meta_description || "Discover the best recipes!" %>">
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,26 +12,37 @@
     <%= javascript_importmap_tags %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <%# mobile icons partial below %>
     <%= render 'shared/ios_pwa_links' %>
-    <%# <link rel="manifest" href="/manifest.json"> %>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title || "The Ultimate Cookbook" %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image || asset_path('default-meta-image.png') %>" />
+    <meta property="og:description" content="<%= meta_description || "Discover the best recipes!" %>" />
+    <meta property="og:site_name" content="<%= meta_title || "The Ultimate Cookbook" %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META['twitter_account'] || '@your_twitter_account' %>">
+    <meta name="twitter:title" content="<%= meta_title || "The Ultimate Cookbook" %>">
+    <meta name="twitter:description" content="<%= meta_description || "Discover the best recipes!" %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META['twitter_account'] || '@your_twitter_account' %>">
+    <meta name="twitter:image:src" content="<%= meta_image || asset_path('default-meta-image.png') %>">
   </head>
 
   <body style="padding-top:50px">
     <%= render "/components/navbar" %>
     <div class="background container-defaut">
-    <%= yield %>
+      <%= yield %>
       <%= render "shared/flashes" %>
-    <%= render "/components/footer" %>
+      <%= render "/components/footer" %>
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-  </body  style="padding-bottom:50px">
-
+  </body>
 </html>
