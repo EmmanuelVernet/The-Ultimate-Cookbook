@@ -128,7 +128,7 @@ class RecipesController < ApplicationController
     # puts @recipe.ingredients
 
     # @recipe.set_photo
-  
+
     @recipe = Recipe.create(recipe_params)
     @recipe.user = current_user # associate a user recipe to the current user
     # TO DO => handle recipes for a current_user
