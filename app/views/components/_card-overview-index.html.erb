@@ -2,7 +2,7 @@
 
   <div class="card-defaut m-3 card-overview-wrap" style="width: 18rem;">
     <%# <div class="wrap d-flex justify-content-between"> %>
-    <h4 class="card-overview-title"><%= recipe.recipe_name %></h4>
+    <h4 class="card-overview-title"><%= recipe.recipe_name.capitalize %></h4>
 
        <% if recipe.favorite %>
     <div class="card-overview-image" style="position: relative;">
@@ -40,7 +40,7 @@
         <div class="card-overview-container-column-right">
           <div class="card-overview-container-line">
             <i class="fa fa-signal card-overview-icone icon-couleur-bleu"></i>
-            <p class="card-overview-text"><%= recipe.difficulty %></p>
+            <p class="card-overview-text"><%= recipe.difficulty.capitalize %></p>
           </div>
           <div class="card-overview-container-line">
             <i class="fa-solid fa-users card-overview-icone icon-couleur-bleu"></i>
