@@ -23,14 +23,20 @@ user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pi
 user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel Vernet")
 user5 = User.create!(email: "test5@test.com", password: "123456", user_name: "Cyril Lignac")
 
+# # User picture cloudinary => upload, parse uri, rattach to user, save // OU // direct dans les assets
+
 # # Seed tags
-Tag.create(name: "Healthy")
-Tag.create(name: "Vegan")
-Tag.create(name: "Light")
-Tag.create(name: "Gourmand")
-Tag.create(name: "Rapide")
-Tag.create(name: "Vitaminé")
-Tag.create(name: "")
+Tag.create!(name: "Healthy")
+Tag.create!(name: "Vegan")
+Tag.create!(name: "Light")
+Tag.create!(name: "Gourmand")
+Tag.create!(name: "Rapide")
+Tag.create!(name: "Vitaminé")
+Tag.create!(name: "Légumes")
+Tag.create!(name: "Italien")
+Tag.create!(name: "Dessert")
+Tag.create!(name: "Copieux")
+Tag.create!(name: "Français")
 
 # # Create ingredients
 # tomate = Ingredient.create(ingredient_name: "tomate")
@@ -40,13 +46,13 @@ Tag.create(name: "")
 # # Create recipes
 spaghetti = Recipe.create!(
   recipe_name: "Spaghetti Carbo",
-  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-  recipe_category: "Italian",
+  recipe_overview: "Un plat de pâtes italien classique à base d'œufs, de fromage, de pancetta et de poivre.",
+  recipe_category: "Italien",
   preparation_time: "25 min.",
-  difficulty: "Medium",
-  import_source: "Family Recipe",
+  difficulty: "Moyen",
+  import_source: "Recette de famille",
   servings: 4,
-  recipe_steps: "1 - Cook pasta. 2 - Fry pancetta. 3 - Mix eggs and cheese. Combine all.",
+  recipe_steps: "1 - Cuire les pâtes. 2 - Faire revenir la pancetta. 3 - Mélanger les œufs et le fromage. 4 - Mélanger le tout.",
   recipe_likes: 120,
   favorite: true,
   user: user1
@@ -58,7 +64,7 @@ spaghetti.save!
 
 chicken = Recipe.create!(
   recipe_name: "Chicken Tikka Masala",
-  recipe_overview: "A rich and creamy tomato-based curry with marinated chicken.",
+  recipe_overview: "Un curry riche et crémeux à base de tomates avec du poulet mariné.",
   recipe_category: "Indian",
   preparation_time: "01:00:00",
   difficulty: "Hard",
