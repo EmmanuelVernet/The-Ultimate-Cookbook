@@ -8,6 +8,7 @@ class CreateRecipeFromImage
     @recipe = Recipe.new
     @recipe.photo.attach(@image)
 
+    
     if @recipe.photo.attached?
       # Force public access for the image during upload
       Cloudinary::Uploader.upload(@image.tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
@@ -31,7 +32,7 @@ class CreateRecipeFromImage
                 "content": [
                   {
                     "type": "text",
-                    "text": " Analyze the image find the informations about the recipe image sent and respond with a Ruby hash containing the following keys: :name (format title max 19 characters, crop if necessary), :recipe_overview (If there is a short description of the recipe), :category (if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients),  :preparation_time (time to cook the recipe (ex format: 1 h, 3 min, 1 h30)), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe (format: facile, moyen, difficile)), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients (format: 3 pers.)) :recipe_steps, Please render it in french without intro message. Here is the image"
+                    "text": " Analyze the image find the informations about the recipe image sent and respond with a Ruby hash containing the following keys: :name (format title max 19 characters, crop if necessary), :recipe_overview (If there is a short description of the recipe), :category (if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients),  :preparation_time (time to cook the recipe (ex format: 1 h, 3 min, 1 h30)), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe (format: Facile, Moyen, Difficile)), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients (format: 3 pers.)) :recipe_steps, Please render it in french without intro message. Here is the image"
                   },
                   {
                     "type": "image_url",
