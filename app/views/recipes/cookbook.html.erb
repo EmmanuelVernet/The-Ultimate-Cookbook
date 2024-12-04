@@ -8,10 +8,35 @@
   <div style="margin-left: 15px; margin-right: 15px">
         <form class="d-flex w-100 custom-search" action="/recipes" accept-charset="UTF-8" method="get" data-dashlane-rid="bc0b773e9ec93a31">
                 <input type="text" name="query" id="query" class="form-control w-100" placeholder="De quoi avez-vous envie aujourd'hui ?" data-dashlane-rid="6556b9238eb00112">
-                <input type="submit" name="" value="Search" class="btn-vert" data-disable-with="Search" data-dashlane-rid="b93e4c51b3942aeb">
+                <input type="submit" name="" value="Go" class="btn-vert" data-disable-with="Search" data-dashlane-rid="b93e4c51b3942aeb">
         </form>
   </div>
 </div>
+
+
+
+<%# ------------- Mots clés ---------------- %>
+
+<div class="container-division" style="margin: 15px">
+  <div class="item-centrage" data-controller="search">
+
+    <%= simple_form_for :search, url: recipes_path, method: :get, turbo_method: :get, data: { target: "search.form" } do |f| %>
+
+      <%= f.input :keyword,
+        as: :check_boxes,
+        include_hidden: false,
+        include_blank: false,
+        multiple: true,
+        checked: params.dig(:search, :keyword),
+        collection: ["Viande", "Légumes", "Français", "Italian", "Dessert", "Gourmand", "Copieux"],
+        input_html: { class: "tag-selector", data: { target: "search.checkbox" } },
+        item_wrapper_class: 'tag-item',
+        legend_tag: false %>
+
+    <% end %>
+  </div>
+</div>
+
 
 <%# ------------- Liste ---------------- %>
 
