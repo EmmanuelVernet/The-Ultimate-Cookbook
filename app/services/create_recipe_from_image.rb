@@ -10,6 +10,7 @@ class CreateRecipeFromImage
 
     
     if @recipe.photo.attached?
+    binding.pry
       # Force public access for the image during upload
       Cloudinary::Uploader.upload(@image.tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
 
