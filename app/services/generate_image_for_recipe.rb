@@ -6,7 +6,7 @@ class GenerateImageForRecipe
   def call
     client = OpenAI::Client.new
     response = client.images.generate(parameters: {
-      prompt: "A recipe image of #{@recipe.recipe_name} It must look appetizing, try to find images that can fit little spaces", size: "256x256"
+      prompt: "Create an appetizing, high-quality recipe image for a dish named #{@recipe.recipe_name}. The image should showcase the dish in a realistic setting, with proper lighting, garnishes, and presentation. Ensure the dish appears freshly cooked and visually appealing, without human presence and that the image is suitable for small spaces like thumbnails or mobile screens. Highlight the key ingredients and colors associated with the recipe if possible.", size: "256x256"
     })
 
     url = response["data"][0]["url"]
