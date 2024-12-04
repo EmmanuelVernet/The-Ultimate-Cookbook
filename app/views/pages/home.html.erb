@@ -44,28 +44,40 @@
  <swiper-container class="mySwiper" pagination="" pagination-clickable="true" space-between="70" loop="true"
     slides-per-view="4">
     <swiper-slide>
+         <%= link_to recipes_path(query: "Healthy"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone"> Healthy</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Vegan"), class: "carousel-link" do %>
         <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
         <div class="text-carousel-icone"> Vegan</div>
+        <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Light"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Light</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Gourmand"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Gourmand</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Rapide"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone"> Rapide</div>
+      <% end %>
     </swiper-slide>
     <swiper-slide>
+       <%= link_to recipes_path(query: "Vitaminé"), class: "carousel-link" do %>
       <i class="icon-carousel item-centrage fa-solid fa-tag" style="font-size: 120px;"></i>
       <div class="text-carousel-icone">Vitaminé</div>
+      <% end %>
     </swiper-slide>
     <%# <div class="swiper-pagination"></div> <!-- Pagination ajoutée ici --> %>
   </swiper-container>
