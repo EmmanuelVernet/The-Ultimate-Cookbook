@@ -58,3 +58,83 @@ padding-right: 20px;
   padding-left: 14px;
   font-size: 16px;
 }
+
+.d-flex.flex-wrap {
+  word-wrap: break-word; /* Permet au contenu de passer à la ligne */
+  line-height: 1.5; /* Ajustez la hauteur des lignes pour la lisibilité */
+}
+
+.paragraph {
+  // margin-bottom: 0; /* Évite un espace excessif sous les paragraphes */
+  word-break: break-word; /* Permet de casser les mots si nécessaire */
+}
+
+// --------------
+
+
+/* Cadre autour de l'ensemble des onglets */
+// .nav-tabs {
+//   border: 2px solid #d1d1d1; /* Couleur et épaisseur de la bordure */
+//   border-radius: 8px; /* Coins arrondis */
+//   background-color: #f9f9f9; /* Couleur de fond */
+//   padding: 5px; /* Espacement interne */
+// }
+
+/* Style des onglets individuels */
+// .nav-tabs .nav-link {
+//   border: 1px solid #ccc; /* Bordure des onglets */
+//   border-radius: 5px; /* Coins arrondis des onglets */
+//   margin-right: 5px; /* Espacement entre les onglets */
+//   color: #333; /* Couleur du texte des onglets */
+//   background-color: #fff; /* Fond des onglets inactifs */
+//   transition: all 0.3s ease; /* Transition pour un effet plus fluide */
+// }
+
+/* Onglet actif */
+.nav-tabs .nav-link.active {
+  background-color: #0e5f65; /* Fond de l'onglet actif */
+  color: white;
+  // color: #f8e49c; /* Couleur du texte de l'onglet actif */
+  // border-color: #007bff; /* Bordure de l'onglet actif */
+}
+
+/* Survol des onglets */
+.nav-tabs .nav-link:hover {
+  background-color: #0e5f65; /* Fond au survol */
+  color: white; /* Texte au survol */
+}
+
+// /* Cadre du contenu de l'onglet */
+.tab-content-m {
+  border: 2px solid #d1d1d1; /* Bordure autour du contenu */
+  border-radius: 8px; /* Coins arrondis */
+  // background-color: #fff; /* Fond */
+  padding: 15px; /* Espacement interne */
+  margin-top: -1px; /* Évite une double bordure avec les onglets */
+}
+
+
+// -------------
+
+
+/* Cadre du contenu de l'onglet */
+.tab-content-t {
+  border: 2px solid #69330f; /* Bordure autour du contenu */
+  border-radius: 8px; /* Coins arrondis */
+  // background-color: #f8e49c; /* Fond */
+  box-shadow: 0 0 8px rgba(255, 181, 94, 1);
+  padding: 15px; /* Espacement interne */
+  margin-top: -1px; /* Évite une double bordure avec les onglets */
+}
+
+.nav-link {
+  display: block;
+  padding: 9px;
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: var(--bs-nav-link-color);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}

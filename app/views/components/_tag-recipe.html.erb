@@ -1,14 +1,14 @@
 <div class="container">
-  <h1>Ajouter un tag</h1>
+  <%# <h1>Ajouter un tag</h1> %>
   <%= form_with url: recipe_tags_recipes_path(@recipe) do |form| %>
     <%= form.select :name, Tag.all.collect { |p| [ p.name, p.id ] } %>
     <%= form.submit 'Ajouter un tag', class: "btn btn-primary w-100" %>
   <% end %>
   <% if false %>
   <%= simple_form_for @tags_recipe, url: recipe_tags_recipe_index_path(@recipe), method: :post do |f| %>
-    <%= f.input :name, 
-                as: :select, 
-                collection: ["Healthy", "Vegan", "Light", "Gourmand", "Rapide", "Vitamine"], 
+    <%= f.input :name,
+                as: :select,
+                collection: ["Healthy", "Vegan", "Light", "Gourmand", "Rapide", "Vitamine"],
                 prompt: "Choisir un tag" %>
     <p><strong>Recette: </strong><%= @recipe.recipe_name %></p>
     <%= f.button :submit, 'Ajouter un tag', class: "btn btn-primary w-100" %>
