@@ -53,7 +53,7 @@
 
   <div class="d-flex flex-wrap align-items-start mx-3">
     <p class="paragraph">
-      <strong><i class="fa fa-tags"></i></strong>><% if @recipe.recipe_category %><%= @recipe.recipe_category.capitalize %><% else %><%= @recipe.recipe_category %><% end %>
+      <strong><i class="fa fa-tags"></i></strong> <% if @recipe.recipe_category %><%= @recipe.recipe_category.capitalize %><% else %><%= @recipe.recipe_category %><% end %>
       <% if @recipe.tags.any? %>
         , <%= @recipe.tags.map(&:name).join(", ") %>
       <% end %>
