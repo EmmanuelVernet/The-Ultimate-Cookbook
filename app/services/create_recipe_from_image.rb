@@ -7,16 +7,16 @@ class CreateRecipeFromImage
   def call
     @recipe = Recipe.new
     @recipe.photo.attach(@image)
-    
+
     if @recipe.photo.attached?
       # Force public access for the image during upload
       Cloudinary::Uploader.upload(@image.tempfile, public_id: @recipe.photo.filename.to_s, access_mode: 'public')
-      
+
       # Retrieve the public URL of the uploaded image
       image_url = Cloudinary::Utils.cloudinary_url(@recipe.photo.filename.to_s, format: :jpg)
-      
+
       begin
-        
+
         # Initialize OpenAI client
         client = OpenAI::Client.new
 
@@ -31,7 +31,7 @@ class CreateRecipeFromImage
                 "content": [
                   {
                     "type": "text",
-                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: :name (recipe's title), :recipe_overview (If there is a short description of the recipe), :category(if there is a category starter, main course, otherwise extrapolate one), :ingredients (as an array of ingredients), :preparation_time (time to cook the recipe), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps, Please render it in french without intro message. Here is the image"
+                    "text": " Analyze the image and respond with a Ruby hash containing the following keys: name: (recipe's title max 19 characters), recipe_overview: (If there is a short description of the recipe), category: (if there is a category starter, main course, otherwise extrapolate one), ingredients: (as an array of ingredients),  preparation_time (time to cook the recipe, if less than 1hour, give the time in minutes write 'min' (eg: 30 min ), if in hour write 'h' as mesure (eg : 1h30 ) ), :difficulty (if there is a precision of the difficulty, otherwise extrapolate one in base of the complexity of the recipe), :servings (if there is the number of servings for this recipe otherwise extrapolate one, in base of the quantity of ingredients) :recipe_steps, Please render it in french without intro message. Here is the image"
                   },
                   {
                     "type": "image_url",
@@ -48,7 +48,7 @@ class CreateRecipeFromImage
 
         # Extract the recipe content from GPT's response
         raw_content = chatgpt_response.dig("choices", 0, "message", "content")
-        
+
         if raw_content.blank?
           return
         end
