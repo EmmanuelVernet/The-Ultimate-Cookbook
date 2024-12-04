@@ -10,3 +10,4 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "search_tags", to: "search_tags.js"
 
 pin "stimulus", to: "stimulus.min.js", preload: true
+pin "slim-select" # @2.10.0

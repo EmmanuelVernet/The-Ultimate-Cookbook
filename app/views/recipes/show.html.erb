@@ -28,7 +28,7 @@
 
     <div class="d-flex justify-content-between align-items-center mx-3">
       <div>
-      <strong><em><%= @recipe.recipe_name %> </em></strong>
+      <strong><em><%= @recipe.recipe_name.capitalize %> </em></strong>
       <% text = @recipe.user.user_name ? @recipe.user.user_name : "Anonymous User" %>
       <p class="paragraph">By <%= text %></p>
       </div>
@@ -43,9 +43,9 @@
     </div>
 
   <div class="d-flex justify-content-between align-items-center mx-3">
-    <p class="paragraph"><strong><i class="fa fa-tags"></i></strong> <%= @recipe.recipe_category %></p>
+    <p class="paragraph"><strong><i class="fa fa-tags"></i></strong> <%= @recipe.recipe_category.capitalize %></p>
     <p class="paragraph"><strong><i class="fa-regular fa-bell"></i></strong> <%= @recipe.preparation_time %> </p>
-    <p class="paragraph"><strong><i class="fa fa-signal"></i></strong> <%= @recipe.difficulty %></p>
+    <p class="paragraph"><strong><i class="fa fa-signal"></i></strong> <%= @recipe.difficulty.capitalize %></p>
     <p class="paragraph"><strong><i class="fa fa-users"></i></strong> <%= @recipe.servings %></p>
     <% if @recipe.tags.any? %>
     <p class="paragraph"><strong><i class="fa fa-tag"></i> Tag: </strong><%= @recipe.tags.map(&:name).join(", ") %></p>
