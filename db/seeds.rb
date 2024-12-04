@@ -23,14 +23,20 @@ user3 = User.create!(email: "test3@test.com", password: "123456", user_name: "Pi
 user4 = User.create!(email: "test4@test.com", password: "123456", user_name: "Emmanuel Vernet")
 user5 = User.create!(email: "test5@test.com", password: "123456", user_name: "Cyril Lignac")
 
+# # User picture cloudinary => upload, parse uri, rattach to user, save // OU // direct dans les assets
+
 # # Seed tags
-Tag.create(name: "Healthy")
-Tag.create(name: "Vegan")
-Tag.create(name: "Light")
-Tag.create(name: "Gourmand")
-Tag.create(name: "Rapide")
-Tag.create(name: "Vitaminé")
-Tag.create(name: "")
+Tag.create!(name: "Healthy")
+Tag.create!(name: "Vegan")
+Tag.create!(name: "Light")
+Tag.create!(name: "Gourmand")
+Tag.create!(name: "Rapide")
+Tag.create!(name: "Vitaminé")
+Tag.create!(name: "Légumes")
+Tag.create!(name: "Italien")
+Tag.create!(name: "Dessert")
+Tag.create!(name: "Copieux")
+Tag.create!(name: "Français")
 
 # # Create ingredients
 # tomate = Ingredient.create(ingredient_name: "tomate")
@@ -40,13 +46,13 @@ Tag.create(name: "")
 # # Create recipes
 spaghetti = Recipe.create!(
   recipe_name: "Spaghetti Carbo",
-  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-  recipe_category: "Italian",
+  recipe_overview: "Un plat de pâtes italien classique à base d'œufs, de fromage, de pancetta et de poivre.",
+  recipe_category: "Italien",
   preparation_time: "25 min.",
-  difficulty: "Medium",
-  import_source: "Family Recipe",
+  difficulty: "Moyen",
+  import_source: "Recette de famille",
   servings: 4,
-  recipe_steps: "1 - Cook pasta. 2 - Fry pancetta. 3 - Mix eggs and cheese. Combine all.",
+  recipe_steps: "1 - Cuire les pâtes. 2 - Faire revenir la pancetta. 3 - Mélanger les œufs et le fromage. 4 - Mélanger le tout.",
   recipe_likes: 120,
   favorite: true,
   user: user1
@@ -58,13 +64,13 @@ spaghetti.save!
 
 chicken = Recipe.create!(
   recipe_name: "Chicken Tikka Masala",
-  recipe_overview: "A rich and creamy tomato-based curry with marinated chicken.",
-  recipe_category: "Indian",
-  preparation_time: "01:00:00",
-  difficulty: "Hard",
+  recipe_overview: "Un curry riche et crémeux à base de tomates avec du poulet mariné.",
+  recipe_category: "Indien",
+  preparation_time: "60 min.",
+  difficulty: "Difficile",
   import_source: "Cookbook",
   servings: 6,
-  recipe_steps: "Marinate chicken. Grill. Cook curry base. Combine.",
+  recipe_steps: "1 - Mariner le poulet. 2 - Griller. 3 - Cuire la base de curry. 4 - Mélanger.",
   recipe_likes: 200,
   favorite: false,
   user: user3
@@ -75,14 +81,14 @@ chicken.photo.attach(io: file2, filename: "chicken.jpg", content_type: "image/jp
 chicken.save!
 
 toast = Recipe.create!(
-  recipe_name: "Avocado Toast",
-  recipe_overview: "Quick and healthy breakfast or snack.",
-  recipe_category: "Breakfast",
+  recipe_name: "Toast à l'avocat",
+  recipe_overview: "Petit déjeuner ou en-cas rapide et sain.",
+  recipe_category: "Petit déjeuner",
   preparation_time: "10 min.",
-  difficulty: "Easy",
+  difficulty: "Facile",
   import_source: "Internet",
   servings: 1,
-  recipe_steps: "1 - Toast bread. 2 - Mash avocado. 3 - Spread. 4 - Add toppings.",
+  recipe_steps: "1 - Faire griller le pain. 2 - Ecraser l'avocat. 3 - Tartiner. 4 - Ajouter des garnitures.",
   recipe_likes: 85,
   favorite: true,
   user: user2
@@ -93,14 +99,14 @@ toast.photo.attach(io: file3, filename: "toast.jpg", content_type: "image/jpeg")
 toast.save!
 
 beef = Recipe.create!(
-  recipe_name: "Beef Stroganoff",
-  recipe_overview: "A hearty dish with tender beef in a creamy sauce.",
-  recipe_category: "Russian",
+  recipe_name: "Boeuf Stroganoff",
+  recipe_overview: "Un plat copieux avec du bœuf tendre dans une sauce crémeuse.",
+  recipe_category: "Russe",
   preparation_time: "45 min.",
-  difficulty: "Medium",
-  import_source: "Grandmother's Recipe",
+  difficulty: "Moyen",
+  import_source: "Recette de grand-mère",
   servings: 4,
-  recipe_steps: "1 - Sauté beef. 2 - Make creamy sauce. 3 - Combine and simmer.",
+  recipe_steps: "1 - Faire sauter le bœuf. 2 - Préparer une sauce crémeuse. 3 - Mélanger et laisser mijoter.",
   recipe_likes: 150,
   favorite: true,
   user: user4
@@ -169,14 +175,14 @@ test3.photo.attach(io: file1, filename: "spaghetti.jpg", content_type: "image/jp
 test3.save!
 
 test4 = Recipe.create!(
-  recipe_name: "Test 4",
-  recipe_overview: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-  recipe_category: "Italian",
-  preparation_time: "00:25:00",
-  difficulty: "Medium",
-  import_source: "Family Recipe",
+  recipe_name: "Pancetta",
+  recipe_overview: "Un plat de pâtes italien classique à base d'œufs, de fromage, de pancetta et de poivre.",
+  recipe_category: "Italien",
+  preparation_time: "25 min.",
+  difficulty: "Moyen",
+  import_source: "Recette familiale",
   servings: 4,
-  recipe_steps: "Cook pasta. Fry pancetta. Mix eggs and cheese. Combine all.",
+  recipe_steps: "1 - Cuire les pâtes. 2 - Faire revenir la pancetta. 3 - Mélanger les œufs et le fromage. 3 - Mélanger le tout.",
   recipe_likes: 120,
   favorite: true,
   user: user1
@@ -222,7 +228,7 @@ burger = Recipe.create!(
   recipe_name: recipe.search(".main-title h1").text.strip,
   recipe_overview: "Le burger d'avocat est une variante innovante et saine du burger traditionnel, où les pains sont remplacés par des moitiés d'avocat",
   recipe_category: "burger",
-  preparation_time: "00:#{minutes}:00",
+  preparation_time: "#{minutes} min.",
   difficulty: recipe.search(".recipe-primary .recipe-primary__item")[1].text.strip,
   import_source: "marmiton",
   servings: recipe.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
@@ -264,7 +270,7 @@ gigot = Recipe.create!(
   recipe_name: recipe1.search(".main-title h1").text.strip,
   recipe_overview: "Le gigot de 7 heures est une recette traditionnelle française, souvent considérée comme incontournable pour des occasions spéciales comme Pâques. Ce plat tire son nom de sa cuisson lente, permettant à l'agneau de devenir si tendre qu'il peut être servi à la cuillère.",
   recipe_category: "viande",
-  preparation_time: "00:#{minutes1}:00",
+  preparation_time: "#{minutes1} min.",
   difficulty: recipe1.search(".recipe-primary .recipe-primary__item")[1].text.strip,
   import_source: "marmiton",
   servings: recipe1.search(".mrtn-recette_ingredients-counter")[0].attributes["data-servingsnb"].value.to_i,
