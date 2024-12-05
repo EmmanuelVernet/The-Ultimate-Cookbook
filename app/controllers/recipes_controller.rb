@@ -169,11 +169,10 @@ class RecipesController < ApplicationController
   def add_to_cookbook
     # get the recipe by ID
     original_recipe = Recipe.find(params[:id])
-
     # store it in a variable and duplicate the recipe for the current user
     new_user_recipe = original_recipe.dup
     new_user_recipe.user_id = current_user.id
-    
+    new_user_recipe.photo.attach(original_recipe.photo.blob) if original_recipe.photo.attached?
     if new_user_recipe.save
       redirect_to cookbook_recipes_path, notice: "Recette ajoutée!"
     else
