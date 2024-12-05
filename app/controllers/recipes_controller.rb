@@ -164,6 +164,17 @@ class RecipesController < ApplicationController
   def cookbook
     @recipes = current_user.recipes # cookbook action for a loged in user
     @recipes = current_user.recipes.order(created_at: :desc)
+
+    if params[:query].present?
+      @recipes = Recipe.search_by_all_attributes(params[:query])
+    elsif params.dig(:search, :keyword)
+      @recipes = Recipe.search_by_all_attributes(params.dig(:search, :keyword))
+    else
+      @recipes = Recipe.all
+    end
+
+
+
   end
 
   def add_to_cookbook
