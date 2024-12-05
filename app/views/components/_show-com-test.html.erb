@@ -1,0 +1,106 @@
+<div class="container mb-4">
+    <% if @recipe.photo.key %>
+    <div class="img-defaut" style="background-image: url('<%= cl_image_path(@recipe.photo.key) %>');
+                height: 300px;
+                width: 100%;
+                background-size: cover;
+                background-position: center;
+                position: relative;">
+        <div style="position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;">
+          <i class="fa-solid fa-thumbs-up" style="margin-right: 5px; color: white;"></i>
+          <%# <i class="fa-solid fa-thumbs-up"></i> %>
+          <%= @recipe.recipe_likes %>
+        </div>
+    </div>
+    <% end %>
+
+
+    <br>
+    <%# <p class="paragraph"><strong>Likes:</strong> <%= @recipe.recipe_likes %>
+
+    <div class="d-flex justify-content-between align-items-center mx-3">
+      <div>
+      <strong><em><%= @recipe.recipe_name %> </em></strong>
+      <% if @recipe.user != current_user %>
+      <% text = @recipe.user.user_name ? @recipe.user.user_name : "Anonymous User" %>
+      <p class="paragraph">By <%= text %></p>
+      <% end %>
+      </div>
+
+      <h2>
+        <% if @recipe.favorite %>
+          <i class="fa fa-heart text-danger"></i> <!-- Filled red heart -->
+        <% else %>
+          <i class="fa fa-heart-o" style="color: #444;"></i> <!-- Empty heart -->
+        <% end %>
+      </h2>
+    </div>
+
+  <div class="d-flex justify-content-between align-items-center mx-3">
+    <p class="paragraph"><strong><i class="fa fa-tags"></i></strong> <%= @recipe.recipe_category %></p>
+    <p class="paragraph"><strong><i class="fa-regular fa-bell"></i></strong> <%= @recipe.preparation_time %> </p>
+    <p class="paragraph"><strong><i class="fa fa-signal"></i></strong> <%= @recipe.difficulty %></p>
+    <p class="paragraph"><strong><i class="fa fa-users"></i></strong> <%= @recipe.servings %></p>
+    <% if @recipe.tags.any? %>
+    <p class="paragraph"><strong><i class="fa fa-tag"></i> Tag: </strong><%= @recipe.tags.map(&:name).join(", ") %></p>
+    <% end %>
+  </div>
+
+
+<br>
+  <nav>
+    <div class="nav nav-tabs flex-nowrap overflow-auto" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Description</button>
+      <button class="nav-link" id="nav-ingredients-tab" data-bs-toggle="tab" data-bs-target="#nav-ingredients" type="button" role="tab" aria-controls="nav-ingredients" aria-selected="false">Ingrédients</button>
+      <button class="nav-link" id="nav-steps-tab" data-bs-toggle="tab" data-bs-target="#nav-steps" type="button" role="tab" aria-controls="nav-steps" aria-selected="false">Étapes à suivre</button>
+    </div>
+  </nav>
+  <br>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><%= @recipe.recipe_overview %></div>
+
+<div class="tab-pane fade" id="nav-ingredients" role="tabpanel" aria-labelledby="nav-ingredients-tab">
+  <ol>
+
+   <%= raw(@formatted_ingredients) %>
+  </ol>
+</div>
+
+<div class="tab-pane fade" id="nav-steps" role="tabpanel" aria-labelledby="nav-steps-tab">
+  <ol>
+    <%= raw(@formatted_steps) %>
+  </ol>
+</div>
+</div>
+<br>
+  <% if @recipe.user == current_user %>
+<div class="mb-4 d-flex justify-content-evenly flex-wrap">
+    <%= link_to "Editer", edit_recipe_path, class: "btn-vert", style: "width: 100px" %>
+    <%= link_to "Supprimer", recipe_path, data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn-marron", style: "width: 100px" %>
+    <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
+</div>
+<% else %>
+<div class="mb-4 d-flex justify-content-evenly flex-wrap">
+
+    <%= link_to "Ajouter à mon cookbook", add_to_cookbook_recipe_path(@recipe),
+                data: { turbo_method: :post, confirm: "Êtes vous sûr?" },
+                class: "btn-vert",
+                style: "width: 100px" %>
+    <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
+</div>
+<% end %>
+    <%# partial for sharing a recipe %>
+      <%= render "components/share-recipe" %>
+      <%= render "components/tag-recipe", recipe: @recipe, tag: @tag %>
+      <br>
+</div>
+
+</div>
