@@ -5,6 +5,7 @@
           collection: User.all.pluck(:user_name, :id),
           input_html: {data:{controller: "slim-select"}},
           label: false,
+          prompt: "Destinataire",
           multiple: false,
           include_hidden: false %>
     <%= f.input :recipe_id,
