@@ -1,17 +1,17 @@
-<div class="container mb-3">
-  <h1>Partager la recette</h1>
+<div class="container">
+  <%# <h1>Partager la recette</h1> %>
   <%= simple_form_for @share do |f| %>
     <%= f.association :receiver,
           collection: User.all.pluck(:user_name, :id),
           input_html: {data:{controller: "slim-select"}},
-          multiple: true,
-          label: 'Destinataire',
+          label: false,
+          multiple: false,
           include_hidden: false %>
     <%= f.input :recipe_id,
           as: :hidden,
           input_html: { value: @recipe.id } %>
-    <p><strong>Recette: </strong><%= @recipe.recipe_name %></p>
-    <%= f.input :message, label: 'Message' %>
-    <%= f.button :submit, 'Partager!', class: "btn btn-primary w-100" %>
+    <%# <p><strong>Recette: </strong><%= @recipe.recipe_name %>
+    <%= f.input :message, label: false, placeholder: 'Écrivez un message ici...'%>
+    <%= f.button :submit, 'Partager !', class: "btn btn-primary w-100" %>
   <% end %>
 </div>

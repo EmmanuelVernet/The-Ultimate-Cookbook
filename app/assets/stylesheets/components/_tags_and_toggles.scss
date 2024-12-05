@@ -35,11 +35,11 @@
   background: $marron-clair;
   transition: background 0.3s ease;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 
 .tag-selector:checked + label {
-  background: $marron-clair-hover;
+  background: $maronasse;
   color: white;
 }
 

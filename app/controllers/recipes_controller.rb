@@ -163,6 +163,7 @@ class RecipesController < ApplicationController
 
   def cookbook
     @recipes = current_user.recipes # cookbook action for a loged in user
+    @recipes = current_user.recipes.order(created_at: :desc)
   end
 
   def add_to_cookbook
@@ -171,6 +172,7 @@ class RecipesController < ApplicationController
     # store it in a variable and duplicate the recipe for the current user
     new_user_recipe = original_recipe.dup
     new_user_recipe.user_id = current_user.id
+    
     if new_user_recipe.save
       redirect_to cookbook_recipes_path, notice: "Recette ajoutée!"
     else
