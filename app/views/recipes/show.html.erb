@@ -31,8 +31,10 @@
     <div class="d-flex justify-content-between align-items-center mx-3">
       <div>
       <h4><strong><% if @recipe.recipe_name %><%= @recipe.recipe_name.capitalize %><% else %><%= @recipe.recipe_name %><% end %></strong></h4>
+        <% if @recipe.user != current_user %>
       <% text = @recipe.user.user_name ? @recipe.user.user_name : "Anonymous User" %>
       <p class="paragraph">By <%= text %></p>
+      <% end %>
       </div>
 
       <h2>
@@ -93,11 +95,22 @@
 </div>
 <br>
 
-<div class="mb-5 d-flex justify-content-evenly flex-wrap">
-    <%= link_to "Editer", edit_recipe_path, class: "btn-vert", style: "width: 100px" %>
-    <%= link_to "Supprimer", recipe_path, data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn-marron", style: "width: 100px" %>
+  <% if @recipe.user == current_user %>
+    <div class="mb-5 d-flex justify-content-evenly flex-wrap">
+     <%= link_to "Editer", edit_recipe_path, class: "btn-vert", style: "width: 100px" %>
+     <%= link_to "Supprimer", recipe_path, data: { turbo_method: :delete, confirm: "Êtes vous sûr?" }, class: "btn-marron", style: "width: 100px" %>
     <%# <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
+    </div>
+    <% else %>
+    <div class="mb-4 d-flex justify-content-evenly flex-wrap">
+
+    <%= link_to "Ajouter au cookbook", add_to_cookbook_recipe_path(@recipe),
+                data: { turbo_method: :post, confirm: "Êtes vous sûr?" },
+                class: "btn-vert",
+                style: "width: auto; padding-left: 10px; padding-right: 10px; margin-bottom: 20px" %>
 </div>
+<% end %>
+
 
 <div class="mb-4 d-flex justify-content-center" data-controller="toggle-share">
 
@@ -107,13 +120,14 @@
         <%= render "components/share-recipe" %>
       </div>
     </div>
-
+ <% if @recipe.user == current_user %>
     <div data-toggle-share-target="togglableDiv">
       <i data-action="click->toggle-share#tag" class="fa-solid fa-tags fa-2xl px-4" style="color: #0e5f65;" ></i>
       <div data-toggle-share-target="togglableTag" class="d-none mt-3">
         <%= render "components/tag-recipe", recipe: @recipe, tag: @tag %>
       </div>
     </div>
+    <% end %>
 
 </div>
 
