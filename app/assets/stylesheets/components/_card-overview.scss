@@ -124,13 +124,14 @@ padding-right: 20px;
 
 /* Cadre du contenu de l'onglet */
 .tab-content-t {
-  border: 2px solid #69330f; /* Bordure autour du contenu */
+  border: 2px solid $marron-clair; /* Bordure autour du contenu */
   border-radius: 8px; /* Coins arrondis */
   // background-color: #f8e49c; /* Fond */
   box-shadow: 0 0 8px rgba(255, 181, 94, 1);
   padding: 15px; /* Espacement interne */
   margin-top: -1px; /* Évite une double bordure avec les onglets */
 }
+
 
 .nav-link {
   display: block;

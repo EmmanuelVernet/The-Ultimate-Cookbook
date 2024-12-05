@@ -175,6 +175,15 @@ p {
   transform: scale(1.05);
 }
 
+.card-tags {
+  border: $marron-clair solid 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(255, 181, 94, 1);
+  margin: 20px auto;
+  width:  90%;
+  padding: 15px;
+}
+
 
 // ------------------- ICONES -------------------
 
