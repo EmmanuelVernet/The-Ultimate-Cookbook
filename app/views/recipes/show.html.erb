@@ -99,18 +99,18 @@
     <%# <%= link_to "Retour", recipes_path, class: "btn-bleu", style: "width: 100px" %>
 </div>
 
-<div class="mb-4 d-flex justify-content-center">
+<div class="mb-4 d-flex justify-content-center" data-controller="toggle-share">
 
-    <div data-controller="toggle-share">
+    <div data-toggle-share-target="togglableDivTag">
       <i data-action="click->toggle-share#fire" class="fa-solid fa-share-nodes fa-2xl px-4" style="color: #0e5f65;"></i>
-      <div data-toggle-share-target="togglableElement" class="d-none">
+      <div data-toggle-share-target="togglableElement" class="d-none mt-3">
         <%= render "components/share-recipe" %>
       </div>
     </div>
 
-    <div data-controller="toggle-tag">
-      <i data-action="click->toggle-tag#fire" class="fa-solid fa-tags fa-2xl px-4" style="color: #0e5f65;" ></i>
-      <div data-toggle-tag-target="togglableElement" class="d-none">
+    <div data-toggle-share-target="togglableDiv">
+      <i data-action="click->toggle-share#tag" class="fa-solid fa-tags fa-2xl px-4" style="color: #0e5f65;" ></i>
+      <div data-toggle-share-target="togglableTag" class="d-none mt-3">
         <%= render "components/tag-recipe", recipe: @recipe, tag: @tag %>
       </div>
     </div>
