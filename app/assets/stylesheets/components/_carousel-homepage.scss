@@ -72,6 +72,30 @@ swiper-slide img {
   font-style:oblique;
 }
 
+:host {
+  --swiper-theme-color: #ff00bf;
+}
+
+div[part="pagination"] {
+  all: unset !important; /* Cette propriété réinitialise tous les styles appliqués */
+}
+
+.swiper-pagination .swiper-pagination-clickable .swiper-pagination-bullets .swiper-pagination-horizontal {
+  display: none !important;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  display: none !important;
+}
+
+.swiper-pagination-bullets {
+  display: none;
+}
+
+.mySwiper .swiper-pagination {
+  display: none !important;
+}
+
 // .swiper-pagination-bullet {
 //   background-color: $beige-bg !important;
 // }
