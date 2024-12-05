@@ -1,11 +1,11 @@
-<div class="container mb-3">
+<div class="container">
   <%# <h1>Partager la recette</h1> %>
   <%= simple_form_for @share do |f| %>
     <%= f.association :receiver,
           collection: User.all.pluck(:user_name, :id),
           input_html: {data:{controller: "slim-select"}},
           multiple: true,
-          label: 'Destinataire',
+          label: false,
           include_hidden: false %>
     <%= f.input :recipe_id,
           as: :hidden,
