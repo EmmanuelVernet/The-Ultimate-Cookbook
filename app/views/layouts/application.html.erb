@@ -37,9 +37,10 @@
     <meta name="twitter:image:src" content="<%= meta_image || asset_path('default-meta-image.png') %>">
   </head>
 
-  <body style="padding-top:50px">
+  <body>
     <%= render "/components/navbar" %>
-    <div class="background container-defaut">
+    <div class="background container-defaut" style="padding-top:50px">
+
       <%= yield %>
       <%= render "shared/flashes" %>
       <%= render "/components/footer" %>
