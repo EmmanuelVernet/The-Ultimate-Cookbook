@@ -27,13 +27,13 @@ class SharesController < ApplicationController
   def create
     @share = Share.create(share_params)
     @share.user = current_user
-
+  
     # # Validate receiver => from GPT
     # follower_ids = current_user.followers.pluck(:id) || []
     # followee_ids = current_user.followees.pluck(:id) || []
     # valid_receiver_ids = (follower_ids + followee_ids).uniq
 
-    if @share.save
+    if @share.save!
       redirect_to recipes_path, notice: "Recette partagée!"
     else
       render :new, status: :unprocessable_entity
